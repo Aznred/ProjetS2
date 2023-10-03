@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd7b65b40166614d9e2520c7cf365e2, type: 3}
+  m_Name: FirstCombat
+  m_EditorClassIdentifier: 
+  music: {fileID: 8300000, guid: a3d86695d1418294a855f5317dd140b2, type: 3}
+  phrasecomb: Tres bien, aventurier intrepide. Montre-moi ce dont tu es capable,
+    mais sache que les forces de la foret sont a mes cotes, et elles ne se rendront
+    pas sans combattre. Prepare-toi a affronter la colere des arbres et la magie
+    de ces lieux.
+  phraseplayer: Regarde toi, pauvre aventurier tout essouffle et delabre ! Tu pensais
+    vraiment que tu pourrais venir ici et voler notre precieuse relique ? Pathetique
+    ! Les arbres se rient de tes faiblesses, et les creatures de la foret se delectent
+    de ta miserable tentative. Tu n'es qu'une plaisanterie, une marionnette dans
+    notre danse millenaire. Continue, si tu l'oses, mais sache que la foret ne pardonne
+    pas les intrus.
+  phrasejoueur: Regarde-moi a present, moi qui etais autrefois tout-puissant, reduit
+    a cette miserable forme. Cet aventurier insignifiant sans valeur me defie. Pathetique
+    ! Mais je ne cederai pas si facilement. Meme affaibli, je reste la force de cette
+    foret, et je ferai tout pour l'empecher de mettre la main sur notre precieuse
+    relique.
+  name: Esprit de la foret
+  histoire: 
+  choix_1: 
+  choix_2: 
+  background: {fileID: 21300000, guid: 32d9deea616f7e644819ad3610ba15ca, type: 3}
+  prixrouge: 0
+  prixbleue: 0
+  bonusvie: 1
+  bonusdegat: 3
+  "bonusdexterit\xE9": 5
+  bonusresistance: 1
+  bonusintelligence: 2
+  bonusmagie: 4
+  recompense: {fileID: 11400000, guid: c16df75e906d4dc40996ae68e83aedb1, type: 2}
+  "march\xE9": []
+  recrouge: 0
+  recbleu: 0
+  choix1: {fileID: 11400000, guid: 88ad51fe724abc74f8e6c404e40ee157, type: 2}
+  choix2: {fileID: 0}
+  typedequete: 0
+  perso: {fileID: 21300000, guid: 28c11f933d5abde4d91ea28a5c065785, type: 3}

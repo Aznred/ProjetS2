@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd7b65b40166614d9e2520c7cf365e2, type: 3}
+  m_Name: Day2(1)
+  m_EditorClassIdentifier: 
+  music: {fileID: 8300000, guid: 86e17c681c10a104aa727577697a5d93, type: 3}
+  phrasecomb: 
+  phraseplayer: 
+  phrasejoueur: 
+  name: Un Nouveau Depart
+  histoire: Apres avoir refuse la quete, vous decidez de passer du temps a la taverne
+    du Dragon Rouge, esperant trouver une aventure moins risquee. Cependant, l'etranger
+    encapuchonne ne revient pas, et les jours passent sans autre opportunite apparente. 
+    Finalement, vous entendez parler d'une autre quete, moins perilleuse, qui consiste
+    a escorter un marchand vers une ville voisine. Vous acceptez cette tache et commencez
+    votre voyage avec le marchand et son convoi.  Le voyage se passe relativement
+    bien, avec quelques rencontres mineures, mais rien de vraiment extraordinaire.
+    Vous atteignez la ville voisine en toute securite, et le marchand vous remercie
+    pour votre aide en vous payant une somme modeste en rubis rouges et bleus.
+  choix_1: "Aller visiter le march\xE9"
+  choix_2: Chercher une nouvelle quete
+  background: {fileID: 21300000, guid: 879af8d210d3f3c40a2cfc56fdb5ae3b, type: 3}
+  prixrouge: 0
+  prixbleue: 0
+  bonusvie: 0
+  bonusdegat: 0
+  "bonusdexterit\xE9": 0
+  bonusresistance: 0
+  bonusintelligence: 0
+  bonusmagie: 0
+  recompense: {fileID: 0}
+  "march\xE9": []
+  recrouge: 5
+  recbleu: 10
+  choix1: {fileID: 0}
+  choix2: {fileID: 0}
+  typedequete: 3
+  perso: {fileID: 0}
