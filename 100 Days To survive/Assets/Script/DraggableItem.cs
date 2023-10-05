@@ -34,7 +34,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // Sauvegarde de la position et du parent d'origine de l'objet
+      
         parentafterdrag = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
@@ -43,7 +43,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnDrag(PointerEventData eventData)
     {
-        // Met à jour la position de l'objet pour le suivre avec la souris/finger
+
         transform.position = Input.mousePosition;
     }
 

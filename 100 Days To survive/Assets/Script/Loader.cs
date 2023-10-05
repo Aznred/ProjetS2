@@ -313,11 +313,11 @@ public class Loader : MonoBehaviour
     private void LoadPlayerData()
     {
         string playerDataJson =
-            PlayerPrefs.GetString("PlayerData", ""); // Charge les données du joueur depuis PlayerPrefs
+            PlayerPrefs.GetString("PlayerData", ""); 
 
         if (!string.IsNullOrEmpty(playerDataJson))
         {
-            playerData = JsonUtility.FromJson<PlayerData>(playerDataJson); // Convertit le JSON en PlayerData
+            playerData = JsonUtility.FromJson<PlayerData>(playerDataJson); 
 
             armoritem = playerData.armoritem;
             foreach (var slot in equippedarmor)
@@ -783,8 +783,9 @@ public class Loader : MonoBehaviour
             combbackgr.sprite = Quest.background;
             playerim.sprite = imageequip.sprite;
             phrasemid.text = Quest.phrasecomb;
-            heatlhplayer.value = playerData.health * 100;
             heatlhplayer.maxValue = playerData.health * 100;
+            heatlhplayer.value = playerData.health * 100;
+          
             StartCoroutine(transition(Quest));
 
         }
@@ -811,9 +812,9 @@ public class Loader : MonoBehaviour
 
     public void Acualise()
     {
-        if (playerData != null) // Check if playerData is not null
+        if (playerData != null) 
         {
-            // Initialize the bonus stats to zero
+       
             bonusDamage = 0;
             bonusHealth = 0;
             bonusDexterity = 0;
@@ -835,7 +836,7 @@ public class Loader : MonoBehaviour
                 }
             }
 
-            // Update player's stats based on equipped armor
+           
             playerData.damage = playerData.baseDamage + bonusDamage;
             playerData.health = playerData.baseHealth + bonusHealth;
             playerData.dexterity = playerData.baseDexterity + bonusDexterity;
@@ -843,7 +844,7 @@ public class Loader : MonoBehaviour
             playerData.intelligence = playerData.baseIntelligence + bonusIntelligence;
             playerData.magic = playerData.baseMagic + bonusMagic;
 
-            // Update UI
+           
             intelligence.text = (playerData.baseIntelligence+ bonusIntelligence).ToString();
             sante.text = (playerData.baseHealth + bonusHealth).ToString();
             magie.text = (playerData.baseMagic+ bonusMagic).ToString();
@@ -975,18 +976,18 @@ public class Loader : MonoBehaviour
      private IEnumerator PlayerAttackSequence()
      {
          phrase.text = "Le joueur lance le de";
-         // Lancer le dé pour le joueur
+       
          Dicej();
          
 
-         // Attendre un certain temps avant de lancer le dé pour le monstre
-         yield return StartCoroutine(WaitForSeconds(4)); // Remplacez 2 par la durée d'attente souhaitée
+      
+         yield return StartCoroutine(WaitForSeconds(4)); 
 
-         // Lancer le dé pour le monstre
+   
          phrase.text = $"{quete.name} lance le de"; 
          Dice();
          yield return StartCoroutine(WaitForSeconds(3));
-         // Effectuer la logique de combat
+       
          AttackLogic();
          yield return StartCoroutine(WaitForSeconds(2));
          defensemob.color = Color.red;

@@ -28,8 +28,6 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
 
     private void Start()
     {
-        // ... (other initialization)
-        // Hide the tooltip on start
         Tooltipmanager.instance.hidetooltip();
     }
     public void OnPointerEnter(PointerEventData eventData)

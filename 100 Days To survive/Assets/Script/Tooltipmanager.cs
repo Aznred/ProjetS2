@@ -22,8 +22,7 @@ public class Tooltipmanager : MonoBehaviour
     public GameObject immasse;
     public GameObject imbouc;
     public GameObject imbat;
-    // Start is called before the
-    // first frame update
+  
     private void Awake()
     {
         if (instance != null && instance !=this)
@@ -44,7 +43,7 @@ public class Tooltipmanager : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
+ 
     void Update()
     {
         transform.position = new Vector3(Input.mousePosition.x + 196, Input.mousePosition.y + 112, 0);

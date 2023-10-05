@@ -6,5 +6,5 @@ using UnityEngine;
 public class DataBase
 {
     public List<Item> items;
-    // Autres données d'inventaire que vous souhaitez sauvegarder
+  
 }

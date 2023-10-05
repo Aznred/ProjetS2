@@ -21,7 +21,7 @@ public class Item : ScriptableObject
     {
         itemId = id;
         itemName = name;
-        // Initialisez les autres propriétés...
+      
     }
 
     public Arme typearme;
