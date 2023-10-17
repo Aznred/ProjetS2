@@ -14,6 +14,59 @@ using Random = UnityEngine.Random;
 [SerializeField]
 public class Loader : MonoBehaviour
 {
+    public Sprite vendu;
+    public AudioSource soundtouch;
+    private int choix = 0;
+    public TMP_Text Choix1act;
+    public TMP_Text Choix2act;
+    public GameObject choix1;
+    public GameObject choix2;
+    public GameObject choix3;
+    public GameObject continuer;
+    private int index = 0;
+    public GameObject Histoire;
+    public TMP_Text Dialoguepnj;
+    public TMP_Text Dialoguejoueur;
+    public Image pnj;
+    public Image persohist;
+    public TMP_Text namejoueur;
+    public TMP_Text namepnj;
+    public Image Transparent;
+    public TMP_Text Marketrubyred;
+    public TMP_Text Marketrubybleu;
+    public GameObject Market;
+    public Button Item1;
+    public Button Item2;
+    public Button Item3;
+    public Button Item4;
+    public TMP_Text healthstatitem1;
+    public TMP_Text damagestatitem1;
+    public TMP_Text dexteritystatitem1;
+    public TMP_Text resistancestatitem1;
+    public TMP_Text intelligencestatitem1;
+    public TMP_Text magicstatitem1;
+    public TMP_Text healthstatitem2;
+    public TMP_Text damagestatitem2;
+    public TMP_Text dexteritystatitem2;
+    public TMP_Text resistancestatitem2;
+    public TMP_Text intelligencestatitem2;
+    public TMP_Text magicstatitem2;
+    public TMP_Text healthstatitem3;
+    public TMP_Text damagestatitem3;
+    public TMP_Text dexteritystatitem3;
+    public TMP_Text resistancestatitem3;
+    public TMP_Text intelligencestatitem3;
+    public TMP_Text magicstatitem3;
+    public TMP_Text healthstatitem4;
+    public TMP_Text damagestatitem4;
+    public TMP_Text dexteritystatitem4;
+    public TMP_Text resistancestatitem4;
+    public TMP_Text intelligencestatitem4;
+    public TMP_Text magicstatitem4;
+    public TMP_Text nommarcand;
+    public Image imMarchand;
+
+    public List<Item> ArmorList = new List<Item>();
     public int bonusDamage = 0;
     public int bonusHealth = 0;
     public int bonusDexterity = 0;
@@ -120,7 +173,7 @@ public class Loader : MonoBehaviour
    
     public GameObject[] pages; 
 
-    private PlayerData playerData;
+    public PlayerData playerData;
     public inventoryslot[] Inventoryslots;
     public GameObject InvetoryItemprefab;
     public InventoryData[] inventorySlotData;
@@ -146,23 +199,20 @@ public class Loader : MonoBehaviour
     public GameObject butdex;
     public GameObject butint;
     public GameObject butmag;
-
+    public GameObject pageinv;
 
 
     private void Awake()
     {
+        pageinv.SetActive(true);
         LoadPlayerData();
+        
+        pageinv.SetActive(false);
     }
 
         private void Start()
-        {bonusDamage = 0;
-        bonusHealth = 0;
-         bonusDexterity = 0;
-         bonusResistance = 0;
-        bonusIntelligence = 0;
-         bonusMagic = 0;
-            Acualise();
-            mindButton.enabled = true;
+        {
+         mindButton.enabled = true;
             attackButton.interactable = true;
             heatlhplayer.maxValue = playerData.health * 100;
             heatlhplayer.value = playerData.health * 100;
@@ -177,7 +227,7 @@ public class Loader : MonoBehaviour
 
         public void Update()
         {
-        
+      
             if (playerData.baseHealth >= 5)
             {
                 buttonhealth.SetActive(false);
@@ -210,40 +260,15 @@ public class Loader : MonoBehaviour
 
             
             armor = GameObject.FindWithTag("inv1");
-          
-            if (equipementslot[0].transform.childCount > 0)
-            {
-                UiEquipement[0].sprite = equipementslot[0].GetComponentInChildren<DraggableItem>().Item.itemImage;
-                UpdatePlayerUI();
-            }
-            if (equipementslot[1].transform.childCount > 0)
-            {
-                UiEquipement[1].sprite = equipementslot[1].GetComponentInChildren<DraggableItem>().Item.itemImage;
-                UpdatePlayerUI();
-            }
-            if (equipementslot[2].transform.childCount > 0)
-            {
-                UiEquipement[2].sprite = equipementslot[2].GetComponentInChildren<DraggableItem>().Item.itemImage;
-                UpdatePlayerUI();
-            }
-            if (equipementslot[3].transform.childCount > 0)
-            {
-                UiEquipement[3].sprite = equipementslot[3].GetComponentInChildren<DraggableItem>().Item.itemImage;
-                UpdatePlayerUI();
-            }
-            if (equipementslot[4].transform.childCount > 0)
-            {
-                UiEquipement[4].sprite = equipementslot[4].GetComponentInChildren<DraggableItem>().Item.itemImage;
-                UpdatePlayerUI();
-            }
-            
-           
-         
+
+
+
+
         }
 
         public void UpdatePlayerData()
-    {
-       
+        {
+            
         playerData.playerName = playerNameText.text;
 
         playerData.health = int.Parse(sante.text);
@@ -263,12 +288,11 @@ public class Loader : MonoBehaviour
         playerData.jour = int.Parse(jour.text);
         playerData.pointarme = int.Parse(pointarme.text);
         playerData.pointstat = int.Parse(pointstat.text);
-
         playerData.inventory.Clear();
         playerData.arminv.Clear();
         playerData.invstr.Clear();
         playerData.quete = quete.name; 
-        Debug.Log(playerData.quete);
+      
         foreach (var slot in equippedarmor)
         {
             if (slot.transform.childCount > 0)
@@ -278,7 +302,7 @@ public class Loader : MonoBehaviour
                 if (itemInSlot != null)
                 {
                     playerData.arminv.Add(itemInSlot.Item.name);
-                    Debug.Log(itemInSlot.Item.name);  
+                  
                 }
                 
             }
@@ -295,7 +319,7 @@ public class Loader : MonoBehaviour
             {
                 
                 playerData.invstr.Add(itemInSlot.Item.name);
-                Debug.Log(itemInSlot.Item.name);  
+               
             }
         }
 
@@ -324,7 +348,7 @@ public class Loader : MonoBehaviour
             {
                 foreach (var name in playerData.arminv)
                 {
-                    Debug.Log(name);
+                   
                     foreach (var ele in dataitem)
                     {  
                         if (name== ele.name)
@@ -333,20 +357,9 @@ public class Loader : MonoBehaviour
                        
                             if (slot.acceptedItemType == ele.itemtype && slot.transform.childCount < 1)
                             {
-                                playerData.damage -= ele.bonusdegat;
-                                playerData.health -= ele.bonusvie;
-                                playerData.dexterity -= ele.bonusdexterité;
-                                playerData.resistance -= ele.bonusresistance;
-                                playerData.intelligence -= ele.bonusintelligence;
-                                playerData.magic -= ele.bonusmagie;
+                               
                                 SpawnItem(ele,slot);
-
-                                intelligence.text = (playerData.baseIntelligence+ bonusIntelligence).ToString();
-                                sante.text = (playerData.baseHealth + bonusHealth).ToString();
-                                magie.text = (playerData.baseMagic+ bonusMagic).ToString();
-                                degat.text = (playerData.baseDamage+ bonusDamage).ToString();
-                                dexterité.text = (playerData.baseDexterity+ bonusDexterity).ToString();
-                                resistance.text = (playerData.baseResistance+ bonusResistance).ToString();
+                                
                                
                             }
                         }
@@ -355,6 +368,42 @@ public class Loader : MonoBehaviour
                 }
             
             }
+            bonusDamage = 0;
+            bonusHealth = 0;
+            bonusDexterity = 0;
+            bonusResistance = 0;
+            bonusIntelligence = 0;
+            bonusMagic = 0;
+
+            foreach (var slot in equippedarmor)
+            {
+                if (slot.transform.childCount > 0)
+                {
+                    DraggableItem draggableItem = slot.GetComponentInChildren<DraggableItem>();
+                    ArmorList.Add(draggableItem.Item);
+                    bonusDamage += draggableItem.Item.bonusdegat;
+                    bonusHealth += draggableItem.Item.bonusvie;
+                    bonusDexterity += draggableItem.Item.bonusdexterité;
+                    bonusResistance += draggableItem.Item.bonusresistance;
+                    bonusMagic += draggableItem.Item.bonusmagie;
+                    bonusIntelligence += draggableItem.Item.bonusintelligence;
+                }
+            }
+
+            playerData.baseDamage = playerData.damage - bonusDamage;
+            playerData.baseHealth = playerData.health - bonusHealth;
+            playerData.baseDexterity = playerData.dexterity - bonusDexterity;
+            playerData.baseResistance = playerData.resistance - bonusResistance;
+            playerData.baseIntelligence = playerData.intelligence- bonusIntelligence;
+            playerData.baseMagic = playerData.magic -bonusMagic;
+
+            playerData.damage = playerData.baseDamage + bonusDamage;
+            playerData.health = playerData.baseHealth + bonusHealth;
+            playerData.dexterity = playerData.baseDexterity + bonusDexterity;
+            playerData.resistance = playerData.baseResistance + bonusResistance;
+            playerData.intelligence = playerData.baseIntelligence + bonusIntelligence;
+            playerData.magic = playerData.baseMagic + bonusMagic;
+         
             playerNameText.text = playerData.playerName;
             epee.text = playerData.epee.ToString();
             arc.text = playerData.arc.ToString();
@@ -362,25 +411,14 @@ public class Loader : MonoBehaviour
             baton.text = playerData.baton.ToString();
             bouclier.text = playerData.bouclier.ToString();
             massue.text = playerData.massue.ToString();
-            intelligence.text = playerData.intelligence.ToString();
-            sante.text = playerData.health.ToString();
-            magie.text = playerData.magic.ToString();
-            degat.text = playerData.damage.ToString();
-            dexterité.text = playerData.dexterity.ToString();
-            resistance.text = playerData.resistance.ToString();
-            intelligence1.text = playerData.intelligence.ToString();
-            sante1.text = playerData.health.ToString();
-            magie1.text = playerData.magic.ToString();
-            degat1.text = playerData.damage.ToString();
-            dexterité1.text = playerData.dexterity.ToString();
-            resistance1.text = playerData.resistance.ToString();
+           
             rubybleu.text = playerData.blueRubies.ToString();
             rubyred.text = playerData.redRubies.ToString();
             jour.text = playerData.jour.ToString();
             total.text = (playerData.redRubies + playerData.blueRubies).ToString();
             pointarme.text = playerData.pointarme.ToString();
             pointstat.text = playerData.pointstat.ToString();
-            Debug.Log(playerData.quete);
+            
             foreach (var day in dataquete)
             {
                 if (playerData.quete == day.name)
@@ -434,7 +472,7 @@ public class Loader : MonoBehaviour
 
             foreach (var name in playerData.invstr)
             {
-                Debug.Log(name);
+               
                 foreach (var ele in dataitem)
                 {
                     
@@ -736,6 +774,9 @@ public class Loader : MonoBehaviour
     }
     public void GenererDay(Day Quest)
     {
+        
+        Choix1act.text = Quest.choix_1;
+        Choix2act.text = Quest.choix_2;
         ambiance.clip = Quest.music;
         ambiance.loop = true;
         ambiance.Play();
@@ -747,6 +788,29 @@ public class Loader : MonoBehaviour
         playerData.blueRubies = Quest.prixbleue;
         if (Quest.typedequete == Day.DayType.Histoire)
         {
+            UpdatePlayerData();
+            Histoire.SetActive(true);
+            Dialoguejoueur.text = string.Empty;
+            Dialoguepnj.text = string.Empty;
+            index = 0;
+            choix1.SetActive(true);
+            choix2.SetActive(true);
+            choix3.SetActive(true);
+            continuer.SetActive(false);
+            choix1.GetComponent<Button>().interactable = false;
+            choix2.GetComponent<Button>().interactable = false;
+            choix3.GetComponent<Button>().interactable = false;
+            StartCoroutine(typeline(Quest.Firstdialogue,Dialoguepnj,0.025f));
+          
+            
+            choix1.GetComponent<Button>().GetComponentInChildren<TMP_Text>().text = Quest.act1[0];
+            choix2.GetComponent<Button>().GetComponentInChildren<TMP_Text>().text = Quest.act2[0];
+
+            choix3.GetComponent<Button>().GetComponentInChildren<TMP_Text>().text = Quest.act3[0];
+            namejoueur.text = playerData.playerName;
+            namepnj.text = Quest.name;
+            persohist.sprite = imageequip.sprite;
+            pnj.sprite = Quest.perso;
             
         }
 
@@ -792,7 +856,43 @@ public class Loader : MonoBehaviour
 
         if (Quest.typedequete == Day.DayType.Marchand)
         {
-            
+            Market.SetActive(true);
+            UpdatePlayerData();
+            UpdateThunes();
+            nommarcand.text = Quest.name;
+            imMarchand.sprite = Quest.perso;
+            Item1.image.sprite = Quest.marché[0].itemImage;
+            Item2.image.sprite = Quest.marché[1].itemImage;
+            Item3.image.sprite = Quest.marché[2].itemImage;
+            Item4.image.sprite = Quest.marché[3].itemImage;
+            Item1.GetComponentInChildren<TMP_Text>().text = Quest.prix[0].ToString();
+            Item2.GetComponentInChildren<TMP_Text>().text = Quest.prix[1].ToString();
+            Item3.GetComponentInChildren<TMP_Text>().text = Quest.prix[2].ToString();
+            Item4.GetComponentInChildren<TMP_Text>().text = Quest.prix[3].ToString();
+            healthstatitem1.text = Quest.marché[0].bonusvie.ToString();
+            damagestatitem1.text = Quest.marché[0].bonusdegat.ToString();
+            dexteritystatitem1.text = Quest.marché[0].bonusdexterité.ToString();
+            resistancestatitem1.text = Quest.marché[0].bonusresistance.ToString();
+            intelligencestatitem1.text = Quest.marché[0].bonusintelligence.ToString();
+            magicstatitem1.text = Quest.marché[0].bonusmagie.ToString();
+            healthstatitem2.text = Quest.marché[1].bonusvie.ToString();
+            damagestatitem2.text = Quest.marché[1].bonusdegat.ToString();
+            dexteritystatitem2.text = Quest.marché[1].bonusdexterité.ToString();
+            resistancestatitem2.text = Quest.marché[1].bonusresistance.ToString();
+            intelligencestatitem2.text = Quest.marché[1].bonusintelligence.ToString();
+            magicstatitem2.text = Quest.marché[1].bonusmagie.ToString();
+            healthstatitem3.text = Quest.marché[2].bonusvie.ToString();
+            damagestatitem3.text = Quest.marché[2].bonusdegat.ToString();
+            dexteritystatitem3.text = Quest.marché[2].bonusdexterité.ToString();
+            resistancestatitem3.text = Quest.marché[2].bonusresistance.ToString();
+            intelligencestatitem3.text = Quest.marché[2].bonusintelligence.ToString();
+            magicstatitem3.text = Quest.marché[2].bonusmagie.ToString();
+            healthstatitem4.text = Quest.marché[3].bonusvie.ToString();
+            damagestatitem4.text = Quest.marché[3].bonusdegat.ToString();
+            dexteritystatitem4.text = Quest.marché[3].bonusdexterité.ToString();
+            resistancestatitem4.text = Quest.marché[3].bonusresistance.ToString();
+            intelligencestatitem4.text = Quest.marché[3].bonusintelligence.ToString();
+            magicstatitem4.text = Quest.marché[3].bonusmagie.ToString();
         }
 
         if (Quest.typedequete == Day.DayType.Quete)
@@ -809,12 +909,276 @@ public class Loader : MonoBehaviour
 
 
     }
+  
 
-    public void Acualise()
+    IEnumerator typeline(string lines, TMP_Text tmp, float speed)
+    { soundtouch.Play();
+        foreach (var c in lines.ToCharArray())
+        {
+            
+            tmp.text += c;
+            yield return new WaitForSeconds(speed);
+           
+        }
+        choix1.GetComponent<Button>().interactable = true;
+        choix2.GetComponent<Button>().interactable = true;
+        choix3.GetComponent<Button>().interactable = true;
+        soundtouch.Stop();
+    }
+
+    public void Dialogue1()
+    {
+        choix = 1;
+        Dialoguejoueur.text = string.Empty;
+        Dialoguepnj.text = string.Empty;
+        choix1.SetActive(false);
+        choix2.SetActive(false);
+        choix3.SetActive(false);
+        continuer.SetActive(true);
+        continuer.GetComponent<Button>().interactable = false;
+        StartCoroutine(typelinetext(quete.Choixdial1[index], Dialoguepnj, 0.025f,1,Dialoguejoueur));
+      
+    }
+    public void Dialogue2()
+    {
+        choix = 2;
+        Dialoguejoueur.text = string.Empty;
+        Dialoguepnj.text = string.Empty;
+        choix1.SetActive(false);
+        choix2.SetActive(false);
+        choix3.SetActive(false);
+        continuer.SetActive(true);
+        continuer.GetComponent<Button>().interactable = false;
+        StartCoroutine(typelinetext(quete.Choixdial2[index], Dialoguepnj, 0.025f,2,Dialoguejoueur));
+    
+    }
+    public void Dialogue3()
+    {
+        choix = 3;
+        Dialoguejoueur.text = string.Empty;
+        Dialoguepnj.text = string.Empty;
+        choix1.SetActive(false);
+        choix2.SetActive(false);
+        choix3.SetActive(false);
+        continuer.SetActive(true);
+        continuer.GetComponent<Button>().interactable = false;
+        StartCoroutine(typelinetext(quete.choixdial3[index], Dialoguepnj, 0.025f,3,Dialoguejoueur));
+   
+    }
+
+    public void Continuer()
+    {
+        Dialoguepnj.text = string.Empty;
+      
+        continuer.GetComponent<Button>().interactable = false;
+        StartCoroutine(typelinecontinuer(quete.choixdial3, Dialoguepnj, 0.025f,choix));
+       
+    }
+    IEnumerator typelinetext(string lines, TMP_Text tmp, float speed, int num,TMP_Text jou)
+    {soundtouch.Play();
+        switch (num)
+        {
+            case 1:
+                foreach (var s in quete.act1[1])
+                {  
+                    jou.text += s;
+                    yield return new WaitForSeconds(speed);
+                   
+                }
+                break;
+            case 2:
+                foreach (var s in quete.act2[1])
+                {  
+                    jou.text += s;
+                    yield return new WaitForSeconds(speed);
+                    
+                }
+                break;
+            case 3:
+                foreach (var s in quete.act3[1])
+                {  
+                    jou.text += s;
+                    yield return new WaitForSeconds(speed);
+                  
+                }
+                break;
+        }
+        foreach (var c in lines.ToCharArray())
+        { 
+            tmp.text += c;
+            yield return new WaitForSeconds(speed);
+           
+        }
+
+        index++;
+        continuer.GetComponent<Button>().interactable = true;
+        soundtouch.Stop();
+    }
+    IEnumerator typelinecontinuer(string[] lines, TMP_Text tmp, float speed, int num)
+    { soundtouch.Play();
+        
+        switch (num)
+        {
+            case 1:
+                lines = quete.Choixdial1;
+                if (quete.dial && index >= lines.Length)
+                {
+                    GenererDay(quete.choix1);
+                    quete = quete.choix1;
+                }
+                else if (index >= lines.Length)
+                {
+                    Histoire.SetActive(false);
+                    GenererDay(quete.choix1);
+                    quete = quete.choix1;
+                  
+                    jour.text = playerData.jour.ToString();
+                    
+                }
+                else
+                {
+                    
+                    foreach (var c in lines[index].ToCharArray())
+                    {  
+                        tmp.text += c;
+                        yield return new WaitForSeconds(speed);
+                    
+                    }
+                   
+                } break;
+               
+            case 2:
+                lines = quete.Choixdial2;
+                if (quete.dial && index >= lines.Length)
+                {
+                    GenererDay(quete.choix2); quete = quete.choix2;
+                    
+                }
+                else if (index >= lines.Length)
+                {Histoire.SetActive(false);
+                    GenererDay(quete.choix2);
+                    quete = quete.choix2;
+                    
+                    
+                }
+                else
+                {
+                   
+                    foreach (var c in lines[index].ToCharArray())
+                    { 
+                        tmp.text += c;
+                        yield return new WaitForSeconds(speed);
+                    
+                    }
+                    
+                }break;
+               
+            
+            case 3:
+                lines = quete.choixdial3;
+                if (quete.dial && index >= lines.Length)
+                {
+                   GenererDay(quete.choix3);
+                   quete = quete.choix3;
+                }
+                else if (index >= lines.Length)
+                {
+                    Histoire.SetActive(false);
+                    GenererDay(quete.choix3);
+                    quete = quete.choix3;
+                   
+                   
+                }
+                else
+                {
+                    foreach (var c in lines[index].ToCharArray())
+                    {  
+                        tmp.text += c;
+                        yield return new WaitForSeconds(speed);
+                   
+                    }
+                    
+                }
+                break;
+               
+        }
+        
+
+        index++;
+        continuer.GetComponent<Button>().interactable = true;
+        soundtouch.Stop();
+    }
+    public void Achat1()
+    {
+        if (playerData.redRubies >= quete.prix[0])
+        {
+            Item1.enabled = false;
+            AddItemToInventory(quete.marché[0]);
+            playerData.redRubies -= quete.prix[0];
+            UpdateThunes();
+            Item1.image.sprite = vendu;
+           
+        }
+
+
+    }
+    public void Achat2()
+    {
+        if (playerData.redRubies >=quete.prix[1])
+        {Item2.enabled = false;
+            AddItemToInventory(quete.marché[1]);
+            playerData.redRubies -= quete.prix[1];
+            Item2.image.sprite = vendu;
+            UpdateThunes();
+            
+        }
+
+
+    }
+    public void Achat3()
+    {
+        if (playerData.blueRubies >= quete.prix[2])
+        {Item3.enabled = false;
+            AddItemToInventory(quete.marché[2]);
+            playerData.blueRubies -= quete.prix[2];
+            Item3.image.sprite = vendu;
+            UpdateThunes();
+            
+        }
+
+
+    }
+    public void Achat4()
+    {
+        if (playerData.blueRubies >= quete.prix[3])
+        {Item4.enabled = false;
+            AddItemToInventory(quete.marché[3]);
+            playerData.blueRubies -= quete.prix[3];
+            Item4.image.sprite = vendu;
+            UpdateThunes();
+            
+        }
+
+
+    }
+
+    public void ExitMarket()
+    {
+        Market.SetActive(false);
+    }
+
+    public void UpdateThunes()
+    {
+        rubybleu.text = playerData.blueRubies.ToString();
+        rubyred.text = playerData.redRubies.ToString();
+        Marketrubybleu.text = playerData.blueRubies.ToString();
+        Marketrubyred.text = playerData.redRubies.ToString();
+    }
+
+   public void Actualize()
     {
         if (playerData != null) 
         {
-       
             bonusDamage = 0;
             bonusHealth = 0;
             bonusDexterity = 0;
@@ -827,16 +1191,21 @@ public class Loader : MonoBehaviour
                 if (slot.transform.childCount > 0)
                 {
                     DraggableItem draggableItem = slot.GetComponentInChildren<DraggableItem>();
-                    bonusDamage += draggableItem.Item.bonusdegat;
-                    bonusHealth += draggableItem.Item.bonusvie;
-                    bonusDexterity += draggableItem.Item.bonusdexterité;
-                    bonusResistance += draggableItem.Item.bonusresistance;
-                    bonusIntelligence += draggableItem.Item.bonusintelligence;
-                    bonusMagic += draggableItem.Item.bonusmagie;
+                    ArmorList.Add(draggableItem.Item);
                 }
             }
 
-           
+            foreach (var ele in ArmorList)
+            {
+               
+                bonusDamage += ele.bonusdegat;
+                bonusHealth += ele.bonusvie;
+                bonusDexterity += ele.bonusdexterité;
+                bonusResistance += ele.bonusresistance;
+                bonusIntelligence += ele.bonusintelligence;
+                bonusMagic += ele.bonusmagie;
+            }
+
             playerData.damage = playerData.baseDamage + bonusDamage;
             playerData.health = playerData.baseHealth + bonusHealth;
             playerData.dexterity = playerData.baseDexterity + bonusDexterity;
@@ -845,17 +1214,15 @@ public class Loader : MonoBehaviour
             playerData.magic = playerData.baseMagic + bonusMagic;
 
            
-            intelligence.text = (playerData.baseIntelligence+ bonusIntelligence).ToString();
-            sante.text = (playerData.baseHealth + bonusHealth).ToString();
-            magie.text = (playerData.baseMagic+ bonusMagic).ToString();
-            degat.text = (playerData.baseDamage+ bonusDamage).ToString();
-            dexterité.text = (playerData.baseDexterity+ bonusDexterity).ToString();
-            resistance.text = (playerData.baseResistance+ bonusResistance).ToString();
+  
         }
-        else
-        {
-            Debug.LogError("playerData is null.");
-        }
+        intelligence.text = ( playerData.baseIntelligence + bonusIntelligence).ToString();
+        sante.text = (playerData.baseHealth + bonusHealth).ToString();
+        magie.text = (playerData.baseMagic + bonusMagic).ToString();
+        degat.text = (playerData.baseDamage + bonusDamage).ToString();
+        dexterité.text = (playerData.baseDexterity + bonusDexterity ).ToString();
+        resistance.text = (playerData.baseResistance + bonusResistance).ToString();
+      
     }
     public IEnumerator transition(Day Quest)
     {

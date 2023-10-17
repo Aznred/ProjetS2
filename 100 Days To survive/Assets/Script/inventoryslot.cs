@@ -29,7 +29,31 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
     private void Start()
     {
         Tooltipmanager.instance.hidetooltip();
+        if (acceptedItemType != ItemType.All)
+        {
+            foreach (var ele in loader.ArmorList)
+            {
+                if (ele.itemtype == acceptedItemType)
+                {
+                    
+                    olditem = ele;
+                    loader.playerData.baseDamage -= ele.bonusdegat;
+                    loader.playerData.baseHealth -= ele.bonusvie;
+                    loader.playerData.baseDexterity -= ele.bonusdexterité;
+                    loader.playerData.baseResistance -= ele.bonusresistance;
+                    loader.playerData.baseIntelligence -= ele.bonusintelligence;
+                    loader.playerData.baseMagic -= ele.bonusmagie;
+                    Debug.Log(olditem);
+                    loader.UpdatePlayerUI();
+                }
+              
+        
+            }
+        }
+        
+       
     }
+    
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (gameObject.transform.childCount == 1)
@@ -56,24 +80,23 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
         {
             playerData = JsonUtility.FromJson<PlayerData>(playerDataJson);
         }
-        if (armor && slot.transform.childCount == 0 && olditem != null )
+
+        if (armor && slot.transform.childCount == 0 && olditem != null)
         {
-            
-            playerData.damage -= olditem.bonusdegat;
-            playerData.health -= olditem.bonusvie;
-            playerData.dexterity -= olditem.bonusdexterité;
-            playerData.resistance -= olditem.bonusresistance;
-            playerData.intelligence -= olditem.bonusintelligence;
-            playerData.magic -= olditem.bonusmagie;
-            intelligence.text = playerData.intelligence.ToString();
-            sante.text = playerData.health.ToString();
-            magie.text = playerData.magic.ToString();
-            degat.text = playerData.damage.ToString();
-            dexterité.text = playerData.dexterity.ToString();
-            resistance.text = playerData.resistance.ToString();
-            
+            for (int i = 0; i < loader.equipementslot.Count; i++)
+            {
+                if (loader.equipementslot[i].transform.childCount <= 0)
+                {
+                    loader.UiEquipement[i].sprite = loader.Transparent.sprite;
+                }
+                else
+                {
+                    loader.UiEquipement[i].sprite = loader.equipementslot[i].GetComponentInChildren<DraggableItem>().Item.itemImage;
+                }
+            }
+
+            loader.bonusDamage-= olditem.bonusdegat;
             loader.bonusHealth -= olditem.bonusvie;
-            loader.bonusDamage -= olditem.bonusdegat;
             loader.bonusDexterity -= olditem.bonusdexterité;
             loader.bonusResistance -= olditem.bonusresistance;
             loader.bonusIntelligence -= olditem.bonusintelligence;

@@ -39,9 +39,10 @@ MonoBehaviour:
   bonusmagie: 0
   recompense: {fileID: 0}
   "march\xE9": []
+  prix: 
   recrouge: 5
   recbleu: 10
-  choix1: {fileID: 0}
+  choix1: {fileID: 11400000, guid: ccb61b7262b3a9f4ab48b17070aef9d8, type: 2}
   choix2: {fileID: 0}
   typedequete: 3
   perso: {fileID: 0}

@@ -404,7 +404,7 @@
       "DisplayName": "Writing boot.config_tyr4.info",
       "ActionType": "WriteFile",
       "PayloadOffset": 83,
-      "PayloadLength": 14149,
+      "PayloadLength": 14889,
       "PayloadDebugContentSnippet": "{\"System.Object\":null,\"Bee.Tun",
       "Inputs": [],
       "Outputs": [
@@ -506,26 +506,26 @@
         "D:/2022.3.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.WindModule.dll",
         "D:/2022.3.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.XRModule.dll",
         "D:/2022.3.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Assembly-CSharp.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.IK.Runtime.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Burst.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Core.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Animation.Runtime.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Tilemap.Extras.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Flow.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Common.Runtime.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/UnityEngine.UI.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Timeline.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Collections.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.PixelPerfect.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Mathematics.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.TextMeshPro.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.State.dll",
-        "D:/100 Days To survive/Library/PackageCache/com.unity.collections@1.2.4/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll",
-        "D:/100 Days To survive/Library/PackageCache/com.unity.visualscripting@1.8.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll",
-        "D:/100 Days To survive/Library/PackageCache/com.unity.burst@1.8.7/Unity.Burst.Unsafe.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Assembly-CSharp.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.IK.Runtime.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Burst.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Core.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Animation.Runtime.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Tilemap.Extras.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Flow.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Common.Runtime.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/UnityEngine.UI.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Timeline.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Collections.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.PixelPerfect.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Mathematics.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.TextMeshPro.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.State.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/PackageCache/com.unity.collections@1.2.4/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/PackageCache/com.unity.visualscripting@1.8.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/PackageCache/com.unity.burst@1.8.7/Unity.Burst.Unsafe.dll",
         "D:/2022.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32/Facades/System.Runtime.dll",
         "D:/2022.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32/Facades/netstandard.dll",
         "D:/2022.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32/Mono.Security.dll",
@@ -1432,7 +1432,7 @@
       "DisplayName": "Copying Assembly-CSharp.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Assembly-CSharp.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Assembly-CSharp.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Assembly-CSharp.dll"
@@ -1444,7 +1444,7 @@
       "DisplayName": "Copying Unity.2D.IK.Runtime.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.IK.Runtime.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.IK.Runtime.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.2D.IK.Runtime.dll"
@@ -1456,7 +1456,7 @@
       "DisplayName": "Copying Unity.Burst.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Burst.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Burst.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.Burst.dll"
@@ -1468,7 +1468,7 @@
       "DisplayName": "Copying Unity.VisualScripting.Core.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Core.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Core.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.VisualScripting.Core.dll"
@@ -1480,7 +1480,7 @@
       "DisplayName": "Copying Unity.2D.Animation.Runtime.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Animation.Runtime.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Animation.Runtime.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.2D.Animation.Runtime.dll"
@@ -1492,7 +1492,7 @@
       "DisplayName": "Copying Unity.2D.Tilemap.Extras.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Tilemap.Extras.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Tilemap.Extras.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.2D.Tilemap.Extras.dll"
@@ -1504,7 +1504,7 @@
       "DisplayName": "Copying Unity.VisualScripting.Flow.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Flow.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Flow.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.VisualScripting.Flow.dll"
@@ -1516,7 +1516,7 @@
       "DisplayName": "Copying Unity.InternalAPIEngineBridge.001.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.InternalAPIEngineBridge.001.dll"
@@ -1528,7 +1528,7 @@
       "DisplayName": "Copying Unity.2D.Common.Runtime.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Common.Runtime.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Common.Runtime.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.2D.Common.Runtime.dll"
@@ -1540,7 +1540,7 @@
       "DisplayName": "Copying UnityEngine.UI.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/UnityEngine.UI.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/UnityEngine.UI.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/UnityEngine.UI.dll"
@@ -1552,7 +1552,7 @@
       "DisplayName": "Copying Unity.Timeline.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Timeline.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Timeline.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.Timeline.dll"
@@ -1564,7 +1564,7 @@
       "DisplayName": "Copying Unity.Collections.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Collections.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Collections.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.Collections.dll"
@@ -1576,7 +1576,7 @@
       "DisplayName": "Copying Unity.2D.SpriteShape.Runtime.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.2D.SpriteShape.Runtime.dll"
@@ -1588,7 +1588,7 @@
       "DisplayName": "Copying Unity.2D.PixelPerfect.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.PixelPerfect.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.PixelPerfect.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.2D.PixelPerfect.dll"
@@ -1600,7 +1600,7 @@
       "DisplayName": "Copying Unity.Mathematics.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Mathematics.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Mathematics.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.Mathematics.dll"
@@ -1612,7 +1612,7 @@
       "DisplayName": "Copying Unity.TextMeshPro.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.TextMeshPro.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.TextMeshPro.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.TextMeshPro.dll"
@@ -1624,7 +1624,7 @@
       "DisplayName": "Copying Unity.VisualScripting.State.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.State.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.State.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.VisualScripting.State.dll"
@@ -1636,7 +1636,7 @@
       "DisplayName": "Copying Unity.Collections.LowLevel.ILSupport.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/PackageCache/com.unity.collections@1.2.4/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/PackageCache/com.unity.collections@1.2.4/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.Collections.LowLevel.ILSupport.dll"
@@ -1648,7 +1648,7 @@
       "DisplayName": "Copying Unity.VisualScripting.Antlr3.Runtime.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/PackageCache/com.unity.visualscripting@1.8.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/PackageCache/com.unity.visualscripting@1.8.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll"
@@ -1660,7 +1660,7 @@
       "DisplayName": "Copying Unity.Burst.Unsafe.dll",
       "ActionType": "CopyFiles",
       "Inputs": [
-        "D:/100 Days To survive/Library/PackageCache/com.unity.burst@1.8.7/Unity.Burst.Unsafe.dll"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/PackageCache/com.unity.burst@1.8.7/Unity.Burst.Unsafe.dll"
       ],
       "Outputs": [
         "C:/Users/Utilisateur/Desktop/mono/100 Days To survive_Data/Managed/Unity.Burst.Unsafe.dll"
@@ -1935,8 +1935,8 @@
       "Annotation": "GenerateNativePluginsForAssemblies Library/Bee/artifacts/WinPlayerBuildProgram/AsyncPluginsFromLinker",
       "DisplayName": "Running Burst Compiler",
       "ActionType": "RunRPCCommand",
-      "PayloadOffset": 14355,
-      "PayloadLength": 12785,
+      "PayloadOffset": 15095,
+      "PayloadLength": 13525,
       "PayloadDebugContentSnippet": "{\"PlayerBuildProgramLibrary.Da",
       "Action": "GenerateNativePluginsForAssemblies",
       "Inputs": [
@@ -2008,26 +2008,26 @@
         "D:/2022.3.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.WindModule.dll",
         "D:/2022.3.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.XRModule.dll",
         "D:/2022.3.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/Variations/mono/Managed/UnityEngine.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Assembly-CSharp.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.IK.Runtime.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Burst.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Core.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Animation.Runtime.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Tilemap.Extras.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Flow.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Common.Runtime.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/UnityEngine.UI.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Timeline.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Collections.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.PixelPerfect.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Mathematics.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.TextMeshPro.dll",
-        "D:/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.State.dll",
-        "D:/100 Days To survive/Library/PackageCache/com.unity.collections@1.2.4/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll",
-        "D:/100 Days To survive/Library/PackageCache/com.unity.visualscripting@1.8.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll",
-        "D:/100 Days To survive/Library/PackageCache/com.unity.burst@1.8.7/Unity.Burst.Unsafe.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Assembly-CSharp.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.IK.Runtime.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Burst.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Core.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Animation.Runtime.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Tilemap.Extras.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.Flow.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.Common.Runtime.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/UnityEngine.UI.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Timeline.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Collections.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.2D.PixelPerfect.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.Mathematics.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.TextMeshPro.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/PlayerScriptAssemblies/Unity.VisualScripting.State.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/PackageCache/com.unity.collections@1.2.4/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/PackageCache/com.unity.visualscripting@1.8.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll",
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/PackageCache/com.unity.burst@1.8.7/Unity.Burst.Unsafe.dll",
         "D:/2022.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32/Facades/System.Runtime.dll",
         "D:/2022.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32/Facades/netstandard.dll",
         "D:/2022.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32/Mono.Security.dll",
@@ -2051,7 +2051,7 @@
         "D:/2022.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32/System.dll",
         "D:/2022.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32/mscorlib.dll",
         "ProjectSettings/BurstAotSettings_StandaloneWindows.json",
-        "D:/100 Days To survive/Library/PackageCache/com.unity.burst@1.8.7/.Runtime/bcl.exe"
+        "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/PackageCache/com.unity.burst@1.8.7/.Runtime/bcl.exe"
       ],
       "Outputs": [],
       "TargetDirectories": [
@@ -2104,7 +2104,7 @@
       "Annotation": "WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info",
       "DisplayName": "Writing app.info",
       "ActionType": "WriteFile",
-      "PayloadOffset": 27229,
+      "PayloadOffset": 28709,
       "PayloadLength": 34,
       "PayloadDebugContentSnippet": "DefaultCompany\n100 Days To sur",
       "Inputs": [],
@@ -2793,6 +2793,6 @@
   "SharedResources": [],
   "Scanners": [],
   "Identifier": "Library/Bee/Player7b87963b.dag.json",
-  "PayloadsFile": "D:/100 Days To survive/Library/Bee/Player7b87963b.dag.payloads",
+  "PayloadsFile": "C:/Users/Utilisateur/Documents/ProjetS2/100 Days To survive/Library/Bee/Player7b87963b.dag.payloads",
   "RelativePathToRoot": "../.."
 }

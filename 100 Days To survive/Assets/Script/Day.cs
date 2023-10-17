@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,12 +25,23 @@ public class Day : ScriptableObject
     public int bonusmagie;
     public Item recompense;
     public List<Item> marché;
+    public List<int> prix;
     public int recrouge;
     public int recbleu;
     public Day choix1;
     public Day choix2;
     public DayType typedequete;
     public Sprite perso;
+    public String Firstdialogue;
+    public String[] Choixdial1;
+    public String[] Choixdial2;
+    public String[] choixdial3;
+    public string[] act1;
+    public string[] act2;
+    public string[] act3;
+    public bool dial;
+    public Day choix3;
+    
    
     
     // Start is called before the first frame update
