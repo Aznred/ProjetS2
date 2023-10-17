@@ -17,6 +17,8 @@ public class Item : ScriptableObject
     public int bonusmagie;
     public bool stackable;
     public int count = 1;
+    public int valeurRubyRouge = 0;
+    public int valeurRubybleu = 0;
     public Item(int id, string name)
     {
         itemId = id;
