@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Casque en Tissue
   itemImage: {fileID: 21300000, guid: da9c96874cb22e74e99d4f7fff1f1f1e, type: 3}
   itemtype: 3
-  bonusvie: 1
+  bonusvie: 0
   bonusdegat: 0
   "bonusdexterit\xE9": 0
   bonusresistance: 0
@@ -24,5 +24,7 @@ MonoBehaviour:
   bonusmagie: 0
   stackable: 0
   count: 0
+  valeurRubyRouge: 0
+  valeurRubybleu: 0
   typearme: 6
   requiert: 0

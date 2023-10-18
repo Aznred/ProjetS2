@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd7b65b40166614d9e2520c7cf365e2, type: 3}
+  m_Name: Day2Choix1
+  m_EditorClassIdentifier: 
+  music: {fileID: 8300000, guid: a70a83a9a21adff4b93e64d2e73cf011, type: 3}
+  phrasecomb: 
+  phraseplayer: 
+  phrasejoueur: 
+  name: Alice
+  histoire: 
+  choix_1: 
+  choix_2: 
+  background: {fileID: 0}
+  prixrouge: 0
+  prixbleue: 0
+  bonusvie: 0
+  bonusdegat: 0
+  "bonusdexterit\xE9": 0
+  bonusresistance: 0
+  bonusintelligence: 0
+  bonusmagie: 0
+  recompense: {fileID: 0}
+  "march\xE9": []
+  prix: 
+  recrouge: 0
+  recbleu: 0
+  choix1: {fileID: 11400000, guid: c2e5b123e80678b4c95295d7f37f8c20, type: 2}
+  choix2: {fileID: 11400000, guid: de251b4ce60262a418df176e437c8669, type: 2}
+  typedequete: 3
+  perso: {fileID: 21300000, guid: 603aa375dfcfece42a3852872863ce3e, type: 3}
+  Firstdialogue: Alors, qu'en dites-vous ? Etes-vous pret a nous aider a rendre a
+    Brambourg sa liberte et sa prosperite d'antan ?
+  Choixdial1:
+  - C'est un choix courageux que vous faites, et nous accueillons tous les bras vaillants.
+    Pour aider la rebellion, nous devons d'abord nous organiser. Nous avons besoin
+    de volontaires pour diverses taches. Vous pourriez vous occuper de la logistique,
+    du recrutement ou du renseignement, selon vos competences.
+  - Je vous preterai main-forte pour votre integration. Si vous avez des talents
+    particuliers ou des competences en combat, nous en aurons certainement besoin.
+    Mais nous sommes egalement confrontes a des enjeux politiques et sociaux. Le
+    village a besoin de dirigeants et de strateges.
+  - Votre engagement envers la rebellion est precieux. Nous devons tout d'abord gagner
+    la confiance des habitants. Vous pourriez commencer par parler aux villageois,
+    comprendre leurs besoins et leurs preoccupations. Plus nous serons unis, plus
+    nous serons forts.
+  Choixdial2:
+  - Tres bien, faites comme bon vous semble. Vous semblez preferer la securite du
+    chateau a l'avenir de notre village. Nous ne sommes pas des laches ici.
+  - Nous luttons pour notre liberte, et nous ne pouvons pas nous permettre d'avoir
+    des opportunistes a nos cotes. Rejoignez le chateau si vous le souhaitez, mais
+    n'esperez pas que nous vous considererons comme l'un des notres.
+  choixdial3:
+  - Je souhaite en savoir plus sur la situation actuelle du village avant de prendre
+    une decision.
+  - "Les villageois sont divis\xE9s sur la mani\xE8re de faire face \xE0 cette oppression.
+    Certains veulent se rebeller, mettre fin \xE0 cette situation. D'autres pr\xE9f\xE8rent
+    attendre et \xE9viter les repr\xE9sailles. La tension est palpable, et la situation
+    pourrait devenir explosive \xE0 tout moment."
+  - "Si vous souhaitez en savoir plus sur les d\xE9tails ou si vous avez des questions
+    sp\xE9cifiques, je serai heureuse de r\xE9pondre. Prenez votre temps pour prendre
+    une d\xE9cision, et sachez que nous appr\xE9cions toute aide que vous pourriez
+    apporter, quelle que soit votre d\xE9cision finale."
+  act1:
+  - e suis pret a me battre pour la rebellion. Comment puis-je aider ?
+  - e suis pret a me battre pour la rebellion. Comment puis-je aider ?
+  act2:
+  - Je ne vais pas intervenir dans la rebellion pour le moment. Je prefere explorer
+    la possibilite de devenir garde au chateau. Cela me semble plus adapte a mes
+    competences et a ma situation actuelle.
+  - Je ne vais pas intervenir dans la rebellion pour le moment. Je prefere explorer
+    la possibilite de devenir garde au chateau. Cela me semble plus adapte a mes
+    competences et a ma situation actuelle.
+  act3:
+  - Je souhaite en savoir plus sur la situation actuelle du village avant de prendre
+    une decision.
+  - Je souhaite en savoir plus sur la situation actuelle du village avant de prendre
+    une decision.
+  dial: 0
+  choix3: {fileID: 11400000, guid: de251b4ce60262a418df176e437c8669, type: 2}

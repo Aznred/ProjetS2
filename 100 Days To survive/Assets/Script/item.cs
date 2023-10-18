@@ -19,6 +19,7 @@ public class Item : ScriptableObject
     public int count = 1;
     public int valeurRubyRouge = 0;
     public int valeurRubybleu = 0;
+    public string description;
     public Item(int id, string name)
     {
         itemId = id;
@@ -44,6 +45,7 @@ public enum ItemType
     amulette,
     item,
     Consomnables,
+    Abilité,
 }
 
 public enum Arme

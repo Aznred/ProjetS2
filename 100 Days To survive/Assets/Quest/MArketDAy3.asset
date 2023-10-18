@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd7b65b40166614d9e2520c7cf365e2, type: 3}
+  m_Name: MArketDAy3
+  m_EditorClassIdentifier: 
+  music: {fileID: 0}
+  phrasecomb: 
+  phraseplayer: 
+  phrasejoueur: 
+  name: Francois
+  histoire: 
+  choix_1: 
+  choix_2: 
+  background: {fileID: 0}
+  prixrouge: 0
+  prixbleue: 0
+  bonusvie: 0
+  bonusdegat: 0
+  "bonusdexterit\xE9": 0
+  bonusresistance: 0
+  bonusintelligence: 0
+  bonusmagie: 0
+  recompense: {fileID: 0}
+  "march\xE9":
+  - {fileID: 11400000, guid: e38421d4965fb7748879fc14466cc391, type: 2}
+  - {fileID: 11400000, guid: 285a8dfb210501d4f80b81dbb554d106, type: 2}
+  - {fileID: 11400000, guid: f1b8c7a836c09864ea2d1221670bc266, type: 2}
+  - {fileID: 11400000, guid: 8cef2f1c1b880754790156af46e56035, type: 2}
+  prix: 01000000020000000300000004000000
+  recrouge: 0
+  recbleu: 0
+  choix1: {fileID: 0}
+  choix2: {fileID: 0}
+  typedequete: 1
+  perso: {fileID: 21300000, guid: aedad5ec8d5846847a889dae05f50e68, type: 3}

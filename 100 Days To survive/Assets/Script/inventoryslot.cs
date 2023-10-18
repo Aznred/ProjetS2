@@ -29,7 +29,8 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
     private void Start()
     {
         Tooltipmanager.instance.hidetooltip();
-        if (acceptedItemType != ItemType.All)
+        TooltipsDeck.instance.hidetooltip();
+        if (acceptedItemType != ItemType.All && acceptedItemType != ItemType.Abilité)
         {
             foreach (var ele in loader.ArmorList)
             {
@@ -62,6 +63,7 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
             
 
             Tooltipmanager.instance.settooltip(draggable.Item);
+            TooltipsDeck.instance.settooltip(draggable.Item);
         }
         
     }
@@ -69,6 +71,7 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
     public void OnPointerExit(PointerEventData eventData)
     {
         Tooltipmanager.instance.hidetooltip();
+        TooltipsDeck.instance.hidetooltip();
     }
 
     public void Update()
@@ -122,8 +125,12 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
             DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
             if (draggableItem.Item.itemtype == acceptedItemType || acceptedItemType == ItemType.All )
             {
+                if (acceptedItemType == ItemType.Abilité)
+                {
+                    draggableItem.parentafterdrag = transform;
+                }
                
-                if (acceptedItemType == ItemType.All)
+                else if (acceptedItemType == ItemType.All)
                 {
                     draggableItem.parentafterdrag = transform;
                     loader.UpdatePlayerData();

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 [Serializable]
 public class PlayerData
 {
+    
     public string playerName;
     public int currentPageIndex;
     public List<Item> inventory;
@@ -43,9 +44,13 @@ public class PlayerData
     public int baseResistance;
     public int baseMagic;
     public int baseIntelligence;
+    public List<Item> deck = new List<Item>();
+    public List<string> skillnames = new List<string>();
+    public List<string> decknames = new List<string>();
 
     public PlayerData()
     {
+        
         baseHealth = 1;
         baseDamage = 1;
         baseDexterity = 1;
@@ -98,7 +103,8 @@ public class custom : MonoBehaviour
     public TMP_Text pointarme;
     public TMP_Text pointstat;
     public GameObject page;
-    public List<Item> inventory; 
+    public List<Item> inventory;
+    public List<Item> Deck;
     public List<inventoryslot> equippedarmor  ;
     public Dictionary<string, Item> iteninventory = new Dictionary<string, Item>();
     public GameObject buttonhealth;
@@ -174,9 +180,15 @@ public class custom : MonoBehaviour
         playerData.playerName = playerName;
         playerData.currentPageIndex = currentPageIndex;
         playerData.inventory = inventory;
+        playerData.deck = Deck;
         foreach (var item in inventory)
         {
             playerData.invstr.Add(item.name);
+        }
+
+        foreach (var skill in Deck)
+        {
+            playerData.skillnames.Add(skill.name);
         }
 
      

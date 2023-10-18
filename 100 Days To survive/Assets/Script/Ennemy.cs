@@ -14,9 +14,11 @@ public class Ennemy : ScriptableObject
     public int Magic;
     public int Intelligence;
     public EnemyType type;
+    public string[] deck;
     public enum EnemyType
     {
         Enemy,
         Ally
     }
+
 }

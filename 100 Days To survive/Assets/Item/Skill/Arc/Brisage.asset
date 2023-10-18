@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c619a6f3ee86647a65add25c75973e, type: 3}
+  m_Name: Brisage
+  m_EditorClassIdentifier: 
+  itemId: 0
+  itemName: Brisage
+  itemImage: {fileID: 21300000, guid: 30da8c26f1f36e24db856d5bd8163c22, type: 3}
+  itemtype: 11
+  bonusvie: 0
+  bonusdegat: 0
+  "bonusdexterit\xE9": 0
+  bonusresistance: 0
+  bonusintelligence: 0
+  bonusmagie: 0
+  stackable: 0
+  count: 0
+  valeurRubyRouge: 0
+  valeurRubybleu: 0
+  description: Un tir puissant brise les os et la defense ennemi.
+  typearme: 1
+  requiert: 10

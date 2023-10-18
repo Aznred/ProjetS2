@@ -818,6 +818,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 76968572}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &76968571
@@ -1068,6 +1077,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 81869247}
   acceptedItemType: 9
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &81869246
@@ -1319,6 +1337,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 87608157}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &87608156
@@ -1569,6 +1596,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 105914492}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &105914491
@@ -1965,6 +2001,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 132055451}
   acceptedItemType: 1
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &132055450
@@ -4145,6 +4190,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 330862436}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &330862435
@@ -4431,6 +4485,33 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 285a8dfb210501d4f80b81dbb554d106, type: 2}
   - {fileID: 11400000, guid: c728a859b2b1eb243889cf0639173f94, type: 2}
   - {fileID: 11400000, guid: 3649e73211531bb4dbdcfaec15c7473c, type: 2}
+  - {fileID: 11400000, guid: 3eff6dfced453b54bb51883471eef203, type: 2}
+  Deck:
+  - {fileID: 11400000, guid: 90c7a0a285ae5934b9d8255afcd294c2, type: 2}
+  - {fileID: 11400000, guid: d76b14a5cf757464cb614e230211db16, type: 2}
+  - {fileID: 11400000, guid: 53907c1ec70bf9949b7cd83a8627197c, type: 2}
+  - {fileID: 11400000, guid: 60497dab4452b194f920c129da14a357, type: 2}
+  - {fileID: 11400000, guid: 55ab8407f98080847a25c23a7b5bf392, type: 2}
+  - {fileID: 11400000, guid: 60ec3e8eb3a022440bb67dacd10acb2e, type: 2}
+  - {fileID: 11400000, guid: 554bfd17770b60946961f04848694da7, type: 2}
+  - {fileID: 11400000, guid: 6814b0756a04c2844bfa4085a72eb5b9, type: 2}
+  - {fileID: 11400000, guid: 35d3eb19ea7cabe4b824ddcf667c5a60, type: 2}
+  - {fileID: 11400000, guid: 520ccf4303662dc4289256c984b63131, type: 2}
+  - {fileID: 11400000, guid: bb4a80ed0cfdea34593f0fac00ae6e7d, type: 2}
+  - {fileID: 11400000, guid: 2bd260f866c454647b18e2727a406f69, type: 2}
+  - {fileID: 11400000, guid: 71b79b617cce3e445bd5f78001dc9172, type: 2}
+  - {fileID: 11400000, guid: d70cd9c218c44444fa03d1604328d2c1, type: 2}
+  - {fileID: 11400000, guid: 9ddef02755a3c9a47b03e16749d70958, type: 2}
+  - {fileID: 11400000, guid: ef50c4485772101409aaca55e3de438a, type: 2}
+  - {fileID: 11400000, guid: ac72b5db31c7c9446b87b4e350ca5b67, type: 2}
+  - {fileID: 11400000, guid: 15d593f299b94c34a9f46ec035f44576, type: 2}
+  - {fileID: 11400000, guid: 8e87992201c0cd943b2f54b6f01d0281, type: 2}
+  - {fileID: 11400000, guid: 064fc991362fc684b802a3da5f3a0549, type: 2}
+  - {fileID: 11400000, guid: 934ca6449d17d5944b2c37ee095e0708, type: 2}
+  - {fileID: 11400000, guid: 84c04e7fb28a2774a9b58cc3631a6e65, type: 2}
+  - {fileID: 11400000, guid: 460f5ca4ce21e2e43a8efa3f7d5e2dbc, type: 2}
+  - {fileID: 11400000, guid: f90b9ccf8a92c854baac2d97b585d3dd, type: 2}
+  - {fileID: 11400000, guid: 2d6dc5b18cf35c64ba63e332eebe8f76, type: 2}
   equippedarmor:
   - {fileID: 1327636848}
   - {fileID: 806243651}
@@ -4768,6 +4849,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 373835735}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &373835734
@@ -5019,6 +5109,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 463886611}
   acceptedItemType: 5
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &463886610
@@ -5211,6 +5310,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 468051917}
   acceptedItemType: 10
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &468051916
@@ -5539,6 +5647,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 515926982}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &515926981
@@ -6851,6 +6968,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 653726693}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &653726692
@@ -7446,6 +7572,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 703777082}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &703777081
@@ -7831,6 +7966,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 731036401}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &731036400
@@ -7948,6 +8092,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 759537939}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &759537938
@@ -8065,6 +8218,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 765883173}
   acceptedItemType: 11
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &765883172
@@ -8390,6 +8552,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 789790057}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &789790056
@@ -8507,6 +8678,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 806243653}
   acceptedItemType: 8
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &806243652
@@ -9118,6 +9298,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 860796956}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &860796955
@@ -9444,6 +9633,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 876807344}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &876807343
@@ -9561,6 +9759,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 907013232}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &907013231
@@ -11828,6 +12035,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1173438956}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1173438955
@@ -13602,6 +13818,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1327636850}
   acceptedItemType: 7
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1327636849
@@ -14365,6 +14590,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1384610168}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1384610167
@@ -14482,6 +14716,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1389029375}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1389029374
@@ -14733,6 +14976,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1410104825}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1410104824
@@ -14850,6 +15102,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1416681403}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1416681402
@@ -15292,6 +15553,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1443479606}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1443479605
@@ -15620,6 +15890,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1467429126}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1467429125
@@ -16558,6 +16837,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1541794853}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1541794852
@@ -16908,6 +17196,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1566535766}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1566535765
@@ -17934,6 +18231,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1621286556}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1621286555
@@ -18365,6 +18671,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1629203620}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1629203619
@@ -19019,6 +19334,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1735811570}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1735811569
@@ -19479,6 +19803,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1750614384}
   acceptedItemType: 11
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1750614383
@@ -20341,6 +20674,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1787514333}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1787514332
@@ -20609,6 +20951,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 1831541297}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &1831541296
@@ -22360,6 +22711,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 2045302481}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &2045302480
@@ -22477,6 +22837,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 2054527773}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &2054527772
@@ -23087,6 +23456,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 2137903291}
   acceptedItemType: 0
+  sante: {fileID: 0}
+  degat: {fileID: 0}
+  "dexterit\xE9": {fileID: 0}
+  resistance: {fileID: 0}
+  intelligence: {fileID: 0}
+  magie: {fileID: 0}
+  slot: {fileID: 0}
+  armor: 0
+  loader: {fileID: 0}
   selectcolor: {r: 0, g: 0, b: 0, a: 1}
   notselectedcolor: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
 --- !u!114 &2137903290

@@ -18,11 +18,13 @@ MonoBehaviour:
   itemtype: 6
   bonusvie: 0
   bonusdegat: 0
-  "bonusdexterit\xE9": 1
+  "bonusdexterit\xE9": 0
   bonusresistance: 0
   bonusintelligence: 0
   bonusmagie: 0
   stackable: 0
   count: 0
+  valeurRubyRouge: 0
+  valeurRubybleu: 0
   typearme: 6
   requiert: 0

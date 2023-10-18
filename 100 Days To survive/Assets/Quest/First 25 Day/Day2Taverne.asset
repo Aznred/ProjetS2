@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd7b65b40166614d9e2520c7cf365e2, type: 3}
+  m_Name: Day2Taverne
+  m_EditorClassIdentifier: 
+  music: {fileID: 8300000, guid: a70a83a9a21adff4b93e64d2e73cf011, type: 3}
+  phrasecomb: 
+  phraseplayer: 
+  phrasejoueur: 
+  name: Alice
+  histoire: 
+  choix_1: 
+  choix_2: 
+  background: {fileID: 0}
+  prixrouge: 0
+  prixbleue: 0
+  bonusvie: 0
+  bonusdegat: 0
+  "bonusdexterit\xE9": 0
+  bonusresistance: 0
+  bonusintelligence: 0
+  bonusmagie: 0
+  recompense: {fileID: 0}
+  "march\xE9": []
+  prix: 
+  recrouge: 0
+  recbleu: 0
+  choix1: {fileID: 11400000, guid: 21ba53235ca3a0f4991a71fd26ebba77, type: 2}
+  choix2: {fileID: 11400000, guid: 0fa5e9745a13cc144b53c99d75c50d71, type: 2}
+  typedequete: 3
+  perso: {fileID: 21300000, guid: 603aa375dfcfece42a3852872863ce3e, type: 3}
+  Firstdialogue: Salut, etranger ! Vous avez l'air perdu. Besoin d'un coup de main
+    ? Je suis Alice, la barman de ce coin. Vous cherchez des renseignements sur les
+    environs ou quelque chose en particulier ?
+  Choixdial1:
+  - Bien sur, je peux vous en dire plus sur notre village. Brambourg, c'etait autrefois
+    un endroit paisible. Les champs etaient fertiles, les sourires etaient sinceres.
+    Mais ces temps sont revolus. Les taxes ont augmente, les travailleurs sont surcharges,
+    et le moral est au plus bas.
+  - On nous demande de fournir des recoltes toujours plus abondantes, mais les recoltes
+    ne sont plus suffisantes pour nourrir le village. Les villageois sont accables
+    par les impots, et ceux qui ne peuvent pas payer se voient contraints de travailler
+    sans relache.
+  - Les gardes du seigneur, que certains appellent des collecteurs, sont impitoyables.
+    Ils confisquent ce qu'ils veulent, et personne n'ose les contredire. Notre village
+    est devenu un endroit de souffrance et de desespoir.
+  - Les villageois sont divises. Certains veulent se rebeller, mettre fin a cette
+    oppression. D'autres craignent les represailles et pronent la patience. Nous
+    avons besoin d'aide pour sortir de cette situation. Alors, etranger, que pensez-vous
+    de tout cela ?
+  Choixdial2:
+  - Vous cherchez du travail, dites-vous ? Cela depend de vos competences et de ce
+    que vous etes pret a faire. Certains travaillent dans les champs, d'autres dans
+    les mines. Mais si vous cherchez quelque chose de plus aventureux, il y a peut-etre
+    des opportunites au chateau. C'est un lieu imposant qui surplombe la region.
+  - La garnison du chateau embauche parfois des mercenaires pour proteger ses interets.
+    Cela peut etre une option si vous avez des competences au combat. Mais attention,
+    l'endroit est severement garde, et ils ne prennent pas n'importe qui.
+  - Si vous preferez eviter le danger, vous pourriez chercher du travail dans les
+    villages voisins. Ils ont parfois besoin d'aide pour des taches variees. Mais
+    ici, a Brambourg, la situation est tendue. Vous risquez de vous retrouver melee
+    a des problemes si vous restez.
+  - L'autre option, c'est de rester a Brambourg et de voir si vous pouvez contribuer
+    a resoudre nos problemes. Beaucoup de villageois aimeraient voir la situation
+    s'ameliorer, mais nous avons besoin d'aide pour y parvenir.
+  choixdial3:
+  - Bien sur ! Une biere, ca rechauffe le coeur et l'esprit. Tant de recits et de
+    nouvelles passent par ici. Si vous avez soif d'aventures ou de connaissances,
+    c'est le lieu ideal pour ecouter et apprendre.
+  - Vous savez, beaucoup de voyageurs partagent leurs histoires ici. Des rumeurs,
+    des legendes, des informations sur des tresors perdus. Vous pourriez peut-etre
+    entendre quelque chose qui eveille votre interet.
+  - La biere, c'est aussi une invitation a la camaraderie. Qui sait, peut-etre rencontrerez-vous
+    d'autres aventuriers ici qui pourraient avoir besoin d'aide ou qui cherchent
+    un compagnon pour une quete.
+  - Assis au bar, vous pouvez observer ce qui se passe dans le village. Vous pourriez
+    reperer des choses qui passeraient inapercues autrement. L'information peut etre
+    une arme puissante, n'est-ce pas ?
+  - Prenez votre temps, appreciez votre boisson. Quoi que vous decidiez de faire
+    ensuite, sachez que vous etes le bienvenu ici, etranger. Et si vous avez des
+    questions ou besoin d'aide, je suis la pour vous ecouter.
+  act1:
+  - Demander plus d'informations sur le village
+  - Pouvez-vous m'en dire plus sur Brambourg
+  act2:
+  - Demander ou trouver du travail
+  - Savez-vous ou je pourrais trouver du travail ?
+  act3:
+  - '*Boire une biere*'
+  - Alice puis-je avoir une biere ?
+  dial: 1
+  choix3: {fileID: 11400000}

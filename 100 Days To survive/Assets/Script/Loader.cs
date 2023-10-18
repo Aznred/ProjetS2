@@ -14,6 +14,7 @@ using Random = UnityEngine.Random;
 [SerializeField]
 public class Loader : MonoBehaviour
 {
+    public inventoryslot[] deckslot;
     public Sprite vendu;
     public AudioSource soundtouch;
     private int choix = 0;
@@ -200,8 +201,13 @@ public class Loader : MonoBehaviour
     public GameObject butint;
     public GameObject butmag;
     public GameObject pageinv;
-
-
+    public List<inventoryslot> skillinventorymelee;
+    public List<inventoryslot> skillinventorymage;
+    public List<inventoryslot> skillinventoryarc;
+    public List<inventoryslot> skillinventoryshield;
+    public List<inventoryslot> skillinventorybuff;
+    public List<Item> skilldata;
+    public List<inventoryslot> Deck;
     private void Awake()
     {
         pageinv.SetActive(true);
@@ -289,8 +295,11 @@ public class Loader : MonoBehaviour
         playerData.pointarme = int.Parse(pointarme.text);
         playerData.pointstat = int.Parse(pointstat.text);
         playerData.inventory.Clear();
+        playerData.deck.Clear();
         playerData.arminv.Clear();
         playerData.invstr.Clear();
+        playerData.skillnames.Clear();
+        playerData.decknames.Clear();
         playerData.quete = quete.name; 
       
         foreach (var slot in equippedarmor)
@@ -307,9 +316,34 @@ public class Loader : MonoBehaviour
                 
             }
         }
+
+        foreach (var slot in Deck)
+        {
+            if (slot.transform.childCount > 0)
+            {
+                
+                DraggableItem itemInSlot = slot.GetComponentInChildren<DraggableItem>();
+                if (itemInSlot != null)
+                {
+                    playerData.decknames.Add(itemInSlot.Item.name);
+                  
+                }
+                
+            }
+        }
         
   
-     
+        foreach (inventoryslot slot in deckslot)
+        {
+            DraggableItem itemInSlot = slot.GetComponentInChildren<DraggableItem>();
+            if (itemInSlot != null)
+            {
+                
+                playerData.skillnames.Add(itemInSlot.Item.name);
+               
+            }
+        }
+      
        
 
         foreach (inventoryslot slot in Inventoryslots)
@@ -367,6 +401,37 @@ public class Loader : MonoBehaviour
                 
                 }
             
+            }
+
+            foreach (var name in playerData.decknames)
+            {
+               
+                foreach (var slot in Deck)
+                {
+                    DraggableItem itemInSlot = slot.GetComponentInChildren<DraggableItem>();
+                    if (itemInSlot != null && itemInSlot.Item.name == name)
+                    {
+                        Destroy(itemInSlot.gameObject);
+                    }
+                }
+
+                
+                foreach (var ele in skilldata)
+                {
+                    if (name == ele.name)
+                    {
+                       
+                        foreach (var slot in Deck)
+                        {
+                            DraggableItem itemInSlot = slot.GetComponentInChildren<DraggableItem>();
+                            if (itemInSlot == null)
+                            {
+                                SpawnItem(ele, slot);
+                                break;
+                            }
+                        }
+                    }
+                }
             }
             bonusDamage = 0;
             bonusHealth = 0;
@@ -484,6 +549,18 @@ public class Loader : MonoBehaviour
                 
             }
 
+            foreach (var name in playerData.skillnames)
+            {
+                foreach (var ele in skilldata)
+                {
+                    if (name == ele.name)
+                    {
+                        AddToDeck(ele);
+                       
+                    }
+                }
+            }
+
 
 
           
@@ -506,6 +583,27 @@ public class Loader : MonoBehaviour
             if (itemInSlot == null)
             {
                
+                SpawnItem(item, slot);
+                return;
+            }
+        }
+    }
+
+    public void AddToDeck(Item item)
+    {
+        for (int i = 0; i < deckslot.Length; i++)
+        {
+            inventoryslot slot = deckslot[i];
+            DraggableItem itemInSlot = slot.GetComponentInChildren<DraggableItem>();
+            if (itemInSlot != null && itemInSlot.Item == item)
+            {
+     
+                return;
+            }
+
+            if (itemInSlot == null)
+            {
+                
                 SpawnItem(item, slot);
                 return;
             }
