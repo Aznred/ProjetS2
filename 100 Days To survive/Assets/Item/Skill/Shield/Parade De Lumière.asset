@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Parade De Lumi\xE8re"
   m_EditorClassIdentifier: 
   itemId: 0
-  itemName: "Parade De Lumi\xE8re"
+  itemName: Parade De Lumiere
   itemImage: {fileID: 21300000, guid: ec716395e8001104aa7526b1539af65a, type: 3}
   itemtype: 11
   bonusvie: 0

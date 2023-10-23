@@ -41,9 +41,9 @@ public class Day : ScriptableObject
     public string[] act3;
     public bool dial;
     public Day choix3;
-    
-   
-    
+    public List<Ennemy> combatmonstre;
+
+
     // Start is called before the first frame update
     public enum DayType
     {

@@ -43,9 +43,25 @@ MonoBehaviour:
   bonusmagie: 4
   recompense: {fileID: 11400000, guid: c16df75e906d4dc40996ae68e83aedb1, type: 2}
   "march\xE9": []
+  prix: 
   recrouge: 0
   recbleu: 0
   choix1: {fileID: 11400000, guid: 88ad51fe724abc74f8e6c404e40ee157, type: 2}
   choix2: {fileID: 0}
   typedequete: 0
   perso: {fileID: 21300000, guid: 28c11f933d5abde4d91ea28a5c065785, type: 3}
+  Firstdialogue: 
+  Choixdial1: []
+  Choixdial2: []
+  choixdial3: []
+  act1: []
+  act2: []
+  act3: []
+  dial: 0
+  choix3: {fileID: 0}
+  combatmonstre:
+  - {fileID: 11400000, guid: fdb4e0ac4cf6ebb4fab49e1c1c489d8b, type: 2}
+  - {fileID: 11400000, guid: e9f78349fbd560c45a0e48e0f4a9288d, type: 2}
+  - {fileID: 11400000, guid: fda8d07cdbed28c42b2ece32738771de, type: 2}
+  - {fileID: 11400000, guid: 6ff0c7b169c13694798475fa7ecafb42, type: 2}
+  - {fileID: 11400000, guid: f62367f287be4bc44809fa4ee59d1d5f, type: 2}

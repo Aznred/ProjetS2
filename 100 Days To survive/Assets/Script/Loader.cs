@@ -14,6 +14,77 @@ using Random = UnityEngine.Random;
 [SerializeField]
 public class Loader : MonoBehaviour
 {
+    private Slider healthChoice;
+    private int ally = 0;
+    public Button Attaque1;
+    public Button Attaque2;
+    public Button Attaque3;
+    public Button Attaque4;
+    public Image Choix1Mob;
+    public Image Choix2Mob;
+    public Image Choix3Mob;
+    public List<GameObject> AbilityHere;
+    public List<Item> Ability;
+    public GameObject DeckCard;
+    public List<Image> AbilityList;
+    public List<TMP_Text> AbilityNames;
+    private bool ChoixAttaque1 = false;
+    private bool ChoixAttaque2 = false;
+    private bool ChoixAttaque3 = false;
+    private Ennemy Mob1;
+    private Ennemy Mob2;
+    private Ennemy Mob3;
+    public GameObject ChoiceMob1;
+    public GameObject ChoiceMob2;
+    public GameObject ChoiceMob3;
+    public TMP_Text HealthMob1;
+    public TMP_Text DamageMob1;
+    public TMP_Text DexterityMob1;
+    public TMP_Text ResistanceMob1;
+    public TMP_Text IntelligenceMob1;
+    public TMP_Text MagicMob1;
+    public TMP_Text HealthMob2;
+    public TMP_Text DamageMob2;
+    public TMP_Text DexterityMob2;
+    public TMP_Text ResistanceMob2;
+    public TMP_Text IntelligenceMob2;
+    public TMP_Text MagicMob2;
+    public TMP_Text HealthMob3;
+    public TMP_Text DamageMob3;
+    public TMP_Text DexterityMob3;
+    public TMP_Text ResistanceMob3;
+    public TMP_Text IntelligenceMob3;
+    public TMP_Text MagicMob3;
+    public TMP_Text HealthAlly1;
+    public TMP_Text DamageAlly1;
+    public TMP_Text DexterityAlly1;
+    public TMP_Text ResistanceAlly1;
+    public TMP_Text IntelligenceAlly1;
+    public TMP_Text MagicAlly1;
+    public TMP_Text HealthAlly2;
+    public TMP_Text DamageAlly2;
+    public TMP_Text DexterityAlly2;
+    public TMP_Text ResistanceAlly2;
+    public TMP_Text IntelligenceAlly2;
+    public TMP_Text MagicAlly2;
+    public TMP_Text HealthAlly3;
+    public TMP_Text DamageAlly3;
+    public TMP_Text DexterityAlly3;
+    public TMP_Text ResistanceAlly3;
+    public TMP_Text IntelligenceAlly3;
+    public TMP_Text MagicAlly3;
+    public GameObject Stat1;
+    public GameObject Stat2;
+    public GameObject Stat3;
+    public GameObject Stat4;
+    public GameObject Stat5;
+    public GameObject Stat6;
+
+    public GameObject ally1im;
+    public GameObject allyim2;
+    public GameObject enemy1;
+    public GameObject enemy2;
+    public GameObject enemy3;
     public inventoryslot[] deckslot;
     public Sprite vendu;
     public AudioSource soundtouch;
@@ -74,16 +145,14 @@ public class Loader : MonoBehaviour
     public int bonusResistance = 0;
     public int bonusIntelligence = 0;
     public int bonusMagic = 0;
-    public AudioSource entreance;
-    public GameObject trans;
-    public TMP_Text namemob;
-    public TMP_Text nameplayer;
+    public Image ally1;
+    public Image ally2;
     public Image perso;
-    public Image ennemy;
+    public Image ennemy1;
+    public Image ennemy2;
+    public Image ennemy3;
     public AudioSource ambiance;
     public AudioSource dicesong;
-    public Image attaquemob;
-    public Image defensemob;
     public GameObject defaite;
     public GameObject victoire;
     public TMP_Text bonusitemvie;
@@ -100,40 +169,26 @@ public class Loader : MonoBehaviour
     public GameObject immasse;
     public GameObject imbouc;
     public GameObject imbat;
-    public bool mag = false;
-    public bool mindbool;
-    public bool dodging;
-    public int tourrecup;
-    public int cooldown = 3;
-    public int timedodge = 2;
-    public int randomboost;
-    public Button dodgeButton;
-    public Button castButton;
     public Button mindButton;
     public TMP_Text phrasemid;
     public Button attackButton;
     public TMP_Text phrase;
     private int dicemonste;
-    public TMP_Text namemonstre;
-    public Image monstre;
-    public Image monstreback;
+
     public GameObject combat;
-    public TMP_Text healthmonstre;
-    public TMP_Text degatmonstre;
-    public TMP_Text dexhmonstre;
-    public TMP_Text reshmonstre;
-    public TMP_Text inthmonstre;
-    public TMP_Text magiemonstre;
-    public TMP_Text healthplay;
-    public TMP_Text degatplay;
-    public TMP_Text dexplay;
-    public TMP_Text respaly;
-    public TMP_Text intplay;
-    public TMP_Text magieplay;
-    public TMP_Text nameplay;
-    public Image combbackgr;
+    public TMP_Text NameMob1;
+    public TMP_Text NameMob2;
+    public TMP_Text NameMob3;
+    public TMP_Text NameAlly;
+    public TMP_Text NameAlly2;
+    public TMP_Text NamePlayer;
+
     public Image playerim;
     public Slider healthmob;
+    public Slider healthmob1;
+    public Slider healthmob2;
+    public Slider healthally1;
+    public Slider healthally2;
     private int dicescore;
     public Slider heatlhplayer;
     public Image back;
@@ -169,10 +224,10 @@ public class Loader : MonoBehaviour
     public GameObject dice;
     public GameObject diceanim;
     public TMP_Text random;
-    
 
-   
-    public GameObject[] pages; 
+
+
+    public GameObject[] pages;
 
     public PlayerData playerData;
     public inventoryslot[] Inventoryslots;
@@ -208,73 +263,94 @@ public class Loader : MonoBehaviour
     public List<inventoryslot> skillinventorybuff;
     public List<Item> skilldata;
     public List<inventoryslot> Deck;
+
     private void Awake()
     {
         pageinv.SetActive(true);
         LoadPlayerData();
-        
+
         pageinv.SetActive(false);
     }
 
-        private void Start()
-        {
-         mindButton.enabled = true;
-            attackButton.interactable = true;
-            heatlhplayer.maxValue = playerData.health * 100;
-            heatlhplayer.value = playerData.health * 100;
-      
-      GenererDay(quete);
-        
+    private void Start()
+    {
+        playerData.health = Random.Range(1,8);
+        playerData.damage = Random.Range(1, 11);
+        mindButton.enabled = true;
+        attackButton.interactable = true;
+        heatlhplayer.maxValue = playerData.health * 100;
+        heatlhplayer.value = playerData.health * 100;
+
+        GenererDay(quete);
+
         selectedSlot = Inventoryslots[1];
     }
-       
-      
-        
 
-        public void Update()
+    public void ShowMonsterInfo()
+    {
+
+        Ennemy monstre = quete.combatmonstre[0];
+
+
+        TooltipCombat.instance.settooltip(monstre, healthmob);
+
+
+        TooltipCombat.instance.gameObject.SetActive(true);
+    }
+
+    private void OnMouseOver()
+    {
+
+    }
+
+
+    public void Update()
+    {
+
+        if (playerData.baseHealth >= 5)
         {
-      
-            if (playerData.baseHealth >= 5)
-            {
-                buttonhealth.SetActive(false);
-            }
-            if (playerData.baseDamage >= 5)
-            {
-                buttondam.SetActive(false);
-            }
-            if (playerData.baseDexterity >= 5)
-            {
-                butdex.SetActive(false);
-            }
-            if (playerData.baseResistance >= 5)
-            {
-                buttres.SetActive(false);
-            }
-            if (playerData.baseIntelligence >= 5)
-            {
-                butint.SetActive(false);
-            }
-            if (playerData.baseMagic >= 5)
-            {
-                butmag.SetActive(false);
-            }
-            UpdatePlayerData();
-            if (tourrecup <=0)
-            {
-                dodging = false;
-            }
-
-            
-            armor = GameObject.FindWithTag("inv1");
-
-
-
-
+            buttonhealth.SetActive(false);
         }
 
-        public void UpdatePlayerData()
+        if (playerData.baseDamage >= 5)
         {
-            
+            buttondam.SetActive(false);
+        }
+
+        if (playerData.baseDexterity >= 5)
+        {
+            butdex.SetActive(false);
+        }
+
+        if (playerData.baseResistance >= 5)
+        {
+            buttres.SetActive(false);
+        }
+
+        if (playerData.baseIntelligence >= 5)
+        {
+            butint.SetActive(false);
+        }
+
+        if (playerData.baseMagic >= 5)
+        {
+            butmag.SetActive(false);
+        }
+
+        UpdatePlayerData();
+
+
+
+        armor = GameObject.FindWithTag("inv1");
+
+
+
+
+    }
+
+    public void UpdatePlayerData()
+    {
+
         playerData.playerName = playerNameText.text;
 
         playerData.health = int.Parse(sante.text);
@@ -300,20 +376,20 @@ public class Loader : MonoBehaviour
         playerData.invstr.Clear();
         playerData.skillnames.Clear();
         playerData.decknames.Clear();
-        playerData.quete = quete.name; 
-      
+        playerData.quete = quete.name;
+
         foreach (var slot in equippedarmor)
         {
             if (slot.transform.childCount > 0)
             {
-                
+
                 DraggableItem itemInSlot = slot.GetComponentInChildren<DraggableItem>();
                 if (itemInSlot != null)
                 {
                     playerData.arminv.Add(itemInSlot.Item.name);
-                  
+
                 }
-                
+
             }
         }
 
@@ -321,91 +397,91 @@ public class Loader : MonoBehaviour
         {
             if (slot.transform.childCount > 0)
             {
-                
+
                 DraggableItem itemInSlot = slot.GetComponentInChildren<DraggableItem>();
                 if (itemInSlot != null)
                 {
                     playerData.decknames.Add(itemInSlot.Item.name);
-                  
+
                 }
-                
+
             }
         }
-        
-  
+
+
         foreach (inventoryslot slot in deckslot)
         {
             DraggableItem itemInSlot = slot.GetComponentInChildren<DraggableItem>();
             if (itemInSlot != null)
             {
-                
+
                 playerData.skillnames.Add(itemInSlot.Item.name);
-               
+
             }
         }
-      
-       
+
+
 
         foreach (inventoryslot slot in Inventoryslots)
         {
             DraggableItem itemInSlot = slot.GetComponentInChildren<DraggableItem>();
             if (itemInSlot != null)
             {
-                
+
                 playerData.invstr.Add(itemInSlot.Item.name);
-               
+
             }
         }
 
 
-      
 
-      
+
+
         string playerDataJson = JsonUtility.ToJson(playerData);
         PlayerPrefs.SetString("PlayerData", playerDataJson);
         PlayerPrefs.Save();
         UpdatePlayerUI();
     }
 
-   
+
     private void LoadPlayerData()
     {
         string playerDataJson =
-            PlayerPrefs.GetString("PlayerData", ""); 
+            PlayerPrefs.GetString("PlayerData", "");
 
         if (!string.IsNullOrEmpty(playerDataJson))
         {
-            playerData = JsonUtility.FromJson<PlayerData>(playerDataJson); 
+            playerData = JsonUtility.FromJson<PlayerData>(playerDataJson);
 
             armoritem = playerData.armoritem;
             foreach (var slot in equippedarmor)
             {
                 foreach (var name in playerData.arminv)
                 {
-                   
+
                     foreach (var ele in dataitem)
-                    {  
-                        if (name== ele.name)
+                    {
+                        if (name == ele.name)
                         {
-                        
-                       
+
+
                             if (slot.acceptedItemType == ele.itemtype && slot.transform.childCount < 1)
                             {
-                               
-                                SpawnItem(ele,slot);
-                                
-                               
+
+                                SpawnItem(ele, slot);
+
+
                             }
                         }
                     }
-                
+
                 }
-            
+
             }
 
             foreach (var name in playerData.decknames)
             {
-               
+
                 foreach (var slot in Deck)
                 {
                     DraggableItem itemInSlot = slot.GetComponentInChildren<DraggableItem>();
@@ -415,12 +491,12 @@ public class Loader : MonoBehaviour
                     }
                 }
 
-                
+
                 foreach (var ele in skilldata)
                 {
                     if (name == ele.name)
                     {
-                       
+
                         foreach (var slot in Deck)
                         {
                             DraggableItem itemInSlot = slot.GetComponentInChildren<DraggableItem>();
@@ -433,6 +509,7 @@ public class Loader : MonoBehaviour
                     }
                 }
             }
+
             bonusDamage = 0;
             bonusHealth = 0;
             bonusDexterity = 0;
@@ -459,8 +536,8 @@ public class Loader : MonoBehaviour
             playerData.baseHealth = playerData.health - bonusHealth;
             playerData.baseDexterity = playerData.dexterity - bonusDexterity;
             playerData.baseResistance = playerData.resistance - bonusResistance;
-            playerData.baseIntelligence = playerData.intelligence- bonusIntelligence;
-            playerData.baseMagic = playerData.magic -bonusMagic;
+            playerData.baseIntelligence = playerData.intelligence - bonusIntelligence;
+            playerData.baseMagic = playerData.magic - bonusMagic;
 
             playerData.damage = playerData.baseDamage + bonusDamage;
             playerData.health = playerData.baseHealth + bonusHealth;
@@ -468,7 +545,7 @@ public class Loader : MonoBehaviour
             playerData.resistance = playerData.baseResistance + bonusResistance;
             playerData.intelligence = playerData.baseIntelligence + bonusIntelligence;
             playerData.magic = playerData.baseMagic + bonusMagic;
-         
+
             playerNameText.text = playerData.playerName;
             epee.text = playerData.epee.ToString();
             arc.text = playerData.arc.ToString();
@@ -476,24 +553,24 @@ public class Loader : MonoBehaviour
             baton.text = playerData.baton.ToString();
             bouclier.text = playerData.bouclier.ToString();
             massue.text = playerData.massue.ToString();
-           
+
             rubybleu.text = playerData.blueRubies.ToString();
             rubyred.text = playerData.redRubies.ToString();
             jour.text = playerData.jour.ToString();
             total.text = (playerData.redRubies + playerData.blueRubies).ToString();
             pointarme.text = playerData.pointarme.ToString();
             pointstat.text = playerData.pointstat.ToString();
-            
+
             foreach (var day in dataquete)
             {
                 if (playerData.quete == day.name)
                 {
                     quete = day;
-                } 
+                }
             }
 
 
-            
+
 
 
             pages[playerData.currentPageIndex].SetActive(true);
@@ -503,12 +580,12 @@ public class Loader : MonoBehaviour
                 {
                     pages[i].SetActive(true);
 
-                    
+
                     Image pageImage = pages[i].GetComponent<Image>();
                     if (pageImage != null)
                     {
                         imageequip.sprite = pageImage.sprite;
-                       
+
                     }
                 }
             }
@@ -537,16 +614,16 @@ public class Loader : MonoBehaviour
 
             foreach (var name in playerData.invstr)
             {
-               
+
                 foreach (var ele in dataitem)
                 {
-                    
-                    if (name== ele.name)
+
+                    if (name == ele.name)
                     {
                         AddItemToInventory(ele);
                     }
                 }
-                
+
             }
 
             foreach (var name in playerData.skillnames)
@@ -556,33 +633,33 @@ public class Loader : MonoBehaviour
                     if (name == ele.name)
                     {
                         AddToDeck(ele);
-                       
+
                     }
                 }
             }
 
 
 
-          
+
         }
         else
         {
             Debug.LogWarning("Aucune donnée de joueur n'a été trouvée.");
         }
 
-       
+
     }
 
     public void AddItemToInventory(Item item)
     {
-     
+
         for (int i = 0; i < Inventoryslots.Length; i++)
         {
             inventoryslot slot = Inventoryslots[i];
             DraggableItem itemInSlot = slot.GetComponentInChildren<DraggableItem>();
             if (itemInSlot == null)
             {
-               
+
                 SpawnItem(item, slot);
                 return;
             }
@@ -597,13 +674,13 @@ public class Loader : MonoBehaviour
             DraggableItem itemInSlot = slot.GetComponentInChildren<DraggableItem>();
             if (itemInSlot != null && itemInSlot.Item == item)
             {
-     
+
                 return;
             }
 
             if (itemInSlot == null)
             {
-                
+
                 SpawnItem(item, slot);
                 return;
             }
@@ -632,9 +709,9 @@ public class Loader : MonoBehaviour
         SceneManager.LoadScene("succes");
     }
 
-  public void AddHealthStat()
+    public void AddHealthStat()
     {
-       
+
         if (playerData.pointstat > 0 && playerData.baseHealth < 5)
         {
             playerData.pointstat--;
@@ -643,12 +720,13 @@ public class Loader : MonoBehaviour
             sante.text = playerData.health.ToString();
             pointstat.text = playerData.pointstat.ToString();
         }
+
         UpdatePlayerData();
     }
 
     public void AddDamageStat()
     {
-        if (playerData.pointstat > 0&& playerData.baseDamage < 5)
+        if (playerData.pointstat > 0 && playerData.baseDamage < 5)
         {
             playerData.pointstat--;
             playerData.baseDamage++;
@@ -656,63 +734,68 @@ public class Loader : MonoBehaviour
             degat.text = playerData.damage.ToString();
             pointstat.text = playerData.pointstat.ToString();
         }
+
         UpdatePlayerData();
     }
 
     public void AddDexterityStat()
     {
-        if (playerData.pointstat > 0&& playerData.baseDexterity < 5)
+        if (playerData.pointstat > 0 && playerData.baseDexterity < 5)
         {
             playerData.pointstat--;
             playerData.baseDexterity++;
             playerData.dexterity = playerData.baseDexterity + bonusDexterity;
             dexterité.text = playerData.dexterity.ToString();
-            pointstat.text =  playerData.pointstat.ToString();
+            pointstat.text = playerData.pointstat.ToString();
         }
+
         UpdatePlayerData();
     }
 
     public void AddIntelligenceStat()
     {
-        if (playerData.pointstat > 0&& playerData.baseIntelligence < 5)
+        if (playerData.pointstat > 0 && playerData.baseIntelligence < 5)
         {
             playerData.pointstat--;
             playerData.baseIntelligence++;
             playerData.intelligence = playerData.baseIntelligence + bonusIntelligence;
-            intelligence.text = (playerData.baseIntelligence+ bonusIntelligence).ToString();
-            
-            pointstat.text =  playerData.pointstat.ToString();
+            intelligence.text = (playerData.baseIntelligence + bonusIntelligence).ToString();
+
+            pointstat.text = playerData.pointstat.ToString();
         }
+
         UpdatePlayerData();
     }
 
     public void AddResistanceStat()
     {
-        if (playerData.pointstat > 0&& playerData.baseResistance < 5)
+        if (playerData.pointstat > 0 && playerData.baseResistance < 5)
         {
             playerData.pointstat--;
             playerData.baseResistance++;
             playerData.resistance = playerData.baseResistance + bonusResistance;
             resistance.text = playerData.resistance.ToString();
-            pointstat.text =  playerData.pointstat.ToString();
+            pointstat.text = playerData.pointstat.ToString();
         }
+
         UpdatePlayerData();
     }
 
     public void AddMagicStat()
     {
-        if (playerData.pointstat > 0&& playerData.baseMagic < 5)
+        if (playerData.pointstat > 0 && playerData.baseMagic < 5)
         {
             playerData.pointstat--;
             playerData.baseMagic++;
             playerData.magic = playerData.baseMagic + bonusMagic;
             magie.text = playerData.magic.ToString();
-            pointstat.text =  playerData.pointstat.ToString();
+            pointstat.text = playerData.pointstat.ToString();
         }
+
         UpdatePlayerData();
     }
-    
-    
+
+
 
     public void AddEpeeStat()
     {
@@ -723,6 +806,7 @@ public class Loader : MonoBehaviour
             epee.text = playerData.epee.ToString();
             pointarme.text = playerData.pointarme.ToString();
         }
+
         UpdatePlayerData();
     }
 
@@ -735,6 +819,7 @@ public class Loader : MonoBehaviour
             arc.text = playerData.arc.ToString();
             pointarme.text = playerData.pointarme.ToString();
         }
+
         UpdatePlayerData();
     }
 
@@ -746,8 +831,9 @@ public class Loader : MonoBehaviour
             playerData.baton++;
             baton.text = playerData.baton.ToString();
             pointarme.text = playerData.pointarme.ToString();
-            
+
         }
+
         UpdatePlayerData();
     }
 
@@ -760,6 +846,7 @@ public class Loader : MonoBehaviour
             bouclier.text = playerData.bouclier.ToString();
             pointarme.text = playerData.pointarme.ToString();
         }
+
         UpdatePlayerData();
     }
 
@@ -772,6 +859,7 @@ public class Loader : MonoBehaviour
             hache.text = playerData.hache.ToString();
             pointarme.text = playerData.pointarme.ToString();
         }
+
         UpdatePlayerData();
     }
 
@@ -784,6 +872,7 @@ public class Loader : MonoBehaviour
             massue.text = playerData.massue.ToString();
             pointarme.text = playerData.pointarme.ToString();
         }
+
         UpdatePlayerData();
     }
 
@@ -814,28 +903,30 @@ public class Loader : MonoBehaviour
                 return;
             }
         }
-    }   
+    }
 
     public void SpawnItem(Item item, inventoryslot slot)
     {
         GameObject newitemgo = Instantiate(InvetoryItemprefab, slot.transform);
         DraggableItem invetoryItem = newitemgo.GetComponent<DraggableItem>();
         invetoryItem.InitialiseItem(item);
-  
+
     }
+
     public void AddItemToArmorSlot(Item item)
     {
-      
+
         foreach (inventoryslot slot in armorinventory)
         {
-            
+
             if (slot == null)
             {
-              
-               break;
+
+                break;
             }
         }
     }
+
     public void SaveEquippedArmor()
     {
         foreach (var slot in equippedarmor)
@@ -853,33 +944,34 @@ public class Loader : MonoBehaviour
 
     public void LoadEquippedArmor()
     {
-      
-            foreach (var slot in equippedarmor)
-            {
-                foreach (var item in playerData.armoritem)
-                {
-                    if (slot.acceptedItemType == item.itemtype )
-                    {
-                        SpawnItem(item,slot);
-                      
 
-                    }
+        foreach (var slot in equippedarmor)
+        {
+            foreach (var item in playerData.armoritem)
+            {
+                if (slot.acceptedItemType == item.itemtype)
+                {
+                    SpawnItem(item, slot);
+
+
                 }
             }
+        }
 
 
 
     }
+
     public void GenererDay(Day Quest)
     {
-        
+
         Choix1act.text = Quest.choix_1;
         Choix2act.text = Quest.choix_2;
         ambiance.clip = Quest.music;
         ambiance.loop = true;
         ambiance.Play();
         back.sprite = Quest.background;
-        Sprite   lieu = meteo[UnityEngine.Random.Range(0, meteo.Count)];
+        Sprite lieu = meteo[UnityEngine.Random.Range(0, meteo.Count)];
         meteochange.sprite = lieu;
         actiondujour.text = Quest.histoire;
         playerData.redRubies = Quest.recrouge;
@@ -898,9 +990,9 @@ public class Loader : MonoBehaviour
             choix1.GetComponent<Button>().interactable = false;
             choix2.GetComponent<Button>().interactable = false;
             choix3.GetComponent<Button>().interactable = false;
-            StartCoroutine(typeline(Quest.Firstdialogue,Dialoguepnj,0.025f));
-          
-            
+            StartCoroutine(typeline(Quest.Firstdialogue, Dialoguepnj, 0.025f));
+
+
             choix1.GetComponent<Button>().GetComponentInChildren<TMP_Text>().text = Quest.act1[0];
             choix2.GetComponent<Button>().GetComponentInChildren<TMP_Text>().text = Quest.act2[0];
 
@@ -909,47 +1001,213 @@ public class Loader : MonoBehaviour
             namepnj.text = Quest.name;
             persohist.sprite = imageequip.sprite;
             pnj.sprite = Quest.perso;
-            
+
         }
 
         if (Quest.typedequete == Day.DayType.Combat)
         {
-            UpdatePlayerData();
-            attaquemob.color = Color.gray;
-            defensemob.color = Color.gray;
-            victoire.SetActive(false);
-            defaite.SetActive(false);
-            phrase.text = "";
-            tourrecup = 0;
-            dodging = false;
-            mindbool = false;
-            EnableAttackButton();
-            namemonstre.text = Quest.name;
-            healthmob.maxValue = Quest.bonusvie * 100;
-            healthmob.value = Quest.bonusvie * 100;
-            healthmonstre.text = Quest.bonusvie.ToString();
-            degatmonstre.text = Quest.bonusdegat.ToString();
-            dexhmonstre.text = Quest.bonusdexterité.ToString();
-            reshmonstre.text = Quest.bonusresistance.ToString();
-            inthmonstre.text = Quest.bonusintelligence.ToString();
-            magiemonstre.text = Quest.bonusmagie.ToString();
-            monstre.sprite = Quest.perso;
-            monstreback.sprite = Quest.background;
-            healthplay.text = playerData.health.ToString();
-            degatplay.text = playerData.damage.ToString();
-            dexplay.text = playerData.dexterity.ToString();
-            respaly.text = playerData.resistance.ToString();
-            intplay.text = playerData.intelligence.ToString();
-            magieplay.text = playerData.magic.ToString();
-            nameplay.text = playerData.playerName;
-            combbackgr.sprite = Quest.background;
-            playerim.sprite = imageequip.sprite;
-            phrasemid.text = Quest.phrasecomb;
-            heatlhplayer.maxValue = playerData.health * 100;
-            heatlhplayer.value = playerData.health * 100;
-          
-            StartCoroutine(transition(Quest));
+            DeckCard.SetActive(false);
+            HealthAlly2.text = (playerData.baseHealth + bonusHealth).ToString();
+            DamageAlly2.text = (playerData.baseDamage + bonusDamage).ToString();
+            ResistanceAlly2.text = (playerData.baseResistance + bonusResistance).ToString();
+            IntelligenceAlly2.text = (playerData.baseIntelligence + bonusIntelligence).ToString();
+            MagicAlly2.text = (playerData.baseMagic + bonusMagic).ToString();
+            DexterityAlly2.text = (playerData.baseDexterity + bonusDexterity).ToString();
+            NamePlayer.text = playerData.playerName;
 
+            int inndex = 0;
+            int indexa = 0;
+            int indexe = 0;
+            int enemynum = 0;
+            ally = 0;
+            foreach (var ele in Deck)
+            {
+                if (ele.transform.childCount >= 1)
+                {
+                    DraggableItem draggableItem = ele.GetComponentInChildren<DraggableItem>(true);
+
+                    Debug.Log(draggableItem.Item);
+                    Ability.Add(draggableItem.Item);
+                    index++;
+                }
+            }
+
+            Debug.Log((Ability));
+
+            switch (Ability.Count)
+            {
+                case 1:
+                    AbilityList[0].sprite = Ability[0].itemImage;
+                    AbilityNames[0].text = Ability[0].itemName;
+                    AttackDeckChoice(Attaque1, Ability[0].itemName);
+                    AbilityHere[1].SetActive(false);
+                    AbilityHere[2].SetActive(false);
+                    AbilityHere[3].SetActive(false);
+
+                    break;
+                case 2:
+
+                    AbilityHere[2].SetActive(false);
+                    AbilityHere[3].SetActive(false);
+                    AbilityList[0].sprite = Ability[0].itemImage;
+                    AbilityNames[0].text = Ability[0].itemName;
+                    AbilityNames[1].text = Ability[1].itemName;
+                    AbilityList[1].sprite = Ability[1].itemImage;
+                    AttackDeckChoice(Attaque1, Ability[0].itemName);
+                    AttackDeckChoice(Attaque2, Ability[1].itemName);
+                    break;
+                case 3:
+
+                    AbilityHere[3].SetActive(false);
+                    AbilityList[0].sprite = Ability[0].itemImage;
+                    AbilityNames[0].text = Ability[0].itemName;
+                    AbilityNames[1].text = Ability[1].itemName;
+                    AbilityNames[2].text = Ability[2].itemName;
+                    AbilityList[1].sprite = Ability[1].itemImage;
+                    AbilityList[2].sprite = Ability[2].itemImage;
+                    AttackDeckChoice(Attaque1, Ability[0].itemName);
+                    AttackDeckChoice(Attaque2, Ability[1].itemName);
+                    AttackDeckChoice(Attaque3, Ability[2].itemName);
+                    break;
+                case 4:
+                    AbilityNames[0].text = Ability[0].itemName;
+                    AbilityNames[1].text = Ability[1].itemName;
+                    AbilityNames[2].text = Ability[2].itemName;
+                    AbilityNames[3].text = Ability[3].itemName;
+                    AbilityList[0].sprite = Ability[0].itemImage;
+                    AbilityList[1].sprite = Ability[1].itemImage;
+                    AbilityList[2].sprite = Ability[2].itemImage;
+                    AbilityList[3].sprite = Ability[3].itemImage;
+                    AttackDeckChoice(Attaque1, Ability[0].itemName);
+                    AttackDeckChoice(Attaque2, Ability[1].itemName);
+                    AttackDeckChoice(Attaque3, Ability[2].itemName);
+                    AttackDeckChoice(Attaque4, Ability[3].itemName);
+
+                    break;
+            }
+
+            foreach (var ele in Quest.combatmonstre)
+            {
+                if (ele.type == Ennemy.EnemyType.Ally)
+                {
+                    ally++;
+                }
+                else
+                {
+                    enemynum++;
+                }
+            }
+
+            switch (ally)
+            {
+                case 0:
+                    ally1im.SetActive(false);
+                    allyim2.SetActive(false);
+                    break;
+                case 1:
+                    ally1im.SetActive(true);
+                    allyim2.SetActive(false);
+                    break;
+                case 2:
+                    ally1im.SetActive(true);
+                    allyim2.SetActive(true);
+                    break;
+            }
+
+            switch (enemynum)
+            {
+                case 0:
+                    enemy1.SetActive(false);
+                    enemy2.SetActive(false);
+                    enemy3.SetActive(false);
+                    break;
+                case 1:
+                    enemy1.SetActive(true);
+                    enemy2.SetActive(false);
+                    enemy3.SetActive(false);
+                    ChoiceMob1.SetActive(true);
+                    ChoiceMob2.SetActive(false);
+                    ChoiceMob3.SetActive(false);
+                    break;
+                case 2:
+                    enemy1.SetActive(true);
+                    enemy2.SetActive(true);
+                    enemy3.SetActive(false);
+                    ChoiceMob1.SetActive(true);
+                    ChoiceMob2.SetActive(true);
+                    ChoiceMob3.SetActive(false);
+                    break;
+                case 3:
+                    enemy1.SetActive(true);
+                    enemy2.SetActive(true);
+                    enemy3.SetActive(true);
+                    ChoiceMob1.SetActive(true);
+                    ChoiceMob2.SetActive(true);
+                    ChoiceMob3.SetActive(true);
+                    break;
+            }
+
+            foreach (var ele in Quest.combatmonstre)
+            {
+                combat.SetActive(true);
+                perso.sprite = playerim.sprite;
+
+                if (ele.type == Ennemy.EnemyType.Ally)
+                {
+                    if (indexa == 0)
+                    {
+                        ally1.sprite = ele.Mobimage;
+                        healthally1.maxValue = ele.Health * 100;
+                        healthally1.value = ele.Health * 100;
+                        indexa++;
+                        ActuStat(ele, NameAlly, HealthAlly1, DamageAlly1, MagicAlly1, IntelligenceAlly1,
+                            ResistanceAlly1, DexterityAlly1);
+                    }
+                    else
+                    {
+                        ally2.sprite = ele.Mobimage;
+                        healthally2.maxValue = ele.Health * 100;
+                        healthally2.value = ele.Health * 100;
+                        ActuStat(ele, NameAlly2, HealthAlly3, DamageAlly3, MagicAlly3, IntelligenceAlly3,
+                            ResistanceAlly3, DexterityAlly3);
+                    }
+                }
+                else
+                {
+                    if (indexe == 0)
+                    {
+                        Mob1 = ele;
+                        ennemy1.sprite = ele.Mobimage;
+                        Choix1Mob.sprite = ele.Mobimage;
+                        healthmob.maxValue = ele.Health * 100;
+                        healthmob.value = ele.Health * 100;
+                        indexe++;
+                        ActuStat(ele, NameMob1, HealthMob1, DamageMob1, MagicMob1, IntelligenceMob1, ResistanceMob1,
+                            DexterityMob1);
+                    }
+                    else if (indexe == 1)
+                    {
+                        Mob2 = ele;
+                        ennemy2.sprite = ele.Mobimage;
+                        Choix2Mob.sprite = ele.Mobimage;
+                        healthmob1.maxValue = ele.Health * 100;
+                        healthmob1.value = ele.Health * 100;
+                        indexe++;
+                        ActuStat(ele, NameMob2, HealthMob2, DamageMob2, MagicMob2, IntelligenceMob2, ResistanceMob2,
+                            DexterityMob2);
+                    }
+                    else
+                    {
+                        Mob3 = ele;
+                        ennemy3.sprite = ele.Mobimage;
+                        Choix3Mob.sprite = ele.Mobimage;
+                        healthmob2.maxValue = ele.Health * 100;
+                        healthmob2.value = ele.Health * 100;
+                        ActuStat(ele, NameMob3, HealthMob3, DamageMob3, MagicMob3, IntelligenceMob3, ResistanceMob3,
+                            DexterityMob3);
+                    }
+                }
+            }
         }
 
         if (Quest.typedequete == Day.DayType.Marchand)
@@ -995,10 +1253,10 @@ public class Loader : MonoBehaviour
 
         if (Quest.typedequete == Day.DayType.Quete)
         {
-            
+
         }
 
-      
+
 
 
 
@@ -1007,17 +1265,19 @@ public class Loader : MonoBehaviour
 
 
     }
-  
+
 
     IEnumerator typeline(string lines, TMP_Text tmp, float speed)
-    { soundtouch.Play();
+    {
+        soundtouch.Play();
         foreach (var c in lines.ToCharArray())
         {
-            
+
             tmp.text += c;
             yield return new WaitForSeconds(speed);
-           
+
         }
+
         choix1.GetComponent<Button>().interactable = true;
         choix2.GetComponent<Button>().interactable = true;
         choix3.GetComponent<Button>().interactable = true;
@@ -1034,9 +1294,10 @@ public class Loader : MonoBehaviour
         choix3.SetActive(false);
         continuer.SetActive(true);
         continuer.GetComponent<Button>().interactable = false;
-        StartCoroutine(typelinetext(quete.Choixdial1[index], Dialoguepnj, 0.025f,1,Dialoguejoueur));
-      
+        StartCoroutine(typelinetext(quete.Choixdial1[index], Dialoguepnj, 0.025f, 1, Dialoguejoueur));
+
     }
+
     public void Dialogue2()
     {
         choix = 2;
@@ -1047,9 +1308,10 @@ public class Loader : MonoBehaviour
         choix3.SetActive(false);
         continuer.SetActive(true);
         continuer.GetComponent<Button>().interactable = false;
-        StartCoroutine(typelinetext(quete.Choixdial2[index], Dialoguepnj, 0.025f,2,Dialoguejoueur));
-    
+        StartCoroutine(typelinetext(quete.Choixdial2[index], Dialoguepnj, 0.025f, 2, Dialoguejoueur));
+
     }
+
     public void Dialogue3()
     {
         choix = 3;
@@ -1060,61 +1322,69 @@ public class Loader : MonoBehaviour
         choix3.SetActive(false);
         continuer.SetActive(true);
         continuer.GetComponent<Button>().interactable = false;
-        StartCoroutine(typelinetext(quete.choixdial3[index], Dialoguepnj, 0.025f,3,Dialoguejoueur));
-   
+        StartCoroutine(typelinetext(quete.choixdial3[index], Dialoguepnj, 0.025f, 3, Dialoguejoueur));
+
     }
 
     public void Continuer()
     {
         Dialoguepnj.text = string.Empty;
-      
+
         continuer.GetComponent<Button>().interactable = false;
-        StartCoroutine(typelinecontinuer(quete.choixdial3, Dialoguepnj, 0.025f,choix));
-       
+        StartCoroutine(typelinecontinuer(quete.choixdial3, Dialoguepnj, 0.025f, choix));
+
     }
-    IEnumerator typelinetext(string lines, TMP_Text tmp, float speed, int num,TMP_Text jou)
-    {soundtouch.Play();
+
+    IEnumerator typelinetext(string lines, TMP_Text tmp, float speed, int num, TMP_Text jou)
+    {
+        soundtouch.Play();
         switch (num)
         {
             case 1:
                 foreach (var s in quete.act1[1])
-                {  
+                {
                     jou.text += s;
                     yield return new WaitForSeconds(speed);
-                   
+
                 }
+
                 break;
             case 2:
                 foreach (var s in quete.act2[1])
-                {  
+                {
                     jou.text += s;
                     yield return new WaitForSeconds(speed);
-                    
+
                 }
+
                 break;
             case 3:
                 foreach (var s in quete.act3[1])
-                {  
+                {
                     jou.text += s;
                     yield return new WaitForSeconds(speed);
-                  
+
                 }
+
                 break;
         }
+
         foreach (var c in lines.ToCharArray())
-        { 
+        {
             tmp.text += c;
             yield return new WaitForSeconds(speed);
-           
+
         }
 
         index++;
         continuer.GetComponent<Button>().interactable = true;
         soundtouch.Stop();
     }
+
     IEnumerator typelinecontinuer(string[] lines, TMP_Text tmp, float speed, int num)
-    { soundtouch.Play();
-        
+    {
+        soundtouch.Play();
+
         switch (num)
         {
             case 1:
@@ -1129,83 +1399,91 @@ public class Loader : MonoBehaviour
                     Histoire.SetActive(false);
                     GenererDay(quete.choix1);
                     quete = quete.choix1;
-                  
+
                     jour.text = playerData.jour.ToString();
-                    
+
                 }
                 else
                 {
-                    
+
                     foreach (var c in lines[index].ToCharArray())
-                    {  
+                    {
                         tmp.text += c;
                         yield return new WaitForSeconds(speed);
-                    
+
                     }
-                   
-                } break;
-               
+
+                }
+
+                break;
+
             case 2:
                 lines = quete.Choixdial2;
                 if (quete.dial && index >= lines.Length)
                 {
-                    GenererDay(quete.choix2); quete = quete.choix2;
-                    
-                }
-                else if (index >= lines.Length)
-                {Histoire.SetActive(false);
                     GenererDay(quete.choix2);
                     quete = quete.choix2;
-                    
-                    
+
+                }
+                else if (index >= lines.Length)
+                {
+                    Histoire.SetActive(false);
+                    GenererDay(quete.choix2);
+                    quete = quete.choix2;
+
+
                 }
                 else
                 {
-                   
+
                     foreach (var c in lines[index].ToCharArray())
-                    { 
+                    {
                         tmp.text += c;
                         yield return new WaitForSeconds(speed);
-                    
+
                     }
-                    
-                }break;
-               
-            
+
+                }
+
+                break;
+
+
             case 3:
                 lines = quete.choixdial3;
                 if (quete.dial && index >= lines.Length)
                 {
-                   GenererDay(quete.choix3);
-                   quete = quete.choix3;
+                    GenererDay(quete.choix3);
+                    quete = quete.choix3;
                 }
                 else if (index >= lines.Length)
                 {
                     Histoire.SetActive(false);
                     GenererDay(quete.choix3);
                     quete = quete.choix3;
-                   
-                   
+
+
                 }
                 else
                 {
                     foreach (var c in lines[index].ToCharArray())
-                    {  
+                    {
                         tmp.text += c;
                         yield return new WaitForSeconds(speed);
-                   
+
                     }
-                    
+
                 }
+
                 break;
-               
+
         }
-        
+
 
         index++;
         continuer.GetComponent<Button>().interactable = true;
         soundtouch.Stop();
     }
+
     public void Achat1()
     {
         if (playerData.redRubies >= quete.prix[0])
@@ -1215,46 +1493,52 @@ public class Loader : MonoBehaviour
             playerData.redRubies -= quete.prix[0];
             UpdateThunes();
             Item1.image.sprite = vendu;
-           
+
         }
 
 
     }
+
     public void Achat2()
     {
-        if (playerData.redRubies >=quete.prix[1])
-        {Item2.enabled = false;
+        if (playerData.redRubies >= quete.prix[1])
+        {
+            Item2.enabled = false;
             AddItemToInventory(quete.marché[1]);
             playerData.redRubies -= quete.prix[1];
             Item2.image.sprite = vendu;
             UpdateThunes();
-            
+
         }
 
 
     }
+
     public void Achat3()
     {
         if (playerData.blueRubies >= quete.prix[2])
-        {Item3.enabled = false;
+        {
+            Item3.enabled = false;
             AddItemToInventory(quete.marché[2]);
             playerData.blueRubies -= quete.prix[2];
             Item3.image.sprite = vendu;
             UpdateThunes();
-            
+
         }
 
 
     }
+
     public void Achat4()
     {
         if (playerData.blueRubies >= quete.prix[3])
-        {Item4.enabled = false;
+        {
+            Item4.enabled = false;
             AddItemToInventory(quete.marché[3]);
             playerData.blueRubies -= quete.prix[3];
             Item4.image.sprite = vendu;
             UpdateThunes();
-            
+
         }
 
 
@@ -1273,9 +1557,9 @@ public class Loader : MonoBehaviour
         Marketrubyred.text = playerData.redRubies.ToString();
     }
 
-   public void Actualize()
+    public void Actualize()
     {
-        if (playerData != null) 
+        if (playerData != null)
         {
             bonusDamage = 0;
             bonusHealth = 0;
@@ -1295,7 +1579,7 @@ public class Loader : MonoBehaviour
 
             foreach (var ele in ArmorList)
             {
-               
+
                 bonusDamage += ele.bonusdegat;
                 bonusHealth += ele.bonusvie;
                 bonusDexterity += ele.bonusdexterité;
@@ -1311,36 +1595,19 @@ public class Loader : MonoBehaviour
             playerData.intelligence = playerData.baseIntelligence + bonusIntelligence;
             playerData.magic = playerData.baseMagic + bonusMagic;
 
-           
-  
+
+
         }
-        intelligence.text = ( playerData.baseIntelligence + bonusIntelligence).ToString();
+
+        intelligence.text = (playerData.baseIntelligence + bonusIntelligence).ToString();
         sante.text = (playerData.baseHealth + bonusHealth).ToString();
         magie.text = (playerData.baseMagic + bonusMagic).ToString();
         degat.text = (playerData.baseDamage + bonusDamage).ToString();
-        dexterité.text = (playerData.baseDexterity + bonusDexterity ).ToString();
+        dexterité.text = (playerData.baseDexterity + bonusDexterity).ToString();
         resistance.text = (playerData.baseResistance + bonusResistance).ToString();
-      
+
     }
-    public IEnumerator transition(Day Quest)
-    {
-        entreance.Play();
-        namemob.text = Quest.name;
-        nameplayer.text = playerData.playerName;
-        ennemy.sprite = Quest.perso;
-        perso.sprite = imageequip.sprite;
-        trans.SetActive(true);
-        yield return StartCoroutine(WaitForSeconds(3));
-        trans.SetActive(false);
-        combat.SetActive(true);
-        if (int.Parse(dexhmonstre.text) > int.Parse(dexplay.text))
-        {
-            phrase.text = $"{Quest.name} est plus rapide il engage le combat";
-            DisableAttackButton();
-            mobattack();
-            attaquemob.color = Color.red;
-        }  
-    }
+
 
     public void prendre()
     {
@@ -1352,9 +1619,10 @@ public class Loader : MonoBehaviour
     {
         combat.SetActive(false);
     }
-     public void choice1()
+
+    public void choice1()
     {
-        
+
         croix1.SetActive(true);
         int jour1 = int.Parse(jour.text);
         jour1++;
@@ -1371,18 +1639,19 @@ public class Loader : MonoBehaviour
         int jour2 = int.Parse(jour.text);
         jour2++;
         jour.text = jour2.ToString();
-       GenererDay(quete.choix2);
-       quete = quete.choix2;
-       playerData.quete = quete.name;
+        GenererDay(quete.choix2);
+        quete = quete.choix2;
+        playerData.quete = quete.name;
     }
+
     public void UpdatePlayerUI()
     {
-        intelligence.text = (playerData.baseIntelligence+ bonusIntelligence).ToString();
+        intelligence.text = (playerData.baseIntelligence + bonusIntelligence).ToString();
         sante.text = (playerData.baseHealth + bonusHealth).ToString();
-        magie.text = (playerData.baseMagic+ bonusMagic).ToString();
-        degat.text = (playerData.baseDamage+ bonusDamage).ToString();
-        dexterité.text = (playerData.baseDexterity+ bonusDexterity).ToString();
-        resistance.text = (playerData.baseResistance+ bonusResistance).ToString();
+        magie.text = (playerData.baseMagic + bonusMagic).ToString();
+        degat.text = (playerData.baseDamage + bonusDamage).ToString();
+        dexterité.text = (playerData.baseDexterity + bonusDexterity).ToString();
+        resistance.text = (playerData.baseResistance + bonusResistance).ToString();
         sante1.text = sante.text;
         degat1.text = degat.text;
         dexterité1.text = dexterité.text;
@@ -1392,499 +1661,452 @@ public class Loader : MonoBehaviour
 
 
     }
-  
-     public void Dice()
-     {
-         dicemonste = UnityEngine.Random.Range(1, 21);
-         dice.SetActive(false);
-         StartCoroutine(RollAndShowResult(dicemonste));
-     }
 
-     private IEnumerator RollAndShowResult(int randomValue)
-     {
-         diceanim.SetActive(true);
-         yield return StartCoroutine(Roll());
-         diceanim.SetActive(false);
-         dice.SetActive(true);
-         random.text = randomValue.ToString();
-     }
+    public void Dice()
+    {
+        dicemonste = UnityEngine.Random.Range(1, 21);
+        dice.SetActive(false);
+        StartCoroutine(RollAndShowResult(dicemonste));
+    }
 
-     private IEnumerator Roll()
-     {
-         dicesong.Play();
-         float randomWaitTime = UnityEngine.Random.Range(1.0f, 2.0f);
-         yield return new WaitForSeconds(randomWaitTime);
-     }
-     public void Dicej()
-     {
-         dicescore = UnityEngine.Random.Range(1, 21);
-         dice.SetActive(false);
-         StartCoroutine(RollAndShowResultj(dicescore));
-     }
+    private IEnumerator RollAndShowResult(int randomValue)
+    {
+        diceanim.SetActive(true);
+        yield return StartCoroutine(Roll());
+        diceanim.SetActive(false);
+        dice.SetActive(true);
+        random.text = randomValue.ToString();
+    }
 
-     private IEnumerator RollAndShowResultj(int randomValue)
-     {
-         diceanim.SetActive(true);
-         yield return StartCoroutine(Roll());
-         diceanim.SetActive(false);
-         dice.SetActive(true);
-         random.text = randomValue.ToString();
-     }
-     
+    private IEnumerator Roll()
+    {
+        dicesong.Play();
+        float randomWaitTime = UnityEngine.Random.Range(1.0f, 2.0f);
+        yield return new WaitForSeconds(randomWaitTime);
+    }
 
-     public void attackj()
-     {
-         StartCoroutine(PlayerAttackSequence());
-         DisableAttackButton();
-     }
+    public void Dicej()
+    {
+        dicescore = UnityEngine.Random.Range(1, 21);
+        dice.SetActive(false);
+        StartCoroutine(RollAndShowResultj(dicescore));
+    }
 
-     private IEnumerator PlayerAttackSequence()
-     {
-         phrase.text = "Le joueur lance le de";
+    private IEnumerator RollAndShowResultj(int randomValue)
+    {
+        diceanim.SetActive(true);
+        yield return StartCoroutine(Roll());
+        diceanim.SetActive(false);
+        dice.SetActive(true);
+        random.text = randomValue.ToString();
+    }
+
+
+
+
+
+
+
+    private IEnumerator WaitForSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+    }
+
+
+    private IEnumerator Defaite()
+    {
+        yield return new WaitForSeconds(1.5f);
+        defaite.SetActive(true);
+    }
+
+    public void newgame()
+    {
+
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("Customize");
+
+    }
+
+    public void menut()
+    {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("Menu");
+    }
+
+
+
+
+
+
+
+
+    public void OpenStatMob1()
+    {
+        Stat1.SetActive(true);
+    }
+
+    public void CloseStatMob1()
+    {
+        Stat1.SetActive(false);
+    }
+
+    public void OpenStatMob2()
+    {
+        Stat2.SetActive(true);
+    }
+
+    public void CloseStatMob2()
+    {
+        Stat2.SetActive(false);
+    }
+
+    public void OpenStatMob3()
+    {
+        Stat3.SetActive(true);
+    }
+
+    public void CloseStatMob3()
+    {
+        Stat3.SetActive(false);
+    }
+
+    public void OpenStatAlly1()
+    {
+        Stat4.SetActive(true);
+    }
+
+    public void CloseStatAlly1()
+    {
+        Stat4.SetActive(false);
+    }
+
+    public void CloseStatAlly2()
+    {
+        Stat5.SetActive(false);
+    }
+
+    public void OpenStatAlly2()
+    {
+        Stat5.SetActive(true);
+    }
+
+    public void CloseStatAlly3()
+    {
+        Stat6.SetActive(false);
+    }
+
+    public void OpenStatAlly3()
+    {
+        Stat6.SetActive(true);
+    }
+
+
+
+
+
+    public void ActuStat(Ennemy ennemy, TMP_Text name, TMP_Text healt, TMP_Text dam, TMP_Text mag, TMP_Text inte,
+        TMP_Text res, TMP_Text dex)
+    {
+        name.text = ennemy.name;
+        healt.text = ennemy.Health.ToString();
+        dam.text = ennemy.Damage.ToString();
+        mag.text = ennemy.Magic.ToString();
+        inte.text = ennemy.Intelligence.ToString();
+        res.text = ennemy.Resistance.ToString();
+        dex.text = ennemy.Dexterity.ToString();
+    }
+
+    public void Choix1()
+    {
+        DeckCard.SetActive(true);
+        ChoixAttaque1 = true;
+        ChoixAttaque2 = false;
+        ChoixAttaque3 = false;
+    }
+
+    public void Choix2()
+    {
+        DeckCard.SetActive(true);
+        ChoixAttaque1 = false;
+        ChoixAttaque2 = true;
+        ChoixAttaque3 = false;
+    }
+
+    public void Choix3()
+    {
+        DeckCard.SetActive(true);
+        ChoixAttaque1 = false;
+        ChoixAttaque2 = false;
+        ChoixAttaque3 = true;
+    }
+
+    public void Coup()
+    {
+        if (ChoixAttaque1)
+        {
+            healthmob.value -= playerData.damage * 10;
+            ChoixAttaque1 = false;
+            DeckCard.SetActive(false);
+           
+        }
+
+        else if (ChoixAttaque2)
+        {
+            healthmob1.value -= playerData.damage * 10;
+            ChoixAttaque2 = false;
+            DeckCard.SetActive(false);
+        }
+
+        else if (ChoixAttaque3)
+        {
+            healthmob2.value -= playerData.damage * 10;
+            ChoixAttaque3 = false;
+            DeckCard.SetActive(false);
+        }
+
+        foreach (var ele in quete.combatmonstre)
+        {
+            if (ele.type == Ennemy.EnemyType.Enemy)
+            {
+                ennemiact(ele);
+                break;
+            }
+        }
        
-         Dicej();
-         
+    }
 
-      
-         yield return StartCoroutine(WaitForSeconds(4)); 
+    public void CoupCirculaire()
+    {
+    }
 
-   
-         phrase.text = $"{quete.name} lance le de"; 
-         Dice();
-         yield return StartCoroutine(WaitForSeconds(3));
-       
-         AttackLogic();
-         yield return StartCoroutine(WaitForSeconds(2));
-         defensemob.color = Color.red;
-         phrase.text = $"{quete.name} lance le de"; 
-         Dice();
-         yield return StartCoroutine(WaitForSeconds(4));
-         phrase.text = "Le joueur lance le de";
-         Dicej();
-         yield return StartCoroutine(WaitForSeconds(3));
-         Attmonstre();
-         yield return StartCoroutine(WaitForSeconds(2));
-         EnableAttackButton();
-         attaquemob.color = Color.grey;
-         defensemob.color = Color.grey;
+    public void Perforation()
+    {
+    }
 
-     }
+    public void Broyage()
+    {
+    }
 
-     public void mobattack()
-     {
-         StartCoroutine(Mobattack());
-     }
-     private IEnumerator Mobattack()
-     {
-         yield return StartCoroutine(WaitForSeconds(2));
-         phrase.text = $"{quete.name} lance le de"; 
-         Dice();
-         yield return StartCoroutine(WaitForSeconds(4));
-         phrase.text = "Le joueur lance le de";
-         Dicej();
-         yield return StartCoroutine(WaitForSeconds(3));
-         Attmonstre();
-         yield return StartCoroutine(WaitForSeconds(2));
-         EnableAttackButton();
-         tourrecup--;
-         attaquemob.color = Color.grey;
-         defensemob.color = Color.grey;
-     }
+    public void Seisme()
+    {
+    }
 
-     private IEnumerator WaitForSeconds(float seconds)
-     {
-         yield return new WaitForSeconds(seconds);
-     }
+    public void Charge()
+    {
+    }
 
-     private IEnumerator End1()
-     {
-         StopCoroutine(PlayerAttackSequence());
-         StopCoroutine(dodge());
-         StopCoroutine(Cast());
-         StopCoroutine(findweak());
-         requiert.text = quete.recompense.requiert.ToString();
-         bonusitemvie.text = $"+{quete.recompense.bonusvie}";
-         bonusitemdam.text = $"+{quete.recompense.bonusdegat}";
-         bonusitemdex.text = $"+{quete.recompense.bonusdexterité}";
-         bonusitemres.text = $"+{quete.recompense.bonusresistance}";
-         bonusitemint.text = $"+{quete.recompense.bonusintelligence}";
-         bonusitemmag.text = $"+{quete.recompense.bonusmagie}";
-         req.sprite = quete.recompense.itemImage;
-         if (quete.recompense.typearme == Arme.autre)
-         {
-             requiert.text = "";
-             imarc.SetActive(false);
-             imbat.SetActive(false);
-             imbouc.SetActive(false);
-             imepee.SetActive(false);
-             imhache.SetActive(false);
-             immasse.SetActive(false);
-         }
-         if (quete.recompense.typearme == Arme.arc)
-         {
-             imarc.SetActive(true);
-             imbat.SetActive(false);
-             imbouc.SetActive(false);
-             imepee.SetActive(false);
-             imhache.SetActive(false);
-             immasse.SetActive(false);
-         }
-         if (quete.recompense.typearme == Arme.baton)
-         {
-             imarc.SetActive(false);
-             imbat.SetActive(true);
-             imbouc.SetActive(false);
-             imepee.SetActive(false);
-             imhache.SetActive(false);
-             immasse.SetActive(false);
-         }
-         if (quete.recompense.typearme == Arme.bouclier)
-         {
-             imarc.SetActive(false);
-             imbat.SetActive(false);
-             imbouc.SetActive(true);
-             imepee.SetActive(false);
-             imhache.SetActive(false);
-             immasse.SetActive(false);
-         }
-         if (quete.recompense.typearme == Arme.sword)
-         {
-             imarc.SetActive(false);
-             imbat.SetActive(false);
-             imbouc.SetActive(false);
-             imepee.SetActive(true);
-             imhache.SetActive(false);
-             immasse.SetActive(false);
-         }
-         if (quete.recompense.typearme == Arme.hache)
-         {
-             imarc.SetActive(false);
-             imbat.SetActive(false);
-             imbouc.SetActive(false);
-             imepee.SetActive(false);
-             imhache.SetActive(true);
-             immasse.SetActive(false);
-         }
-         if (quete.recompense.typearme == Arme.hammer)
-         {
-             imarc.SetActive(false);
-             imbat.SetActive(false);
-             imbouc.SetActive(false);
-             imepee.SetActive(false);
-             imhache.SetActive(false);
-             immasse.SetActive(true);
-         }
-         yield return new WaitForSeconds(1.5f);
-         victoire.SetActive(true);
-         playerData.damage -= randomboost;
-     }
+    public void Invulnérabilté()
+    {
+    }
 
-     private IEnumerator Defaite()
-     {
-         yield return new WaitForSeconds(1.5f);
-         defaite.SetActive(true);
-     }
+    public void ParadeDeLumiere()
+    {
+    }
 
-     public void newgame()
-     {
-         
-             PlayerPrefs.DeleteAll();
-             SceneManager.LoadScene("Customize");
-         
-     }
-     public void menut()
-     {
-         PlayerPrefs.DeleteAll();
-         SceneManager.LoadScene("Menu");
-     }
-     
+    public void Parer()
+    {
+    }
 
-     private void Attmonstre()
-     {
-         if (dicescore <  dicemonste)
-         {
-             if (dodging && timedodge > 0)
-             {
-                 heatlhplayer.value -=(int) ((quete.bonusdegat * dicemonste) * 0.7);
-                 phrase.text = $"{quete.name} inflige <color=red>{(int) ((quete.bonusdegat * dicemonste) * 0.7)}</color> de degats";
-                 timedodge--;
-                 
-             }
-             else
-             {
-                 heatlhplayer.value -= quete.bonusdegat * dicemonste;
-                 phrase.text = $"{quete.name} inflige <color=red>{quete.bonusdegat * dicemonste}</color> de degats";
-                 dexplay.text = $"<color=white>{playerData.dexterity}</color>";
-                 dodging = false;
-             }
-             
-            
-             if (heatlhplayer.value <= heatlhplayer.maxValue / 2)
-             {
-                 phrasemid.text = quete.phraseplayer;
-             }
-             
-             if (heatlhplayer.value <= 0)
-             {
-                 heatlhplayer.value = heatlhplayer.maxValue;
-                 StartCoroutine(Defaite());
+    public void CriDeGuerre()
+    {}
+    public void Health(){}
+    public void Lecture(){}
+    public void Renforcement(){}
 
-             }
-             
-         }
-         else
-         {
-            healthmob.value -= playerData.resistance * dicemonste;
-             phrase.text = $"le joueurse defent et {quete.name} recoit <color=red>{playerData.resistance * dicemonste}</color> de degats";
-             if (healthmob.value <= healthmob.maxValue/2)
-             {
-                 phrasemid.text = quete.phrasejoueur;
-             }
-
-             if (dodging && timedodge > 0)
-             {
-                 timedodge--;
-             }
-             if (healthmob.value <= 0)
-             {
-                 heatlhplayer.value = heatlhplayer.maxValue;
-                 StartCoroutine(End1());
-
-             }
-         }
-     }
-     private void AttackLogic()
-     {
-         if (dicescore > dicemonste)
-         {
-             healthmob.value -= playerData.damage * dicescore;
-             phrase.text = $"Le joueur inflige <color=red>{playerData.damage * dicescore}</color> de degats";
-             if (healthmob.value <= healthmob.maxValue/2)
-             {
-                 phrasemid.text = quete.phrasejoueur;
-             }
-             if (healthmob.value <= 0)
-             {
-               heatlhplayer.value = heatlhplayer.maxValue;
-                 StartCoroutine(End1());
-            
-                 
-             }
-         }
-         else
-         {
-             heatlhplayer.value -= quete.bonusresistance * dicescore;
-             phrase.text = $"{quete.name} se defent et le joueur recoit <color=red>{quete.bonusresistance * dicescore}</color> de degats";
-             if (heatlhplayer.value <= heatlhplayer.maxValue / 2)
-             {
-                 phrasemid.text = quete.phraseplayer;
-             }
-             if (heatlhplayer.value <= 0)
-             {
-                 heatlhplayer.value = heatlhplayer.maxValue;
-                 StartCoroutine(Defaite());
-             }
-         }
-         
-     
-     } 
-     public void DisableAttackButton()
-     {
-         attackButton.interactable = false;
-         dodgeButton.interactable = false;
-         mindButton.interactable = false;
-         castButton.interactable = false; 
-     }
-
-     public void EnableAttackButton()
-     {
+    public void OeilDeLynx()
+    {
         
-         mindButton.interactable = true;
-         attackButton.interactable = true;
-         dodgeButton.interactable = true;
-         castButton.interactable = true;
-       
-         if (mindbool)
-         {
-             mindButton.interactable = false;
-         }
+    }
+    public void Desintegration(){}
+    public void LassoDeFeu(){}
+    public void LumiereDivine(){}
+    public void PointeDeGlace(){}
+    public void BouleDeFeu(){}
+    public void Brisage(){}
+    public void FlecheMagique(){}
+    public void Rafale(){}
+    public void TirDansLeCoeur(){}
+    public  void TirDArc(){}
+    public void ParadeRenforce(){}
 
-         if (dodging)
-         {
-             dodgeButton.interactable = false;
-             
-         }
-     }
-
-     public IEnumerator findweak()
+public void AttackDeckChoice(Button button, String name)
      {
-         
-         phrase.text = "Vous lancez le de pour essayer de trouver une faiblesse.";
-         Dicej();
-         yield return StartCoroutine(WaitForSeconds(3));
-         if (dicescore <= playerData.intelligence * 2)
+         switch (name)
          {
-             randomboost = Random.Range(1, 4);
-             phrase.text = $"Vous avez trouver une faiblesse votre attaque a un bonus de <color=green>+{randomboost}</color>.";
-             
-             playerData.damage += randomboost;
-             degatplay.text = $"<color=green> {playerData.damage.ToString()} </color>";
-             mindbool = true;
+             case "Coup" :
+                 button.onClick.AddListener(() => Coup());
+                 break;
+             case "Broyage" :
+                 button.onClick.AddListener(() => Broyage());
+                 break;
+             case "Coup Circulaire" :
+                 button.onClick.AddListener(() =>CoupCirculaire());
+                 break;
+             case "Perforation" :
+                 button.onClick.AddListener(() => Perforation());
+                 break;
+             case "Seisme" :
+                 button.onClick.AddListener(() => Seisme());
+                 break;
+             case "Brisage" :
+                 button.onClick.AddListener(() => Brisage());
+                 break;
+             case "Fleche Magique" :
+                 button.onClick.AddListener(() => FlecheMagique());
+                 break;
+             case "Rafale" :
+                 button.onClick.AddListener(() =>Rafale());
+                 break;
+             case "Tir Dans Le Coeur" :
+                 button.onClick.AddListener(() => TirDansLeCoeur());
+                 break;
+             case "Tir D'arc" :
+                 button.onClick.AddListener(() => TirDArc());
+                 break;
+             case "Desintegration" :
+                 button.onClick.AddListener(() => Desintegration());
+                 break;
+             case "Lasso De Feu" :
+                 button.onClick.AddListener(() => LassoDeFeu());
+                 break;
+             case "Lumiere Divine" :
+                 button.onClick.AddListener(() =>LumiereDivine());
+                 break;
+             case "Pointe De Glace" :
+                 button.onClick.AddListener(() => PointeDeGlace());
+                 break;
+             case "Boule De Feu" :
+                 button.onClick.AddListener(() => BouleDeFeu());
+                 break;
+             case "Cri De Guerre" :
+                 button.onClick.AddListener(() => CriDeGuerre());
+                 break;
+             case "Soin" :
+                 button.onClick.AddListener(() => Health());
+                 break;
+             case "Lecture" :
+                 button.onClick.AddListener(() =>Lecture());
+                 break;
+             case "Oeil De Lynx" :
+                 button.onClick.AddListener(() => OeilDeLynx());
+                 break;
+             case "Renforcement" :
+                 button.onClick.AddListener(() => Renforcement());
+                 break;
+             case "Charge" :
+                 button.onClick.AddListener(() => Charge());
+                 break;
+             case "Invunerabilite" :
+                 button.onClick.AddListener(() => Invulnérabilté());
+                 break;
+             case "Parade De Lumiere" :
+                 button.onClick.AddListener(() =>ParadeDeLumiere());
+                 break;
+             case "Parade Renforce" :
+                 button.onClick.AddListener(() => ParadeRenforce());
+                 break;
+             case "Parer" :
+                 button.onClick.AddListener(() => Parer());
+                 break;
+            
+            
          }
-         else
-         {
-             phrase.text = $"Vous ne trouvez aucune faiblesse chez {quete.name} il contre attaque";
-             attaquemob.color = Color.red;
-         }
-
-         yield return StartCoroutine(WaitForSeconds(3));
-         
-         phrase.text = $"{quete.name} lance le de";
-         Dice();
-         yield return StartCoroutine(WaitForSeconds(3));
-         contreattaque();
-         EnableAttackButton();
-         attaquemob.color = Color.gray;
-         defensemob.color = Color.gray;
-         tourrecup--;
-     }
-
-     public void mind()
-     { 
-         DisableAttackButton();
-         StartCoroutine(findweak());
-        
-     }
-
-     public void Dodge()
-     {
-         DisableAttackButton();
-         StartCoroutine(dodge());
-     }
-
-     public void contreattaque()
-     {
-         
-         if (dodging && timedodge > 0)
-         {
-             if (mag)
-             {
-                 heatlhplayer.value -=(int) (((quete.bonusdegat * dicemonste) * 0.7)*1.5);
-                 phrase.text = $"{quete.name} inflige <color=red>{(int) (((quete.bonusdegat * dicemonste) * 0.7)*1.5)}</color> de degats";
-                 timedodge--;
-             }
-             else
-             {
-                 heatlhplayer.value -= (int)((quete.bonusdegat * dicemonste) * 0.7);
-                 phrase.text =
-                     $"{quete.name} inflige <color=red>{(int)((quete.bonusdegat * dicemonste) * 0.7)}</color> de degats";
-                 timedodge--;
-             }
-         }
-         else if (mag)
-         {
-             heatlhplayer.value -= (int)(quete.bonusdegat * dicemonste * 1.5);
-             phrase.text = $"{quete.name} inflige <color=red>{(int)(quete.bonusdegat * dicemonste * 1.5)}</color> de degats";
-             dexplay.text = $"<color=white>{playerData.dexterity}</color>";
-             dodging = false;
-         }
-         else
-         {
-             heatlhplayer.value -= quete.bonusdegat * dicemonste;
-             phrase.text = $"{quete.name} inflige <color=red>{quete.bonusdegat * dicemonste}</color> de degats";
-             dexplay.text = $"<color=white>{playerData.dexterity}</color>";
-             dodging = false;
-         }
-         if (heatlhplayer.value <= heatlhplayer.maxValue / 2)
-         {
-             phrasemid.text = quete.phraseplayer;
-         }
-         if (heatlhplayer.value <= 0)
-         {
-             heatlhplayer.value = heatlhplayer.maxValue;
-             StartCoroutine(Defaite());
-
-         }
-
          
      }
 
-     public IEnumerator dodge()
-     {
-         phrase.text = "Vous tentez une esquive.";
-         Dicej();
-         yield return WaitForSeconds(3);
-         if (playerData.dexterity * 2 >= dicescore)
-         {
-             phrase.text = "Vous avez reussis votre esquive pendant 2 attaque vous recevez <color=green>-30%</color> de degats";
-             dodging = true;
-             timedodge = 2;
-             tourrecup = cooldown;
-             dexplay.text = $"<color=green>{playerData.dexterity}</color>";
-         }
-         else
-         {
-             phrase.text = "Vous rater votre esquive";
-             tourrecup = 0;
-         }
+public float MobAttackChoice1(Ennemy ennemy, string attaque)
+{
+    
+    int Random = 0;
+    float Result = 0;
+    float AttaquePoint = 0;
+    float BuffPoint = 0;
+    switch (ally)
+    {
+        case 2 :
+            healthChoice = heatlhplayer;
+            break;
+    }
+    switch (attaque)
+    {
+        case "Soin" :
+            if (healthmob.value <= healthmob.maxValue/4)
+            {
+                BuffPoint += 4f ;
+            }
+            else if (healthmob.value <= healthmob.maxValue/2)
+            {
+                BuffPoint += 1f ;
+            }
+            else
+            {
+                BuffPoint += 0.5f ;
+            }
+            break;
+        case "Attaque":
+            if (healthChoice.value <= healthChoice.maxValue / 4)
+            {
+                AttaquePoint += 2.5f;
+            }
+            else if (healthChoice.value <= healthChoice.maxValue/2)
+            {
+                AttaquePoint += 1f;
+            }
+            else
+            {
+                AttaquePoint += 1f;
+            }
+            break;
 
-         yield return WaitForSeconds(3);
-         attaquemob.color = Color.red;
-         phrase.text = $"{quete.name} attaque !!";
-         Dice();
-         yield return WaitForSeconds(3);
-         contreattaque();
-         EnableAttackButton();
-         attaquemob.color = Color.gray;
-         defensemob.color = Color.gray;
-         tourrecup--;
-     }
+    }
+    Debug.Log($"{AttaquePoint}  ,   {BuffPoint}");
+    Result = AttaquePoint + BuffPoint;
+    return Result;
+}
 
-     public void restartstat()
-     {
-         dodging = false;
-         timedodge = 2;
-     }
+public void Attaque(Ennemy ennemy)
+{
+    heatlhplayer.value -= ennemy.Damage*10;
+}
 
-     public IEnumerator Cast()
-     {
-         phrase.text = "Vous essayer D'incanter un sort puissant.";
-         Dicej();
-         yield return WaitForSeconds(3);
-         if (dicescore < playerData.magic)
-         {
-             phrase.text =
-                 $"Vous lancez un sort puissant et faites <color=red> {dicescore * playerData.magic * playerData.intelligence} </color> de degats";
-             healthmob.value -= dicescore * playerData.magic * playerData.intelligence;
-             if (healthmob.value <= 0)
-             {
-                 heatlhplayer.value = heatlhplayer.maxValue;
-                 StartCoroutine(End1());
+public void Soin(Ennemy ennemy)
+{
+    healthmob.value += ennemy.Magic * 10;
+}
 
-             }
-         }
-         else
-         {
-             phrase.text = "Votre rater votre incantation.";
-             mag = true;
-         }
+public void Debuff()
+{
 
-         yield return WaitForSeconds(3);
-         attaquemob.color = Color.red;
-         phrase.text = $"{quete.name} contre attaque.";
-         Dice();
-         yield return WaitForSeconds(3);
-         contreattaque();
-         yield return WaitForSeconds(2);
-         EnableAttackButton();
-         attaquemob.color = Color.gray;
-         defensemob.color = Color.gray;
-         mag = false;
-     }
+    playerData.damage -= Random.Range(1, 4);
+    UpdateCombat(Mob1);
+}
 
-     public void cast()
-     {
-         DisableAttackButton();
-         StartCoroutine(Cast());
-     }
-}   
+public void Buff(Ennemy ennemy)
+{
+    ennemy.Damage +=  Random.Range(1, 4);
+    UpdateCombat(Mob1);
+}
+
+public void UpdateCombat(Ennemy ennemy)
+{
+    DamageAlly1.text = playerData.damage.ToString();
+    DamageMob1.text = ennemy.Damage.ToString();
+
+}
+
+public void ennemiact(Ennemy ennemy)
+{
+    float Soin = MobAttackChoice1(ennemy, "Soin");
+    float attack = MobAttackChoice1(ennemy, "Attaque");
+
+    if (Soin > attack)
+    {
+        this.Soin(ennemy);
+    }
+    else
+    {
+        Attaque(ennemy);
+    }
+}
+
+} 
