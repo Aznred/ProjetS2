@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public TMP_Text name;
+
     public Image image;
     public ItemType acceptedItemType = ItemType.All;
     private static inventoryslot selectedSlot = null;
@@ -84,25 +84,7 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
             playerData = JsonUtility.FromJson<PlayerData>(playerDataJson);
         }
 
-        if (armor && slot.transform.childCount == 0 && olditem != null && olditem.itemtype == ItemType.Abilité)
-        {
-            for (int i = 0; i < loader.Deck.Count; i++)
-            {
-                if (loader.Deck[i].transform.childCount <= 0)
-                {
-                    name.text = "";
-                }
-                else
-                {
-                    name.text = olditem.itemName;
-                }
-            }
-            olditem = null;
-            armor = false;
-            loader.UpdatePlayerData();
-           
-        }
-        else if (armor && slot.transform.childCount == 0 && olditem != null)
+        if (armor && slot.transform.childCount == 0 && olditem != null)
         {
             for (int i = 0; i < loader.equipementslot.Count; i++)
             {
@@ -128,30 +110,6 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
         }
         
     }
-    private bool CanEquipAbility(Item item)
-    {
-        
-        switch (item.typearme)
-        {
-            case Arme.sword:
-                return item.requiert <= playerData.epee;
-            case Arme.arc:
-                return item.requiert <= playerData.arc;
-            case Arme.bouclier:
-                return item.requiert <= playerData.bouclier;
-            case Arme.baton:
-                return item.requiert <= playerData.baton;
-            case Arme.hache:
-                return item.requiert <= playerData.hache;
-            case Arme.hammer:
-                return item.requiert <= playerData.massue;
-            case Arme.autre:
-     
-                return true;
-            default:
-                return false;
-        }
-    }
 
     public Color selectcolor, notselectedcolor;
     
@@ -160,38 +118,23 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
    
     public void OnDrop(PointerEventData eventData)
     {
-        if (eventData.pointerDrag == null)
-        {
-            Debug.LogWarning("L'objet pointé par eventData.pointerDrag est null.");
-            return;  // Quitter la méthode si eventData.pointerDrag est null.
-        }
         if (transform.childCount == 0)
         {
             GameObject dropped = eventData.pointerDrag;
 
             DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
-            if (acceptedItemType == ItemType.Abilité)
+            if (draggableItem.Item.itemtype == acceptedItemType || acceptedItemType == ItemType.All )
             {
-                if (CanEquipAbility(draggableItem.Item))
+                if (acceptedItemType == ItemType.Abilité)
                 {
                     draggableItem.parentafterdrag = transform;
-                    name.text = draggableItem.Item.itemName;
-                    olditem = draggableItem.Item;
-                    armor = true;
                 }
-                else
-                {
-                   
-                    Debug.Log("Le joueur n'a pas la maîtrise d'arme requise pour cette compétence.");
-                }
-            }
-            else if (acceptedItemType == ItemType.All)
-            {
-                draggableItem.parentafterdrag = transform;
                
-                name.text = "";
-                loader.UpdatePlayerData();
-            }
+                else if (acceptedItemType == ItemType.All)
+                {
+                    draggableItem.parentafterdrag = transform;
+                    loader.UpdatePlayerData();
+                }
                 else if (draggableItem.Item.typearme == Arme.arc && draggableItem.Item.requiert <= playerData.arc )
                 {
                     draggableItem.parentafterdrag = transform;
@@ -383,3 +326,5 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
         }
     }
 
+    
+}
