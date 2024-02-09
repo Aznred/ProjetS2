@@ -28,9 +28,8 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
 
     private void Start()
     {
-        TooltipsDeck.instance.hidetooltip();
         Tooltipmanager.instance.hidetooltip();
-        
+        TooltipsDeck.instance.hidetooltip();
         if (acceptedItemType != ItemType.All && acceptedItemType != ItemType.Abilité)
         {
             foreach (var ele in loader.ArmorList)
@@ -92,6 +91,10 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
                 if (loader.Deck[i].transform.childCount <= 0)
                 {
                     name.text = "";
+                }
+                else
+                {
+                    name.text = olditem.itemName;
                 }
             }
             olditem = null;
@@ -186,7 +189,7 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
             {
                 draggableItem.parentafterdrag = transform;
                
-              
+                name.text = "";
                 loader.UpdatePlayerData();
             }
                 else if (draggableItem.Item.typearme == Arme.arc && draggableItem.Item.requiert <= playerData.arc )

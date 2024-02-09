@@ -75,7 +75,7 @@ public class PlayerData
         hache = 1;
         massue = 1;
         pointstat = 5;
-        pointarme = 100;
+        pointarme = 5;
 
     }
 }
