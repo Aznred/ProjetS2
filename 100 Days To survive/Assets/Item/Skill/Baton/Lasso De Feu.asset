@@ -27,5 +27,6 @@ MonoBehaviour:
   valeurRubyRouge: 0
   valeurRubybleu: 0
   description: Un sort qui cree un lasso brulant de flammes.
+  spelltype: 2
   typearme: 3
   requiert: 5

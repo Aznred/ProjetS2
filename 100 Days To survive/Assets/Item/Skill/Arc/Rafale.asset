@@ -27,5 +27,6 @@ MonoBehaviour:
   valeurRubyRouge: 0
   valeurRubybleu: 0
   description: Une rafale de fleches inonde l'ennemi en un instant.
+  spelltype: 2
   typearme: 1
   requiert: 5

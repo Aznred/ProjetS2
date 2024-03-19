@@ -20,6 +20,7 @@ public class Item : ScriptableObject
     public int valeurRubyRouge = 0;
     public int valeurRubybleu = 0;
     public string description;
+    public capicitytype spelltype;
     public Item(int id, string name)
     {
         itemId = id;
@@ -48,6 +49,10 @@ public enum ItemType
     Abilité,
 }
 
+public enum capicitytype
+{
+    Buff,Debuff,Attack
+}
 public enum Arme
 {
     sword,

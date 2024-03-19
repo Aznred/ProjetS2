@@ -39,7 +39,7 @@ MonoBehaviour:
   recrouge: 0
   recbleu: 0
   choix1: {fileID: 11400000, guid: 97535c477a8a78142ad5c39208492255, type: 2}
-  choix2: {fileID: 0}
+  choix2: {fileID: 11400000, guid: de251b4ce60262a418df176e437c8669, type: 2}
   typedequete: 2
   perso: {fileID: 0}
   Firstdialogue: 
@@ -49,3 +49,6 @@ MonoBehaviour:
   act1: []
   act2: []
   act3: []
+  dial: 0
+  choix3: {fileID: 0}
+  Ennemies: []

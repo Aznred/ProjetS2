@@ -27,5 +27,6 @@ MonoBehaviour:
   valeurRubyRouge: 0
   valeurRubybleu: 0
   description: "Un projectile enflam\xE9 brule l'ennemi avec ferocite."
+  spelltype: 2
   typearme: 3
   requiert: 1

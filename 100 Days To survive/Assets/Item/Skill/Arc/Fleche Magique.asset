@@ -27,5 +27,6 @@ MonoBehaviour:
   valeurRubyRouge: 0
   valeurRubybleu: 0
   description: Une fleche chargee de magie frappe l'ennemi avec puissance.
+  spelltype: 1
   typearme: 1
   requiert: 15

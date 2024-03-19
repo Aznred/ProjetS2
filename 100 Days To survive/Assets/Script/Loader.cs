@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime;
+using UnityEditor;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
@@ -14,6 +16,17 @@ using Random = UnityEngine.Random;
 [SerializeField]
 public class Loader : MonoBehaviour
 {
+    private int EnemyChoice;
+    public List<Item> attacklist;
+    public List<GameObject> boucliermdr;
+    public List<Button> Deckbutton;
+    public GameObject DeckCombat;
+    public List<Item> AttackCapacity;
+    public List<Item> DebufCapacity;
+    public List<Item> BuffCapacity;
+    public List<GameObject> bouclierlist;
+    public List<Image> combatlist;
+    public List<Slider> combathealth;
     public inventoryslot[] deckslot;
     public Sprite vendu;
     public AudioSource soundtouch;
@@ -914,41 +927,100 @@ public class Loader : MonoBehaviour
 
         if (Quest.typedequete == Day.DayType.Combat)
         {
+            Item spell = null;
+            combat.SetActive(true);
+            for (int k = 0; k < playerData.decknames.Count; k++)
+            {
+                
+                foreach (var s in skilldata)
+                {
+                    if (s.name == playerData.decknames[k])
+                    {
+                        spell = s;
+                        attacklist.Add(s);
+                        Deckbutton[k].image.sprite = spell.itemImage;
+                        Deckbutton[k].GetComponentInChildren<TMP_Text>().text = spell.itemName;
+                        Deckbutton[k].gameObject.SetActive(true);
+                    }
+                    
+                }
+               
+            }
+            DeckCombat.SetActive(false);
+            int j = 0;
+            int i = 0;
             UpdatePlayerData();
-            attaquemob.color = Color.gray;
-            defensemob.color = Color.gray;
+            combatlist[4].sprite = imageequip.sprite;
+            combathealth[4].maxValue = playerData.health * 10;   
+            combathealth[4].value = playerData.health * 10;
+            bouclierlist[3].SetActive(false);
+            bouclierlist[5].SetActive(false);
+           
+            foreach (var e in Quest.Ennemies)
+            {
+                
+                if (e.type == Ennemy.EnemyType.Enemy)
+                {
+                    i++;
+                   
+                    switch (i)
+                    {
+                        case 1:
+                            combatlist[1].sprite = e.Mobimage;
+                            combatlist[7].sprite = e.Mobimage;
+                            combathealth[1].maxValue = e.Health * 10;   
+                            combathealth[1].value = e.Health * 10;
+                            bouclierlist[0].SetActive(false);
+                            bouclierlist[2].SetActive(false);
+                            bouclierlist[6].SetActive(false);
+                            bouclierlist[8].SetActive(false);
+                            break;
+                        case 2:
+                            combatlist[6].sprite = e.Mobimage;
+                            combatlist[0].sprite = e.Mobimage;
+                            combathealth[0].maxValue = e.Health * 10;   
+                            combathealth[0].value = e.Health * 10;
+                            bouclierlist[0].SetActive(true);
+                            bouclierlist[6].SetActive(true);
+                           
+                            break;
+                        case 3:
+                            combatlist[8].sprite = e.Mobimage;
+                            combatlist[2].sprite = e.Mobimage;
+                            combathealth[2].maxValue = e.Health * 10;   
+                            combathealth[2].value = e.Health * 10;
+                            bouclierlist[2].SetActive(true);
+                            bouclierlist[8].SetActive(true);
+                            break;
+                    }
+                }
+                else
+                {
+                    j++;
+                    switch (i)
+                    {
+                        
+                          
+                        case 1:
+                            combatlist[3].sprite = e.Mobimage;
+                            combathealth[3].maxValue = e.Health * 10;   
+                            combathealth[3].value = e.Health * 10;
+                            bouclierlist[3].SetActive(true);
+                            bouclierlist[5].SetActive(false);
+                            break;
+                        case 2:
+                            combatlist[5].sprite = e.Mobimage;
+                            combathealth[5].maxValue = e.Health * 10;   
+                            combathealth[5].value = e.Health * 10;
+                            bouclierlist[3].SetActive(true);
+                            bouclierlist[5].SetActive(true);
+                            break;
+                    }
+                }
+            }
             victoire.SetActive(false);
             defaite.SetActive(false);
-            phrase.text = "";
-            tourrecup = 0;
-            dodging = false;
-            mindbool = false;
-            EnableAttackButton();
-            namemonstre.text = Quest.name;
-            healthmob.maxValue = Quest.bonusvie * 100;
-            healthmob.value = Quest.bonusvie * 100;
-            healthmonstre.text = Quest.bonusvie.ToString();
-            degatmonstre.text = Quest.bonusdegat.ToString();
-            dexhmonstre.text = Quest.bonusdexterité.ToString();
-            reshmonstre.text = Quest.bonusresistance.ToString();
-            inthmonstre.text = Quest.bonusintelligence.ToString();
-            magiemonstre.text = Quest.bonusmagie.ToString();
-            monstre.sprite = Quest.perso;
-            monstreback.sprite = Quest.background;
-            healthplay.text = playerData.health.ToString();
-            degatplay.text = playerData.damage.ToString();
-            dexplay.text = playerData.dexterity.ToString();
-            respaly.text = playerData.resistance.ToString();
-            intplay.text = playerData.intelligence.ToString();
-            magieplay.text = playerData.magic.ToString();
-            nameplay.text = playerData.playerName;
-            combbackgr.sprite = Quest.background;
-            playerim.sprite = imageequip.sprite;
-            phrasemid.text = Quest.phrasecomb;
-            heatlhplayer.maxValue = playerData.health * 100;
-            heatlhplayer.value = playerData.health * 100;
-          
-            StartCoroutine(transition(Quest));
+           
 
         }
 
@@ -1322,25 +1394,7 @@ public class Loader : MonoBehaviour
         resistance.text = (playerData.baseResistance + bonusResistance).ToString();
       
     }
-    public IEnumerator transition(Day Quest)
-    {
-        entreance.Play();
-        namemob.text = Quest.name;
-        nameplayer.text = playerData.playerName;
-        ennemy.sprite = Quest.perso;
-        perso.sprite = imageequip.sprite;
-        trans.SetActive(true);
-        yield return StartCoroutine(WaitForSeconds(3));
-        trans.SetActive(false);
-        combat.SetActive(true);
-        if (int.Parse(dexhmonstre.text) > int.Parse(dexplay.text))
-        {
-            phrase.text = $"{Quest.name} est plus rapide il engage le combat";
-            DisableAttackButton();
-            mobattack();
-            attaquemob.color = Color.red;
-        }  
-    }
+
 
     public void prendre()
     {
@@ -1432,153 +1486,17 @@ public class Loader : MonoBehaviour
      }
      
 
-     public void attackj()
-     {
-         StartCoroutine(PlayerAttackSequence());
-         DisableAttackButton();
-     }
-
-     private IEnumerator PlayerAttackSequence()
-     {
-         phrase.text = "Le joueur lance le de";
-       
-         Dicej();
-         
-
-      
-         yield return StartCoroutine(WaitForSeconds(4)); 
-
    
-         phrase.text = $"{quete.name} lance le de"; 
-         Dice();
-         yield return StartCoroutine(WaitForSeconds(3));
-       
-         AttackLogic();
-         yield return StartCoroutine(WaitForSeconds(2));
-         defensemob.color = Color.red;
-         phrase.text = $"{quete.name} lance le de"; 
-         Dice();
-         yield return StartCoroutine(WaitForSeconds(4));
-         phrase.text = "Le joueur lance le de";
-         Dicej();
-         yield return StartCoroutine(WaitForSeconds(3));
-         Attmonstre();
-         yield return StartCoroutine(WaitForSeconds(2));
-         EnableAttackButton();
-         attaquemob.color = Color.grey;
-         defensemob.color = Color.grey;
+   
 
-     }
-
-     public void mobattack()
-     {
-         StartCoroutine(Mobattack());
-     }
-     private IEnumerator Mobattack()
-     {
-         yield return StartCoroutine(WaitForSeconds(2));
-         phrase.text = $"{quete.name} lance le de"; 
-         Dice();
-         yield return StartCoroutine(WaitForSeconds(4));
-         phrase.text = "Le joueur lance le de";
-         Dicej();
-         yield return StartCoroutine(WaitForSeconds(3));
-         Attmonstre();
-         yield return StartCoroutine(WaitForSeconds(2));
-         EnableAttackButton();
-         tourrecup--;
-         attaquemob.color = Color.grey;
-         defensemob.color = Color.grey;
-     }
+  
 
      private IEnumerator WaitForSeconds(float seconds)
      {
          yield return new WaitForSeconds(seconds);
      }
 
-     private IEnumerator End1()
-     {
-         StopCoroutine(PlayerAttackSequence());
-         StopCoroutine(dodge());
-         StopCoroutine(Cast());
-         StopCoroutine(findweak());
-         requiert.text = quete.recompense.requiert.ToString();
-         bonusitemvie.text = $"+{quete.recompense.bonusvie}";
-         bonusitemdam.text = $"+{quete.recompense.bonusdegat}";
-         bonusitemdex.text = $"+{quete.recompense.bonusdexterité}";
-         bonusitemres.text = $"+{quete.recompense.bonusresistance}";
-         bonusitemint.text = $"+{quete.recompense.bonusintelligence}";
-         bonusitemmag.text = $"+{quete.recompense.bonusmagie}";
-         req.sprite = quete.recompense.itemImage;
-         if (quete.recompense.typearme == Arme.autre)
-         {
-             requiert.text = "";
-             imarc.SetActive(false);
-             imbat.SetActive(false);
-             imbouc.SetActive(false);
-             imepee.SetActive(false);
-             imhache.SetActive(false);
-             immasse.SetActive(false);
-         }
-         if (quete.recompense.typearme == Arme.arc)
-         {
-             imarc.SetActive(true);
-             imbat.SetActive(false);
-             imbouc.SetActive(false);
-             imepee.SetActive(false);
-             imhache.SetActive(false);
-             immasse.SetActive(false);
-         }
-         if (quete.recompense.typearme == Arme.baton)
-         {
-             imarc.SetActive(false);
-             imbat.SetActive(true);
-             imbouc.SetActive(false);
-             imepee.SetActive(false);
-             imhache.SetActive(false);
-             immasse.SetActive(false);
-         }
-         if (quete.recompense.typearme == Arme.bouclier)
-         {
-             imarc.SetActive(false);
-             imbat.SetActive(false);
-             imbouc.SetActive(true);
-             imepee.SetActive(false);
-             imhache.SetActive(false);
-             immasse.SetActive(false);
-         }
-         if (quete.recompense.typearme == Arme.sword)
-         {
-             imarc.SetActive(false);
-             imbat.SetActive(false);
-             imbouc.SetActive(false);
-             imepee.SetActive(true);
-             imhache.SetActive(false);
-             immasse.SetActive(false);
-         }
-         if (quete.recompense.typearme == Arme.hache)
-         {
-             imarc.SetActive(false);
-             imbat.SetActive(false);
-             imbouc.SetActive(false);
-             imepee.SetActive(false);
-             imhache.SetActive(true);
-             immasse.SetActive(false);
-         }
-         if (quete.recompense.typearme == Arme.hammer)
-         {
-             imarc.SetActive(false);
-             imbat.SetActive(false);
-             imbouc.SetActive(false);
-             imepee.SetActive(false);
-             imhache.SetActive(false);
-             immasse.SetActive(true);
-         }
-         yield return new WaitForSeconds(1.5f);
-         victoire.SetActive(true);
-         playerData.damage -= randomboost;
-     }
-
+    
      private IEnumerator Defaite()
      {
          yield return new WaitForSeconds(1.5f);
@@ -1597,294 +1515,239 @@ public class Loader : MonoBehaviour
          PlayerPrefs.DeleteAll();
          SceneManager.LoadScene("Menu");
      }
-     
+        private void EnnemyAttack(int E,string spell,Ennemy A)
+    {
+        throw new NotImplementedException();
+    }
 
-     private void Attmonstre()
-     {
-         if (dicescore <  dicemonste)
-         {
-             if (dodging && timedodge > 0)
-             {
-                 heatlhplayer.value -=(int) ((quete.bonusdegat * dicemonste) * 0.7);
-                 phrase.text = $"{quete.name} inflige <color=red>{(int) ((quete.bonusdegat * dicemonste) * 0.7)}</color> de degats";
-                 timedodge--;
+    private void EnnemyAttackPlayer(string spell,Ennemy A)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void EnnemyBuff(int E,string spell,Ennemy A)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void EnnemyDebuffPlayer(string spell,Ennemy A)
+    {
+        throw new NotImplementedException();
+    }
+    
+    private void EnnemyDebuff(int E,string spell,Ennemy A)
+    {
+        throw new NotImplementedException();
+    }
+    
+    public void EnnemyActionChoice(Ennemy ennemy)
+    {
+        List<Ennemy> enemies = new List<Ennemy>();
+        List<Ennemy> allies = new List<Ennemy>();
+        foreach (var E in quete.Ennemies)
+        {
+            if (E.type == Ennemy.EnemyType.Ally)
+            {
+                allies.Add(E);
+            }
+            else
+            {
+                enemies.Add(E);
+            }
+        }
+        int l_e = enemies.Count;
+        int r_e = Random.Range(0, l_e);
+        int l_a = allies.Count+1;
+        int r_a = Random.Range(0, l_a);
+        int sr = Random.Range(0, ennemy.deck.Length);
+        foreach (var s in skilldata)
+        {
+            if (s.itemName== ennemy.deck[sr])
+            {
+                switch (s.spelltype)
+                {
+                    case capicitytype.Buff:
+                        EnnemyBuff(r_e,s.itemName,ennemy);
+                        break;
+
+
+                    case capicitytype.Debuff:
+                        switch (r_a)
+                        {
+                            case 0:
+                                EnnemyDebuffPlayer(s.itemName,ennemy);
+                                break;
+                            case 1:
+                                EnnemyDebuff(3,s.itemName,ennemy);
+                                break;
+                            case 2:
+                                EnnemyDebuff(5,s.itemName,ennemy);
+                                break;
+                        }
+
+                        break;
+                    case capicitytype.Attack:
+                        switch (r_a)
+                        {
+                            case 0:
+                                EnnemyAttackPlayer(s.itemName,ennemy);
+                                break;
+                            case 1:
+                                EnnemyAttack(3,s.itemName,ennemy);
+                                break;
+                            case 2:
+                                EnnemyAttack(5,s.itemName,ennemy);
+                                break;
+                        }
+                        break;
+                }
+            }
+        }
+    }
+
+    private void Coup(int player,int ennemy,Ennemy attaquant)
+    {
+        DeckCombat.SetActive(false);
+        int enemycount = 0;
+        foreach (var e in quete.Ennemies)
+        {
+            if (e.type == Ennemy.EnemyType.Enemy)
+            {
+                enemycount++;
+            }
+        }
+        switch (player)
+        {
+            case 0:
+                combathealth[ennemy].value -= (int)(playerData.damage * 2.5);
+                break;
+            case 1:
+                combathealth[ennemy].value -= (int)(attaquant.Damage* 2.5);
+                break;
+            case 2:
+                combathealth[4].value -= (int)(attaquant.Damage * 2.5);
+                break;
+        }
+        switch (enemycount)
+        {
+         case 1:
+             boucliermdr[1].SetActive(true);
+             break;
+         case 2:
+             boucliermdr[0].SetActive(true);
+             boucliermdr[1].SetActive(true);
+             break;
+         case 3:
+             boucliermdr[0].SetActive(true);
+             boucliermdr[1].SetActive(true);
+             boucliermdr[2].SetActive(true);
+             break;
+        }
+    }
+
+    private void Health(int player, int ennemy,Ennemy attaquant)
+    {
+        switch (player)
+        {
+            case 0:
+                combathealth[4].value += (int)(playerData.magic * 2);
+                break;
+            case 1:
+                combathealth[ennemy].value += attaquant.Magic * 2;
                  
-             }
-             else
-             {
-                 heatlhplayer.value -= quete.bonusdegat * dicemonste;
-                 phrase.text = $"{quete.name} inflige <color=red>{quete.bonusdegat * dicemonste}</color> de degats";
-                 dexplay.text = $"<color=white>{playerData.dexterity}</color>";
-                 dodging = false;
-             }
-             
+                break;
             
-             if (heatlhplayer.value <= heatlhplayer.maxValue / 2)
-             {
-                 phrasemid.text = quete.phraseplayer;
-             }
-             
-             if (heatlhplayer.value <= 0)
-             {
-                 heatlhplayer.value = heatlhplayer.maxValue;
-                 StartCoroutine(Defaite());
-
-             }
-             
-         }
-         else
-         {
-            healthmob.value -= playerData.resistance * dicemonste;
-             phrase.text = $"le joueurse defent et {quete.name} recoit <color=red>{playerData.resistance * dicemonste}</color> de degats";
-             if (healthmob.value <= healthmob.maxValue/2)
-             {
-                 phrasemid.text = quete.phrasejoueur;
-             }
-
-             if (dodging && timedodge > 0)
-             {
-                 timedodge--;
-             }
-             if (healthmob.value <= 0)
-             {
-                 heatlhplayer.value = heatlhplayer.maxValue;
-                 StartCoroutine(End1());
-
-             }
-         }
-     }
-     private void AttackLogic()
-     {
-         if (dicescore > dicemonste)
-         {
-             healthmob.value -= playerData.damage * dicescore;
-             phrase.text = $"Le joueur inflige <color=red>{playerData.damage * dicescore}</color> de degats";
-             if (healthmob.value <= healthmob.maxValue/2)
-             {
-                 phrasemid.text = quete.phrasejoueur;
-             }
-             if (healthmob.value <= 0)
-             {
-               heatlhplayer.value = heatlhplayer.maxValue;
-                 StartCoroutine(End1());
             
-                 
-             }
-         }
-         else
-         {
-             heatlhplayer.value -= quete.bonusresistance * dicescore;
-             phrase.text = $"{quete.name} se defent et le joueur recoit <color=red>{quete.bonusresistance * dicescore}</color> de degats";
-             if (heatlhplayer.value <= heatlhplayer.maxValue / 2)
-             {
-                 phrasemid.text = quete.phraseplayer;
-             }
-             if (heatlhplayer.value <= 0)
-             {
-                 heatlhplayer.value = heatlhplayer.maxValue;
-                 StartCoroutine(Defaite());
-             }
-         }
-         
-     
-     } 
-     public void DisableAttackButton()
-     {
-         attackButton.interactable = false;
-         dodgeButton.interactable = false;
-         mindButton.interactable = false;
-         castButton.interactable = false; 
-     }
+        }
+    }
 
-     public void EnableAttackButton()
-     {
-        
-         mindButton.interactable = true;
-         attackButton.interactable = true;
-         dodgeButton.interactable = true;
-         castButton.interactable = true;
-       
-         if (mindbool)
-         {
-             mindButton.interactable = false;
-         }
+    public void ChoiceAttack1()
+    {
+        foreach (var test in boucliermdr)
+        {
+            test.SetActive(false);
+        }
+        DeckCombat.SetActive((true));
+        EnemyChoice = 0;
+    }
+    public void ChoiceAttack2()
+    {
+        foreach (var test in boucliermdr)
+        {
+            test.SetActive(false);
+        }
+        DeckCombat.SetActive((true));
+        EnemyChoice = 1;
+    }
+    public void ChoiceAttack3()
+    {
+        foreach (var test in boucliermdr)
+        {
+            test.SetActive(false);
+        }
+        DeckCombat.SetActive((true));
+        EnemyChoice = 2;
+    }
 
-         if (dodging)
-         {
-             dodgeButton.interactable = false;
-             
-         }
-     }
+    public void Attack1()
+    {
+        switch (attacklist[0].name)
+        {
+            case "Coup":
+                Coup(0,EnemyChoice,null);
+                break;
+            case "Health":
+                Health(0,EnemyChoice,null);
+                break;
+        }
+    }
+    public void Attack2()
+    {
+        switch (attacklist[1].name)
+        {
+            case "Coup":
+                Coup(0,EnemyChoice,null);
+                break;
+            case "Health":
+                Health(0,EnemyChoice,null);
+                break;
+        }
+    }
+    public void Attack3()
+    {
+        switch (attacklist[2].name)
+        {
+            case "Coup":
+                Coup(0,EnemyChoice,null);
+                break;
+            case "Health":
+                Health(0,EnemyChoice,null);
+                break;
+        }
 
-     public IEnumerator findweak()
-     {
-         
-         phrase.text = "Vous lancez le de pour essayer de trouver une faiblesse.";
-         Dicej();
-         yield return StartCoroutine(WaitForSeconds(3));
-         if (dicescore <= playerData.intelligence * 2)
-         {
-             randomboost = Random.Range(1, 4);
-             phrase.text = $"Vous avez trouver une faiblesse votre attaque a un bonus de <color=green>+{randomboost}</color>.";
-             
-             playerData.damage += randomboost;
-             degatplay.text = $"<color=green> {playerData.damage.ToString()} </color>";
-             mindbool = true;
-         }
-         else
-         {
-             phrase.text = $"Vous ne trouvez aucune faiblesse chez {quete.name} il contre attaque";
-             attaquemob.color = Color.red;
-         }
+    }
+    public void Attack4()
+    {
 
-         yield return StartCoroutine(WaitForSeconds(3));
-         
-         phrase.text = $"{quete.name} lance le de";
-         Dice();
-         yield return StartCoroutine(WaitForSeconds(3));
-         contreattaque();
-         EnableAttackButton();
-         attaquemob.color = Color.gray;
-         defensemob.color = Color.gray;
-         tourrecup--;
-     }
+        switch (attacklist[3].name)
+        {
+            case "Coup":
+                Coup(0,EnemyChoice,null);
+                break;
+            case "Health":
+                Health(0,EnemyChoice,null);
+                break;
+        }
+    }
 
-     public void mind()
-     { 
-         DisableAttackButton();
-         StartCoroutine(findweak());
-        
-     }
 
-     public void Dodge()
-     {
-         DisableAttackButton();
-         StartCoroutine(dodge());
-     }
 
-     public void contreattaque()
-     {
-         
-         if (dodging && timedodge > 0)
-         {
-             if (mag)
-             {
-                 heatlhplayer.value -=(int) (((quete.bonusdegat * dicemonste) * 0.7)*1.5);
-                 phrase.text = $"{quete.name} inflige <color=red>{(int) (((quete.bonusdegat * dicemonste) * 0.7)*1.5)}</color> de degats";
-                 timedodge--;
-             }
-             else
-             {
-                 heatlhplayer.value -= (int)((quete.bonusdegat * dicemonste) * 0.7);
-                 phrase.text =
-                     $"{quete.name} inflige <color=red>{(int)((quete.bonusdegat * dicemonste) * 0.7)}</color> de degats";
-                 timedodge--;
-             }
-         }
-         else if (mag)
-         {
-             heatlhplayer.value -= (int)(quete.bonusdegat * dicemonste * 1.5);
-             phrase.text = $"{quete.name} inflige <color=red>{(int)(quete.bonusdegat * dicemonste * 1.5)}</color> de degats";
-             dexplay.text = $"<color=white>{playerData.dexterity}</color>";
-             dodging = false;
-         }
-         else
-         {
-             heatlhplayer.value -= quete.bonusdegat * dicemonste;
-             phrase.text = $"{quete.name} inflige <color=red>{quete.bonusdegat * dicemonste}</color> de degats";
-             dexplay.text = $"<color=white>{playerData.dexterity}</color>";
-             dodging = false;
-         }
-         if (heatlhplayer.value <= heatlhplayer.maxValue / 2)
-         {
-             phrasemid.text = quete.phraseplayer;
-         }
-         if (heatlhplayer.value <= 0)
-         {
-             heatlhplayer.value = heatlhplayer.maxValue;
-             StartCoroutine(Defaite());
 
-         }
 
-         
-     }
 
-     public IEnumerator dodge()
-     {
-         phrase.text = "Vous tentez une esquive.";
-         Dicej();
-         yield return WaitForSeconds(3);
-         if (playerData.dexterity * 2 >= dicescore)
-         {
-             phrase.text = "Vous avez reussis votre esquive pendant 2 attaque vous recevez <color=green>-30%</color> de degats";
-             dodging = true;
-             timedodge = 2;
-             tourrecup = cooldown;
-             dexplay.text = $"<color=green>{playerData.dexterity}</color>";
-         }
-         else
-         {
-             phrase.text = "Vous rater votre esquive";
-             tourrecup = 0;
-         }
 
-         yield return WaitForSeconds(3);
-         attaquemob.color = Color.red;
-         phrase.text = $"{quete.name} attaque !!";
-         Dice();
-         yield return WaitForSeconds(3);
-         contreattaque();
-         EnableAttackButton();
-         attaquemob.color = Color.gray;
-         defensemob.color = Color.gray;
-         tourrecup--;
-     }
 
-     public void restartstat()
-     {
-         dodging = false;
-         timedodge = 2;
-     }
 
-     public IEnumerator Cast()
-     {
-         phrase.text = "Vous essayer D'incanter un sort puissant.";
-         Dicej();
-         yield return WaitForSeconds(3);
-         if (dicescore < playerData.magic)
-         {
-             phrase.text =
-                 $"Vous lancez un sort puissant et faites <color=red> {dicescore * playerData.magic * playerData.intelligence} </color> de degats";
-             healthmob.value -= dicescore * playerData.magic * playerData.intelligence;
-             if (healthmob.value <= 0)
-             {
-                 heatlhplayer.value = heatlhplayer.maxValue;
-                 StartCoroutine(End1());
 
-             }
-         }
-         else
-         {
-             phrase.text = "Votre rater votre incantation.";
-             mag = true;
-         }
 
-         yield return WaitForSeconds(3);
-         attaquemob.color = Color.red;
-         phrase.text = $"{quete.name} contre attaque.";
-         Dice();
-         yield return WaitForSeconds(3);
-         contreattaque();
-         yield return WaitForSeconds(2);
-         EnableAttackButton();
-         attaquemob.color = Color.gray;
-         defensemob.color = Color.gray;
-         mag = false;
-     }
-
-     public void cast()
-     {
-         DisableAttackButton();
-         StartCoroutine(Cast());
-     }
 }   

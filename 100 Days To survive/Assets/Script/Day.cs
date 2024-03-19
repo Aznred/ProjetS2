@@ -41,6 +41,7 @@ public class Day : ScriptableObject
     public string[] act3;
     public bool dial;
     public Day choix3;
+    public List<Ennemy> Ennemies;
     
    
     

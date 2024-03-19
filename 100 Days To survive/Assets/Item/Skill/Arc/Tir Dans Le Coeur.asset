@@ -27,5 +27,6 @@ MonoBehaviour:
   valeurRubyRouge: 0
   valeurRubybleu: 0
   description: "Une precision inegalee atteint le c\u0153ur de l'ennemi."
+  spelltype: 2
   typearme: 1
   requiert: 20
