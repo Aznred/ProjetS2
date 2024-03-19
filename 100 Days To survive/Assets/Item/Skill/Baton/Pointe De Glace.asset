@@ -27,5 +27,6 @@ MonoBehaviour:
   valeurRubyRouge: 0
   valeurRubybleu: 0
   description: Un sort glacial cree des pointes de glace mortelles.
+  spelltype: 2
   typearme: 3
   requiert: 10

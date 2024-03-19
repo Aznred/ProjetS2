@@ -27,5 +27,6 @@ MonoBehaviour:
   valeurRubyRouge: 0
   valeurRubybleu: 0
   description: Un coup precis frappe l'ennemi avec force.
+  spelltype: 2
   typearme: 0
   requiert: 1

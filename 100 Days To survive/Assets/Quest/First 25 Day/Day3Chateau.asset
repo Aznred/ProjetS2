@@ -38,7 +38,7 @@ MonoBehaviour:
   prix: 
   recrouge: 0
   recbleu: 0
-  choix1: {fileID: 0}
+  choix1: {fileID: 11400000, guid: c8c8965f1a3cc124389fb432f2c8cf89, type: 2}
   choix2: {fileID: 11400000, guid: 8b9c85816a9600c4b9b89597d1377733, type: 2}
   typedequete: 2
   perso: {fileID: 0}
@@ -51,3 +51,4 @@ MonoBehaviour:
   act3: []
   dial: 0
   choix3: {fileID: 0}
+  Ennemies: []

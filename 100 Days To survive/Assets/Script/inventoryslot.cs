@@ -38,12 +38,12 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
                 {
                     
                     olditem = ele;
-                    loader.playerData.baseDamage -= ele.bonusdegat;
-                    loader.playerData.baseHealth -= ele.bonusvie;
-                    loader.playerData.baseDexterity -= ele.bonusdexterité;
-                    loader.playerData.baseResistance -= ele.bonusresistance;
-                    loader.playerData.baseIntelligence -= ele.bonusintelligence;
-                    loader.playerData.baseMagic -= ele.bonusmagie;
+                    loader.playerData.damage -= ele.bonusdegat;
+                    loader.playerData.health -= ele.bonusvie;
+                    loader.playerData.dexterity -= ele.bonusdexterité;
+                    loader.playerData.resistance -= ele.bonusresistance;
+                    loader.playerData.intelligence -= ele.bonusintelligence;
+                    loader.playerData.magic -= ele.bonusmagie;
                     Debug.Log(olditem);
                     loader.UpdatePlayerUI();
                 }
@@ -162,8 +162,8 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
     {
         if (eventData.pointerDrag == null)
         {
-            Debug.LogWarning("L'objet pointé par eventData.pointerDrag est null.");
-            return;  // Quitter la méthode si eventData.pointerDrag est null.
+            
+            return;  
         }
         if (transform.childCount == 0)
         {
@@ -179,17 +179,13 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
                     olditem = draggableItem.Item;
                     armor = true;
                 }
-                else
-                {
-                   
-                    Debug.Log("Le joueur n'a pas la maîtrise d'arme requise pour cette compétence.");
-                }
+               
             }
             else if (acceptedItemType == ItemType.All)
             {
                 draggableItem.parentafterdrag = transform;
                
-                name.text = "";
+              
                 loader.UpdatePlayerData();
             }
                 else if (draggableItem.Item.typearme == Arme.arc && draggableItem.Item.requiert <= playerData.arc )
@@ -375,7 +371,7 @@ public class inventoryslot : MonoBehaviour, IDropHandler, IPointerEnterHandler, 
             else
             {
                
-                Debug.Log("Cet objet n'est pas accepté dans cette case.");
+                
             }
 
 

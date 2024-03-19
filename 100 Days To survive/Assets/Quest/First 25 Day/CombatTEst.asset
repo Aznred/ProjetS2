@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd7b65b40166614d9e2520c7cf365e2, type: 3}
+  m_Name: CombatTEst
+  m_EditorClassIdentifier: 
+  music: {fileID: 0}
+  phrasecomb: 
+  phraseplayer: 
+  phrasejoueur: 
+  name: 
+  histoire: 
+  choix_1: combat
+  choix_2: combat
+  background: {fileID: 0}
+  prixrouge: 0
+  prixbleue: 0
+  bonusvie: 0
+  bonusdegat: 0
+  "bonusdexterit\xE9": 0
+  bonusresistance: 0
+  bonusintelligence: 0
+  bonusmagie: 0
+  recompense: {fileID: 0}
+  "march\xE9": []
+  prix: 
+  recrouge: 0
+  recbleu: 0
+  choix1: {fileID: 0}
+  choix2: {fileID: 0}
+  typedequete: 0
+  perso: {fileID: 0}
+  Firstdialogue: 
+  Choixdial1: []
+  Choixdial2: []
+  choixdial3: []
+  act1: []
+  act2: []
+  act3: []
+  dial: 0
+  choix3: {fileID: 0}
+  Ennemies:
+  - {fileID: 11400000, guid: 45d97e6425c3f0e44a1b7e29064636de, type: 2}
+  - {fileID: 11400000, guid: 45d97e6425c3f0e44a1b7e29064636de, type: 2}

@@ -27,5 +27,6 @@ MonoBehaviour:
   valeurRubyRouge: 0
   valeurRubybleu: 0
   description: Un tir puissant brise les os et la defense ennemi.
+  spelltype: 1
   typearme: 1
   requiert: 10
