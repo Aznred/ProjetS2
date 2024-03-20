@@ -16,6 +16,13 @@ using Random = UnityEngine.Random;
 [SerializeField]
 public class Loader : MonoBehaviour
 {
+    private List<Ennemy> _ennemieslist = new List<Ennemy>();
+    private bool endcombat = false;
+    public List<Combatant> combatants = new List<Combatant>();
+    private Queue<Combatant> turnQueue;
+
+    public TMP_Text textcombat;
+    private string attack;
     private int EnemyChoice;
     public List<Item> attacklist;
     public List<GameObject> boucliermdr;
@@ -404,7 +411,12 @@ public class Loader : MonoBehaviour
                        
                             if (slot.acceptedItemType == ele.itemtype && slot.transform.childCount < 1)
                             {
-                               
+                                playerData.damage -= ele.bonusdegat;
+                                playerData.health -= ele.bonusvie;
+                                playerData.dexterity -= ele.bonusdexterité;
+                                playerData.resistance -= ele.bonusresistance;
+                                playerData.intelligence -= ele.bonusintelligence;
+                                playerData.magic -= ele.bonusmagie;
                                 SpawnItem(ele,slot);
                                 
                                
@@ -644,7 +656,6 @@ public class Loader : MonoBehaviour
     {
         SceneManager.LoadScene("succes");
     }
-
   public void AddHealthStat()
     {
        
@@ -927,6 +938,9 @@ public class Loader : MonoBehaviour
 
         if (Quest.typedequete == Day.DayType.Combat)
         {
+           
+            endcombat = false;
+            textcombat.text = "";
             Item spell = null;
             combat.SetActive(true);
             for (int k = 0; k < playerData.decknames.Count; k++)
@@ -946,7 +960,12 @@ public class Loader : MonoBehaviour
                 }
                
             }
-            DeckCombat.SetActive(false);
+
+            foreach (var e in boucliermdr)
+            {
+                e.SetActive((false));
+            }
+            DeckCombat.SetActive(true);
             int j = 0;
             int i = 0;
             UpdatePlayerData();
@@ -962,7 +981,7 @@ public class Loader : MonoBehaviour
                 if (e.type == Ennemy.EnemyType.Enemy)
                 {
                     i++;
-                   
+                   _ennemieslist.Add(e);
                     switch (i)
                     {
                         case 1:
@@ -972,8 +991,7 @@ public class Loader : MonoBehaviour
                             combathealth[1].value = e.Health * 10;
                             bouclierlist[0].SetActive(false);
                             bouclierlist[2].SetActive(false);
-                            bouclierlist[6].SetActive(false);
-                            bouclierlist[8].SetActive(false);
+                           
                             break;
                         case 2:
                             combatlist[6].sprite = e.Mobimage;
@@ -981,8 +999,7 @@ public class Loader : MonoBehaviour
                             combathealth[0].maxValue = e.Health * 10;   
                             combathealth[0].value = e.Health * 10;
                             bouclierlist[0].SetActive(true);
-                            bouclierlist[6].SetActive(true);
-                           
+                          
                             break;
                         case 3:
                             combatlist[8].sprite = e.Mobimage;
@@ -990,7 +1007,7 @@ public class Loader : MonoBehaviour
                             combathealth[2].maxValue = e.Health * 10;   
                             combathealth[2].value = e.Health * 10;
                             bouclierlist[2].SetActive(true);
-                            bouclierlist[8].SetActive(true);
+                          
                             break;
                     }
                 }
@@ -1021,7 +1038,7 @@ public class Loader : MonoBehaviour
             victoire.SetActive(false);
             defaite.SetActive(false);
            
-
+        
         }
 
         if (Quest.typedequete == Day.DayType.Marchand)
@@ -1469,6 +1486,11 @@ public class Loader : MonoBehaviour
          float randomWaitTime = UnityEngine.Random.Range(1.0f, 2.0f);
          yield return new WaitForSeconds(randomWaitTime);
      }
+
+     private IEnumerator Wait()
+     {
+         yield return WaitForSeconds(5);
+     }
      public void Dicej()
      {
          dicescore = UnityEngine.Random.Range(1, 21);
@@ -1522,17 +1544,17 @@ public class Loader : MonoBehaviour
 
     private void EnnemyAttackPlayer(string spell,Ennemy A)
     {
-        throw new NotImplementedException();
+        StartCoroutine(Coup(2,1,A));
     }
 
     private void EnnemyBuff(int E,string spell,Ennemy A)
     {
-        throw new NotImplementedException();
+        StartCoroutine(Health(1,E,A));
     }
 
     private void EnnemyDebuffPlayer(string spell,Ennemy A)
     {
-        throw new NotImplementedException();
+        StartCoroutine(Coup(2,1,A));
     }
     
     private void EnnemyDebuff(int E,string spell,Ennemy A)
@@ -1562,12 +1584,12 @@ public class Loader : MonoBehaviour
         int sr = Random.Range(0, ennemy.deck.Length);
         foreach (var s in skilldata)
         {
-            if (s.itemName== ennemy.deck[sr])
+            if (s.name== ennemy.deck[sr])
             {
                 switch (s.spelltype)
                 {
                     case capicitytype.Buff:
-                        EnnemyBuff(r_e,s.itemName,ennemy);
+                        EnnemyBuff(r_e,s.name,ennemy);
                         break;
 
 
@@ -1575,13 +1597,13 @@ public class Loader : MonoBehaviour
                         switch (r_a)
                         {
                             case 0:
-                                EnnemyDebuffPlayer(s.itemName,ennemy);
+                                EnnemyDebuffPlayer(s.name,ennemy);
                                 break;
                             case 1:
-                                EnnemyDebuff(3,s.itemName,ennemy);
+                                EnnemyDebuff(3,s.name,ennemy);
                                 break;
                             case 2:
-                                EnnemyDebuff(5,s.itemName,ennemy);
+                                EnnemyDebuff(5,s.name,ennemy);
                                 break;
                         }
 
@@ -1605,8 +1627,238 @@ public class Loader : MonoBehaviour
         }
     }
 
-    private void Coup(int player,int ennemy,Ennemy attaquant)
+    private IEnumerator Coup(int player,int ennemy,Ennemy attaquant)
     {
+        int j = 0;
+        int i = 0;
+        switch (player)
+        {
+            case 0:
+               Dicej();
+               yield return WaitForSeconds(2.5f);
+               if (dicescore == 20)
+               {
+                   textcombat.text = $"{playerData.playerName} utilise coup\n" + $"Le score du dé est de <color=yellow>{dicescore}</color>\n" + "C'est une réussite critique"; 
+                   combathealth[ennemy].value -= (int)(playerData.damage * 5);
+                   
+                 
+                   
+               }
+               else if (dicescore == 1)
+               {
+                   textcombat.text = $"{playerData.playerName} utilise coup\n" + $"Le score du dé est de <color=purple>{dicescore}</color>\n" + "C'est un échec critique"; 
+                   combathealth[4].value -= (int)(playerData.damage * 2.5);
+                 
+                  
+                  
+               }
+               else if (dicescore >=10)
+               {
+                   textcombat.text = $"{playerData.playerName} utilise coup\n" + $"Le score du dé est de <color=green>{dicescore}</color>\n" + "C'est une réussite"; 
+                   combathealth[ennemy].value -= (int)(playerData.damage * 2.5);
+                   
+                  
+               }
+               else
+               {
+                   textcombat.text = $"{playerData.playerName} utilise coup\n" + $"Le score du dé est de <color=red>{dicescore}</color>\n" + "C'est un échec"; 
+               }
+               foreach (var B in Deckbutton)
+               {
+                   B.interactable = false;
+               }
+               StartCoroutine( Turn());
+
+              
+               
+               
+                break;
+            case 1:
+                yield return WaitForSeconds(2.5f);
+                Dice();
+                yield return WaitForSeconds(2.5f);
+
+                if (dicemonste == 20)
+                {
+                    textcombat.text = $"{attaquant.name} utilise coup\n" + $"Le score du dé est de <color=yellow>{dicemonste}</color>\n" + "C'est une réussite critique"; 
+                    combathealth[ennemy].value -= (int)(attaquant.Damage* 5);
+                }
+                else if (dicemonste == 1)
+                {
+                    textcombat.text = $"{attaquant.name} utilise coup\n" + $"Le score du dé est de <color=purple>{dicemonste}</color>\n" + "C'est un échec critique"; 
+                    combathealth[i].value -= (int)(attaquant.Damage* 2.5);
+                }
+                else if (dicemonste >= 10)
+                {
+                    textcombat.text = $"{attaquant.name} utilise coup\n" + $"Le score du dé est de <color=green>{dicemonste}</color>\n" + "C'est une réussite"; 
+                    combathealth[ennemy].value -= (int)(attaquant.Damage * 2.5);
+                }
+                else
+                {
+                    textcombat.text = $"{attaquant.name} utilise coup\n" + $"Le score du dé est de <color=red>{dicemonste}</color>\n" + "C'est un échec"; 
+                }
+               
+      
+                break;
+            case 2:
+                yield return WaitForSeconds(2.5f);
+                Dice();
+                yield return WaitForSeconds(2.5f);
+
+                if (dicemonste == 20)
+                {
+                    textcombat.text = $"{attaquant.name} utilise coup\n" + $"Le score du dé est de <color=yellow>{dicemonste}</color>\n" + "C'est une réussite critique"; 
+                    combathealth[4].value -= (int)(attaquant.Damage * 5);
+                }
+                else if (dicemonste == 1)
+                {
+                    textcombat.text = $"{attaquant.name} utilise coup\n" + $"Le score du dé est de <color=purple>{dicemonste}</color>\n" + "C'est un échec critique"; 
+                    combathealth[i].value -= (int)(attaquant.Damage* 2.5);
+                }
+                else if (dicemonste >= 10)
+                {
+                    textcombat.text = $"{attaquant.name} utilise coup\n" + $"Le score du dé est de <color=green>{dicemonste}</color>\n" + "C'est une réussite"; 
+                    combathealth[4].value -= (int)(attaquant.Damage * 2.5);
+                }
+                else
+                {
+                    textcombat.text = $"{attaquant.name} utilise coup\n" + $"Le score du dé est de <color=red>{dicemonste}</color>\n" + "C'est un échec"; 
+                    
+                }
+                break;
+                
+        }
+        DeckCombat.SetActive(true);
+
+    }
+
+  
+    private IEnumerator Health(int player, int ennemy,Ennemy attaquant)
+    {
+        int r = Random.Range(0, quete.Ennemies.Count + 1);
+        
+        switch (player)
+        { 
+              
+            case 0:
+                Dicej();
+                yield return WaitForSeconds(2.5f);
+                if (dicescore == 20)
+                {
+                    textcombat.text = $"{playerData.playerName} utilise soin\n" + $"Le score du dé est de <color=yellow>{dicescore}</color>\n" + "C'est une réussite critique"; 
+                    combathealth[4].value += (int)(playerData.magic * 4);
+                   
+                }
+                else if(dicescore == 1)
+                {
+                    textcombat.text = $"{playerData.playerName} utilise soin\n" + $"Le score du dé est de <color=purple>{dicescore}</color>\n" + "C'est un échec critique"; 
+                    combathealth[r].value += (int)(playerData.magic * 4);
+                    
+                }
+                else if (dicescore >= 10)
+                {
+                    textcombat.text = $"{playerData.playerName} utilise soin\n" + $"Le score du dé est de <color=green>{dicescore}</color>\n" + "C'est une réussite"; 
+                    combathealth[4].value += (int)(playerData.magic * 2);
+                    
+                }
+                else
+                {
+                    textcombat.text = $"{playerData.playerName} utilise soin\n" + $"Le score du dé est de <color=red>{dicescore}</color>\n" + "C'est un échec"; 
+                }
+                foreach (var B in Deckbutton)
+                {
+                    B.interactable = false;
+                }
+               StartCoroutine( Turn());
+                break;
+            case 1:
+               
+                yield return WaitForSeconds(2.5f);
+                Dice();
+                yield return WaitForSeconds(2.5f);
+                if (dicemonste == 20)
+                {
+                    textcombat.text = $"{attaquant.name} utilise soin\n" + $"Le score du dé est de <color=yellow>{dicemonste}</color>\n" + "C'est une réussite critique"; 
+                    combathealth[ennemy].value += attaquant.Magic * 4;    
+                }
+
+                else if (dicemonste == 1)
+                {
+                    textcombat.text = $"{attaquant.name} utilise soin\n" + $"Le score du dé est de <color=purple>{dicemonste}</color>\n" + "C'est un échec critique"; 
+                    combathealth[r].value += attaquant.Magic * 4;
+                }
+                else if ( dicemonste>= 10 )
+                {
+                    textcombat.text = $"{attaquant.name} utilise soin\n" + $"Le score du dé est de <color=green>{dicemonste}</color>\n" + "C'est une réussite"; 
+                    combathealth[ennemy].value += attaquant.Magic * 2;
+                }
+                else
+                {
+                    textcombat.text = $"{attaquant.name} utilise coup\n" + $"Le score du dé est de <color=red>{dicemonste}</color>\n" + "C'est un échec"; 
+                }
+                break;
+            
+            
+        }
+        DeckCombat.SetActive(true);
+    }
+
+    public void ChoiceAttack1()
+    {
+        foreach (var test in boucliermdr)
+        {
+            test.SetActive(false);
+        }
+        EnemyChoice = 0;
+        switch (attack)
+        {
+            case "Coup":
+                StartCoroutine(Coup(0,EnemyChoice,null));
+                break;
+            case "Health":
+                StartCoroutine( Health(0,EnemyChoice,null));
+                break;
+        }
+    }
+    public void ChoiceAttack2()
+    {
+        foreach (var test in boucliermdr)
+        {
+            test.SetActive(false);
+        }
+       
+        EnemyChoice = 1;
+        switch (attack)
+        {
+            case "Coup":
+                StartCoroutine(Coup(0,EnemyChoice,null));
+                break;
+            case "Health":
+                StartCoroutine( Health(0,EnemyChoice,null));
+                break;
+        }
+    }
+    public void ChoiceAttack3()
+    {
+        foreach (var test in boucliermdr)
+        {
+            test.SetActive(false);
+        }
+        EnemyChoice = 2;
+        switch (attack)
+        {
+            case "Coup":
+                StartCoroutine(Coup(0,EnemyChoice,null));
+                break;
+            case "Health":
+                StartCoroutine( Health(0,EnemyChoice,null));
+                break;
+        }
+    }
+
+    public void Attack1()
+    {
+        attack = attacklist[0].name;
         DeckCombat.SetActive(false);
         int enemycount = 0;
         foreach (var e in quete.Ennemies)
@@ -1616,126 +1868,107 @@ public class Loader : MonoBehaviour
                 enemycount++;
             }
         }
-        switch (player)
-        {
-            case 0:
-                combathealth[ennemy].value -= (int)(playerData.damage * 2.5);
-                break;
-            case 1:
-                combathealth[ennemy].value -= (int)(attaquant.Damage* 2.5);
-                break;
-            case 2:
-                combathealth[4].value -= (int)(attaquant.Damage * 2.5);
-                break;
-        }
         switch (enemycount)
         {
-         case 1:
-             boucliermdr[1].SetActive(true);
-             break;
-         case 2:
-             boucliermdr[0].SetActive(true);
-             boucliermdr[1].SetActive(true);
-             break;
-         case 3:
-             boucliermdr[0].SetActive(true);
-             boucliermdr[1].SetActive(true);
-             boucliermdr[2].SetActive(true);
-             break;
-        }
-    }
-
-    private void Health(int player, int ennemy,Ennemy attaquant)
-    {
-        switch (player)
-        {
-            case 0:
-                combathealth[4].value += (int)(playerData.magic * 2);
-                break;
             case 1:
-                combathealth[ennemy].value += attaquant.Magic * 2;
-                 
+                boucliermdr[1].SetActive(true);
                 break;
-            
-            
+            case 2:
+                boucliermdr[0].SetActive(true);
+                boucliermdr[1].SetActive(true);
+                break;
+            case 3:
+                boucliermdr[0].SetActive(true);
+                boucliermdr[1].SetActive(true);
+                boucliermdr[2].SetActive(true);
+                break;
         }
-    }
 
-    public void ChoiceAttack1()
-    {
-        foreach (var test in boucliermdr)
-        {
-            test.SetActive(false);
-        }
-        DeckCombat.SetActive((true));
-        EnemyChoice = 0;
-    }
-    public void ChoiceAttack2()
-    {
-        foreach (var test in boucliermdr)
-        {
-            test.SetActive(false);
-        }
-        DeckCombat.SetActive((true));
-        EnemyChoice = 1;
-    }
-    public void ChoiceAttack3()
-    {
-        foreach (var test in boucliermdr)
-        {
-            test.SetActive(false);
-        }
-        DeckCombat.SetActive((true));
-        EnemyChoice = 2;
-    }
-
-    public void Attack1()
-    {
-        switch (attacklist[0].name)
-        {
-            case "Coup":
-                Coup(0,EnemyChoice,null);
-                break;
-            case "Health":
-                Health(0,EnemyChoice,null);
-                break;
-        }
     }
     public void Attack2()
     {
-        switch (attacklist[1].name)
+        DeckCombat.SetActive(false);
+        attack = attacklist[1].name;
+        int enemycount = 0;
+        foreach (var e in quete.Ennemies)
         {
-            case "Coup":
-                Coup(0,EnemyChoice,null);
+            if (e.type == Ennemy.EnemyType.Enemy)
+            {
+                enemycount++;
+            }
+        }
+        switch (enemycount)
+        {
+            case 1:
+                boucliermdr[1].SetActive(true);
                 break;
-            case "Health":
-                Health(0,EnemyChoice,null);
+            case 2:
+                boucliermdr[0].SetActive(true);
+                boucliermdr[1].SetActive(true);
+                break;
+            case 3:
+                boucliermdr[0].SetActive(true);
+                boucliermdr[1].SetActive(true);
+                boucliermdr[2].SetActive(true);
                 break;
         }
+
     }
     public void Attack3()
     {
-        switch (attacklist[2].name)
+        DeckCombat.SetActive(false);
+        attack = attacklist[2].name;
+        int enemycount = 0;
+        foreach (var e in quete.Ennemies)
         {
-            case "Coup":
-                Coup(0,EnemyChoice,null);
+            if (e.type == Ennemy.EnemyType.Enemy)
+            {
+                enemycount++;
+            }
+        }
+        switch (enemycount)
+        {
+            case 1:
+                boucliermdr[1].SetActive(true);
                 break;
-            case "Health":
-                Health(0,EnemyChoice,null);
+            case 2:
+                boucliermdr[0].SetActive(true);
+                boucliermdr[1].SetActive(true);
+                break;
+            case 3:
+                boucliermdr[0].SetActive(true);
+                boucliermdr[1].SetActive(true);
+                boucliermdr[2].SetActive(true);
                 break;
         }
+
 
     }
     public void Attack4()
     {
-
-        switch (attacklist[3].name)
+        DeckCombat.SetActive(false);
+        attack = attacklist[3].name;
+        int enemycount = 0;
+        foreach (var e in quete.Ennemies)
         {
-            case "Coup":
-                Coup(0,EnemyChoice,null);
+            if (e.type == Ennemy.EnemyType.Enemy)
+            {
+                enemycount++;
+            }
+        }
+        switch (enemycount)
+        {
+            case 1:
+                boucliermdr[1].SetActive(true);
                 break;
-            case "Health":
-                Health(0,EnemyChoice,null);
+            case 2:
+                boucliermdr[0].SetActive(true);
+                boucliermdr[1].SetActive(true);
+                break;
+            case 3:
+                boucliermdr[0].SetActive(true);
+                boucliermdr[1].SetActive(true);
+                boucliermdr[2].SetActive(true);
                 break;
         }
     }
@@ -1747,7 +1980,374 @@ public class Loader : MonoBehaviour
 
 
 
+    private IEnumerator Turn()
+    {
+        
+        combatants = new List<Combatant>();
+        int combatcount = 0;
+        int ally = 1;
+        foreach (var VARIABLE in quete.Ennemies)
+        {
+            if (VARIABLE.type == Ennemy.EnemyType.Enemy)
+            {
+                combatcount++;
+            }
+            else
+            {
+                ally++;
+            }
+           
+        }
 
+        
 
+        switch (ally)
+        {
+            case 1:
+                if ( combathealth[4].value <= 0)
+                {
+                    endcombat = true;
+                    defaite.SetActive(true);
+                }
+                break;
+            case 2:
+                if (combathealth[3].value <= 0 && combathealth[4].value <= 0)
+                {
+                    endcombat = true;
+                    defaite.SetActive(true);
+                }
+                break;
+            case 3:
+                if (combathealth[3].value <= 0 && combathealth[4].value <= 0 && combathealth[5].value <= 0)
+                {
+                    endcombat = true;
+                    defaite.SetActive(true);
+                }
+                break;
+        }
+
+        switch (combatcount)
+        {
+            case 1:
+                if ( combathealth[1].value <= 0)
+                {
+                    endcombat = true;
+                    victoire.SetActive(true);
+                    bonusitemvie.text = quete.recompense.bonusvie.ToString();
+                    bonusitemdex.text = quete.recompense.bonusdexterité.ToString();
+                    bonusitemdam.text = quete.recompense.bonusdegat.ToString();
+                    bonusitemres.text = quete.recompense.bonusresistance.ToString();
+                    bonusitemmag.text = quete.recompense.bonusmagie.ToString();
+                    bonusitemint.text = quete.recompense.bonusintelligence.ToString();
+                    req.sprite = quete.recompense.itemImage;
+                    requiert.text = quete.recompense.requiert.ToString();
+                     if (quete.recompense.typearme == Arme.autre)
+         {
+             requiert.text = "";
+             imarc.SetActive(false);
+             imbat.SetActive(false);
+             imbouc.SetActive(false);
+             imepee.SetActive(false);
+             imhache.SetActive(false);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.arc)
+         {
+             imarc.SetActive(true);
+             imbat.SetActive(false);
+             imbouc.SetActive(false);
+             imepee.SetActive(false);
+             imhache.SetActive(false);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.baton)
+         {
+             imarc.SetActive(false);
+             imbat.SetActive(true);
+             imbouc.SetActive(false);
+             imepee.SetActive(false);
+             imhache.SetActive(false);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.bouclier)
+         {
+             imarc.SetActive(false);
+             imbat.SetActive(false);
+             imbouc.SetActive(true);
+             imepee.SetActive(false);
+             imhache.SetActive(false);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.sword)
+         {
+             imarc.SetActive(false);
+             imbat.SetActive(false);
+             imbouc.SetActive(false);
+             imepee.SetActive(true);
+             imhache.SetActive(false);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.hache)
+         {
+             imarc.SetActive(false);
+             imbat.SetActive(false);
+             imbouc.SetActive(false);
+             imepee.SetActive(false);
+             imhache.SetActive(true);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.hammer)
+         {
+             imarc.SetActive(false);
+             imbat.SetActive(false);
+             imbouc.SetActive(false);
+             imepee.SetActive(false);
+             imhache.SetActive(false);
+             immasse.SetActive(true);
+         }
+
+                }
+                break;
+            case 2:
+                if (combathealth[0].value <= 0 && combathealth[1].value <= 0)
+                {
+                    endcombat = true;
+                    victoire.SetActive(true);
+                    bonusitemvie.text = quete.recompense.bonusvie.ToString();
+                    bonusitemdex.text = quete.recompense.bonusdexterité.ToString();
+                    bonusitemdam.text = quete.recompense.bonusdegat.ToString();
+                    bonusitemres.text = quete.recompense.bonusresistance.ToString();
+                    bonusitemmag.text = quete.recompense.bonusmagie.ToString();
+                    bonusitemint.text = quete.recompense.bonusintelligence.ToString();
+                    req.sprite = quete.recompense.itemImage;
+                    requiert.text = quete.recompense.requiert.ToString();
+                     if (quete.recompense.typearme == Arme.autre)
+         {
+             requiert.text = "";
+             imarc.SetActive(false);
+             imbat.SetActive(false);
+             imbouc.SetActive(false);
+             imepee.SetActive(false);
+             imhache.SetActive(false);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.arc)
+         {
+             imarc.SetActive(true);
+             imbat.SetActive(false);
+             imbouc.SetActive(false);
+             imepee.SetActive(false);
+             imhache.SetActive(false);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.baton)
+         {
+             imarc.SetActive(false);
+             imbat.SetActive(true);
+             imbouc.SetActive(false);
+             imepee.SetActive(false);
+             imhache.SetActive(false);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.bouclier)
+         {
+             imarc.SetActive(false);
+             imbat.SetActive(false);
+             imbouc.SetActive(true);
+             imepee.SetActive(false);
+             imhache.SetActive(false);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.sword)
+         {
+             imarc.SetActive(false);
+             imbat.SetActive(false);
+             imbouc.SetActive(false);
+             imepee.SetActive(true);
+             imhache.SetActive(false);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.hache)
+         {
+             imarc.SetActive(false);
+             imbat.SetActive(false);
+             imbouc.SetActive(false);
+             imepee.SetActive(false);
+             imhache.SetActive(true);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.hammer)
+         {
+             imarc.SetActive(false);
+             imbat.SetActive(false);
+             imbouc.SetActive(false);
+             imepee.SetActive(false);
+             imhache.SetActive(false);
+             immasse.SetActive(true);
+         }
+
+                }
+                break;
+            case 3:
+                if (combathealth[0].value <= 0 && combathealth[1].value <= 0 && combathealth[2].value <= 0)
+                {
+                    endcombat = true;
+                    victoire.SetActive(true);
+                    bonusitemvie.text = quete.recompense.bonusvie.ToString();
+                    bonusitemdex.text = quete.recompense.bonusdexterité.ToString();
+                    bonusitemdam.text = quete.recompense.bonusdegat.ToString();
+                    bonusitemres.text = quete.recompense.bonusresistance.ToString();
+                    bonusitemmag.text = quete.recompense.bonusmagie.ToString();
+                    bonusitemint.text = quete.recompense.bonusintelligence.ToString();
+                    req.sprite = quete.recompense.itemImage;
+                    requiert.text = quete.recompense.requiert.ToString();
+                     if (quete.recompense.typearme == Arme.autre)
+         {
+             requiert.text = "";
+             imarc.SetActive(false);
+             imbat.SetActive(false);
+             imbouc.SetActive(false);
+             imepee.SetActive(false);
+             imhache.SetActive(false);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.arc)
+         {
+             imarc.SetActive(true);
+             imbat.SetActive(false);
+             imbouc.SetActive(false);
+             imepee.SetActive(false);
+             imhache.SetActive(false);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.baton)
+         {
+             imarc.SetActive(false);
+             imbat.SetActive(true);
+             imbouc.SetActive(false);
+             imepee.SetActive(false);
+             imhache.SetActive(false);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.bouclier)
+         {
+             imarc.SetActive(false);
+             imbat.SetActive(false);
+             imbouc.SetActive(true);
+             imepee.SetActive(false);
+             imhache.SetActive(false);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.sword)
+         {
+             imarc.SetActive(false);
+             imbat.SetActive(false);
+             imbouc.SetActive(false);
+             imepee.SetActive(true);
+             imhache.SetActive(false);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.hache)
+         {
+             imarc.SetActive(false);
+             imbat.SetActive(false);
+             imbouc.SetActive(false);
+             imepee.SetActive(false);
+             imhache.SetActive(true);
+             immasse.SetActive(false);
+         }
+         if (quete.recompense.typearme == Arme.hammer)
+         {
+             imarc.SetActive(false);
+             imbat.SetActive(false);
+             imbouc.SetActive(false);
+             imepee.SetActive(false);
+             imhache.SetActive(false);
+             immasse.SetActive(true);
+         }
+
+                }
+                break;
+        }
+        switch (combatcount)
+        {
+            case 2:
+                if (combathealth[1].value <= 0)
+                {
+                    _ennemieslist.Remove(_ennemieslist[0]);
+                }
+
+                if (combathealth[0].value <= 0 && _ennemieslist.Count == 2)
+                {
+                    _ennemieslist.Remove(_ennemieslist[1]);
+                }
+                break;
+            case 3:
+                if (combathealth[1].value <= 0)
+                {
+                    _ennemieslist.Remove(_ennemieslist[0]);
+                }
+
+                if (combathealth[0].value <= 0 && _ennemieslist.Count > 2)
+                {
+                    _ennemieslist.Remove(_ennemieslist[1]);
+                }
+
+                if (combathealth[2].value <= 0 && _ennemieslist.Count == 3)
+                {
+                    _ennemieslist.Remove(_ennemieslist[2]);
+                }
+                break;
+        }
+        foreach (var E in  _ennemieslist)
+        {
+            Combatant c = new Combatant();
+            c.Name = E.name;
+            c.Dexterity = E.Dexterity;
+            combatants.Add(c);
+        }
+        combatants.Sort((a, b) => b.Dexterity.CompareTo(a.Dexterity));
+        foreach (var ele in combatants)
+        {
+            Debug.Log(combatants.Count);
+            Debug.Log($"{ele.Name},{ele.Dexterity}");    
+        }
+        
+        turnQueue = new Queue<Combatant>(combatants);
+        while (turnQueue.Count > 0 && endcombat == false )
+        {
+            Combatant currentCombatant = turnQueue.Dequeue();
+           Debug.Log(turnQueue.Count);
+          foreach (var E in quete.Ennemies)
+          {
+                  
+              if (E.Dexterity == currentCombatant.Dexterity && E.name == currentCombatant.Name)
+              {
+                 
+                  Debug.Log(true);
+                  EnnemyActionChoice(E);
+                  yield return WaitForSeconds(6f);
+                  
+              }
+
+            
+          }
+         
+            
+         
+        }
+        foreach (var B in Deckbutton)
+        {
+            B.interactable = true;   
+        }
+       
+        
+        
+    }
+    public class Combatant
+    {
+        public string Name { get; set; }
+        public int Dexterity { get; set; }
+    }
 
 }   

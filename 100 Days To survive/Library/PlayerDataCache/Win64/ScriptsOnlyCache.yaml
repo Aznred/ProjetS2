@@ -607,7 +607,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 23336}
     - Class: 114
-      Script: {instanceID: 31154}
+      Script: {instanceID: 34186}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1114,7 +1114,7 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionExit2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 52af2977be9afa7f73518ca30b89dbb9
+      Hash: 335df35bbbd0427e4a7cbd37a4750382
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Loader

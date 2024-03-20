@@ -29,7 +29,7 @@ MonoBehaviour:
   bonusresistance: 0
   bonusintelligence: 0
   bonusmagie: 0
-  recompense: {fileID: 0}
+  recompense: {fileID: 11400000, guid: 3eff6dfced453b54bb51883471eef203, type: 2}
   "march\xE9": []
   prix: 
   recrouge: 0
@@ -49,4 +49,4 @@ MonoBehaviour:
   choix3: {fileID: 0}
   Ennemies:
   - {fileID: 11400000, guid: 45d97e6425c3f0e44a1b7e29064636de, type: 2}
-  - {fileID: 11400000, guid: 45d97e6425c3f0e44a1b7e29064636de, type: 2}
+  - {fileID: 11400000, guid: 8b074063662f5854f8d3d3b8c3e696d7, type: 2}
