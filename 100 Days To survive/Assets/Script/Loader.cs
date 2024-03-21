@@ -1304,10 +1304,7 @@ public class Loader : MonoBehaviour
             playerData.redRubies -= quete.prix[0];
             UpdateThunes();
             Item1.image.sprite = vendu;
-           
         }
-
-
     }
     public void Achat2()
     {

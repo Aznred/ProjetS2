@@ -13,26 +13,17 @@ MonoBehaviour:
   m_Name: Day3Chateau
   m_EditorClassIdentifier: 
   music: {fileID: 8300000, guid: a3d86695d1418294a855f5317dd140b2, type: 3}
-  phrasecomb: 
-  phraseplayer: 
-  phrasejoueur: 
   name: Day3Chateau
   histoire: Apres votre conversation avec Alice, vous etes sorti de la taverne, vous
     retrouvant dans les rues du village. Face a un carrefour, vous avez desormais
     le choix. Voulez-vous vous diriger vers le marche du village pour en apprendre
     plus sur les opportunites locales, ou preferez-vous partir a l'aventure en direction
     du chateau qui surplombe la region ?
-  choix_1: "Aller au Ch\xE2teau"
+  choix_1: Aller au Chateau
   choix_2: Visiter le village
   background: {fileID: 21300000, guid: 879af8d210d3f3c40a2cfc56fdb5ae3b, type: 3}
   prixrouge: 0
   prixbleue: 0
-  bonusvie: 0
-  bonusdegat: 0
-  "bonusdexterit\xE9": 0
-  bonusresistance: 0
-  bonusintelligence: 0
-  bonusmagie: 0
   recompense: {fileID: 0}
   "march\xE9": []
   prix: 
