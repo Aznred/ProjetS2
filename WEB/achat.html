@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Buying page</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Achetez le meilleur jeu vidéo d'enquête de niveau professionnel.">
+	<meta name="keywords" content="jeu vidéo, enquête, niveau professionnel">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+
+		.header {
+			background-color: red;
+			color: white;
+			padding: 20px;
+			text-align: center;
+			font-size: 36px;
+			font-weight: bold;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 100px;
+			box-sizing: border-box;
+			background-color: #fff;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+			border-radius: 5px;
+		}
+
+		.product-image {
+			width: 100%;
+			max-width: 500px;
+			height: auto;
+			display: block;
+			margin: 0 auto 20px;
+		}
+
+		.product-name {
+			font-size: 24px;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+
+		.product-price {
+			font-size: 20px;
+			font-weight: bold;
+			color: #cc0000;
+			margin-bottom: 10px;
+		}
+
+		.product-description {
+			font-size: 18px;
+			margin-bottom: 20px;
+		}
+
+		.buy-button {
+			display: block;
+			width: 200px;
+			padding: 10px;
+			background-color: #cc0000;
+			color: #fff;
+			text-align: center;
+			text-decoration: none;
+			font-size: 20px;
+			font-weight: bold;
+			border-radius: 5px;
+			margin: 0 auto;
+			transition: background-color 0.3s ease;
+		}
+
+		.buy-button:hover {
+			background-color: #ff3333;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		100 Days
+	</div>
+	<div class="container">
+		<img class="product-image" src="dragon.jpg" alt="Image du produit">
+		<div class="product-name">Le meilleur jeu d'aventure !</div>
+		<div class="product-price">Gratuit</div>
+		<div class="product-description">
+			Plongez au coeur de Valdoria, un monde empli de mystères anciens et de créatures mythiques, où votre destin se tisse à chaque choix. "100 Days" vous invite à devenir l'aventurier déterminé à libérer son royaume.
+		</div>
+		<button class="buy-button" href="#" onclick="downloadExe()">Télécharger</button>
+		
+	<script>
+   
+
+    function downloadExe() {
+      var link = document.createElement('setuptiojaa.exe');
+      link.href = 'Ce PC/Documents/setuptiojaa.exe';
+      link.download = 'setuptiojaa.exe';
+      link.click();
+    }
+  </script>
+	</div>
+</body>
+</html>

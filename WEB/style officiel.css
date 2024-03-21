@@ -1,0 +1,199 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    
+}
+
+.section_1 {
+    position: relative;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(mountains2.png);
+    height: calc(100vh - 50px);
+}
+
+.section_3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.section_3_partion_1 {
+    position: relative;
+}
+
+.partition_1_head {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.logo,
+.logoj {
+    height: 50px; /* Set the same height for both */
+    width: 50px; /* Set the same width for both */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.logo {
+    /* Existing styles for logo */
+    background-image: url(LRD.jpeg);
+}
+
+.logoj {
+    /* Existing styles for logoj */
+    background-image: url(logoj.jpg);
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 20px; /* Adjust the padding as needed */
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 40px;
+}
+
+
+nav ul li {
+    margin-right: 10px; /* Adjust as needed */
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white; /* Adjust as needed */
+}
+
+.red-bar {
+    width: 100%; /* Occupy full width */
+    height: 2px; /* Height of the red bar */
+    background-color: red;
+    margin-top: 5px; /* Adjust as needed */
+}
+nav ul li a:hover {
+    color: red;
+}
+
+.section_3_partion_2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center items */
+    align-items: center; /* Horizontally center items */
+}
+
+.welcome_message {
+    font-size: 6rem;
+    color: transparent;
+    font-family: sans-serif;
+    -webkit-text-stroke: 3px #fff;
+    cursor: pointer;
+    transition: all .4s ease;
+    text-align: center; /* Center the text horizontally */
+    width: 100%; /* Ensure the text takes up the entire width */
+}
+
+/* Adjust hover effect */
+.welcome_message:hover {
+    color: white; /* Change the text color to white */
+    -webkit-text-stroke: 0;
+}
+
+.carts_container {
+    height: 80%; /* Adjust the height as needed */
+    width: 60%; /* Adjust the width as needed */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    gap: 10px;
+    position: relative;
+}
+
+/* Make the bottom part of the carts container transparent */
+.carts_container::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* Adjust the height of the transparent area */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white); /* Use a gradient to make the bottom area transparent */
+}
+
+.cart {
+    border: 1px solid #fff;
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+    padding: 5px; /* Adjust the padding to reduce the size */
+    background-color: #fff;
+    border-radius: 5px; /* Adjust the border-radius to reduce the curvature */
+    transition: all .5s ease;
+    border: 1px solid lightgray;
+}
+
+.cart_image {
+    border-radius: 10px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cart_image_1 {
+    background-image: url(Profil.png);
+}
+
+.cart_image_2 {
+    background-image: url(MenuPrinc.png);
+}
+
+.cart_image_3 {
+    background-image: url(Inv.png);
+}
+
+.cart:hover {
+    transform: translateY(-15px);
+}
+
+nav b {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    text-decoration: none;
+    font-family: sans-serif;
+    color: #333;
+    transition: all .3s ease;
+}
+
+nav b:hover {
+    color: #fff;
+}
+footer {
+    height: 50px; /* Adjust the height as per your requirement */
+    background-color: #333; /* Example background color */
+    color: white; /* Example text color */
+    text-align: center; /* Example alignment */
+    padding: 10px; /* Example padding */
+}
